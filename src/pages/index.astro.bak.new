@@ -332,14 +332,10 @@ const contactInfo = {
   </section>
 
   <!-- Sección de equipo mejorada -->
-  <section class="py-16 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
-    <!-- Decorative elements -->
-    <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-100 to-teal-50 rounded-full opacity-30 blur-3xl -mr-48 -mt-48"></div>
-    <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-teal-100 to-blue-50 rounded-full opacity-30 blur-3xl -ml-48 -mb-48"></div>
-    
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="text-center mb-16">
-        <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-4 py-1 rounded-full mb-4 shadow-md">NUESTRO EQUIPO</span>
+  <section class="py-16 bg-gradient-to-b from-white to-blue-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-4 py-1 rounded-full mb-4">NUESTRO EQUIPO</span>
         <h2 class="text-4xl font-bold text-gray-800 mb-4">Profesionales Especialistas</h2>
         <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-teal-400 mx-auto mb-6 rounded-full"></div>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
@@ -347,23 +343,20 @@ const contactInfo = {
         </p>
       </div>
       
-      <div class="max-w-7xl mx-auto">
+      <div class="max-w-6xl mx-auto">
         <!-- Primera fila: 2 médicos principales - con más protagonismo -->
-        <div class="grid md:grid-cols-2 gap-10 mb-16">
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
           <!-- Dr. Sergio Godorecci -->
-          <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 flex flex-col max-w-xl mx-auto w-full relative">
-            <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-              <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+          <div class="bg-white rounded-xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 flex flex-col">
+            <div class="relative pt-[70%] overflow-hidden">
               <img 
                 src={teamMembers[1].image} 
                 alt={teamMembers[1].name} 
-                class="absolute top-0 left-0 w-full h-full object-cover transform group-hover:scale-103 transition-transform duration-700"
-                style="object-position: center 30%; object-fit: contain; padding: 1.75rem;"
+                class="absolute top-0 left-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                style="object-position: center 25%; object-fit: contain; background-color: #f9f5f0;"
               />
-              <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-              <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-teal-100 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
             </div>
-            <div class="p-7 flex-grow">
+            <div class="p-6 flex-grow">
               <h3 class="text-xl font-bold text-gray-800 mb-2">{teamMembers[1].name}</h3>
               <div class="flex flex-wrap gap-2 mb-3">
                 <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{teamMembers[1].position}</span>
@@ -372,34 +365,26 @@ const contactInfo = {
               <p class="text-gray-600 mb-4 text-sm">
                 {teamMembers[1].bio}
               </p>
-              <a href={`/equipo/${teamMembers[1].name.toLowerCase().replace(/\s+/g, '-')}`} class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+              <a href={`/equipo/${teamMembers[1].name.toLowerCase().replace(/\s+/g, '-')}`} class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors">
                 Ver perfil completo
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
               </a>
             </div>
-            <!-- Decorative corner elements -->
-            <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-blue-200 rounded-tl-lg"></div>
-            <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-blue-200 rounded-tr-lg"></div>
-            <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-blue-200 rounded-bl-lg"></div>
-            <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-blue-200 rounded-br-lg"></div>
           </div>
           
           <!-- Dra. Sheril Irene Rivera Villarroel -->
-          <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 flex flex-col max-w-xl mx-auto w-full relative">
-            <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-              <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+          <div class="bg-white rounded-xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 flex flex-col">
+            <div class="relative pt-[70%] overflow-hidden">
               <img 
                 src={teamMembers[0].image} 
                 alt={teamMembers[0].name} 
-                class="absolute top-0 left-0 w-full h-full object-cover transform group-hover:scale-103 transition-transform duration-700"
-                style="object-position: center 30%; object-fit: contain; padding: 1.75rem;"
+                class="absolute top-0 left-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                style="object-position: center 25%; object-fit: contain; background-color: #f9f5f0;"
               />
-              <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-              <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-teal-100 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
             </div>
-            <div class="p-7 flex-grow">
+            <div class="p-6 flex-grow">
               <h3 class="text-xl font-bold text-gray-800 mb-2">{teamMembers[0].name}</h3>
               <div class="flex flex-wrap gap-2 mb-3">
                 <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{teamMembers[0].position}</span>
@@ -408,18 +393,13 @@ const contactInfo = {
               <p class="text-gray-600 mb-4 text-sm">
                 {teamMembers[0].bio}
               </p>
-              <a href={`/equipo/${teamMembers[0].name.toLowerCase().replace(/\s+/g, '-')}`} class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+              <a href={`/equipo/${teamMembers[0].name.toLowerCase().replace(/\s+/g, '-')}`} class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors">
                 Ver perfil completo
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
               </a>
             </div>
-            <!-- Decorative corner elements -->
-            <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-blue-200 rounded-tl-lg"></div>
-            <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-blue-200 rounded-tr-lg"></div>
-            <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-blue-200 rounded-bl-lg"></div>
-            <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-blue-200 rounded-br-lg"></div>
           </div>
         </div>
         
@@ -427,17 +407,14 @@ const contactInfo = {
         <div class="grid md:grid-cols-3 gap-8">
           {teamMembers.slice(2).map((member, index) => {
             return (
-              <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
-                <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                  <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300">
+                <div class="relative pt-[70%] overflow-hidden">
                   <img 
                     src={member.image} 
                     alt={member.name} 
-                    class="absolute top-0 left-0 w-full h-full transform hover:scale-103 transition-transform duration-700"
-                    style="object-fit: contain; padding: 1.75rem;"
+                    class="absolute top-0 left-0 w-full h-full transform hover:scale-105 transition-transform duration-500"
+                    style="object-fit: contain; background-color: #f9f5f0;"
                   />
-                  <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 hover:opacity-70 transition-opacity duration-300"></div>
-                  <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-teal-100 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 hover:opacity-70 transition-opacity duration-300"></div>
                 </div>
                 <div class="p-6">
                   <h3 class="text-xl font-bold text-gray-800 mb-2">{member.name}</h3>
@@ -448,18 +425,13 @@ const contactInfo = {
                   <p class="text-gray-600 mb-4 text-sm">
                     {member.bio}
                   </p>
-                  <a href={`/equipo/${member.name.toLowerCase().replace(/\s+/g, '-')}`} class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                  <a href={`/equipo/${member.name.toLowerCase().replace(/\s+/g, '-')}`} class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors">
                     Ver perfil completo
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                   </a>
                 </div>
-                <!-- Decorative corner elements -->
-                <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-blue-200 rounded-tl-lg"></div>
-                <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-blue-200 rounded-tr-lg"></div>
-                <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-blue-200 rounded-bl-lg"></div>
-                <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-blue-200 rounded-br-lg"></div>
               </div>
             );
           })}

@@ -34,11 +34,14 @@ const getCategoryGradient = (index) => {
   <!-- Layout para categorías par en desktop (2x2 grid) -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
     {categories.map((category, index) => (
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 transform hover:scale-[1.02] flex flex-col h-full category-card">
-        <div class="bg-gradient-to-r from-teal-400 to-sky-400 py-4 px-6">
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 transform hover:scale-[1.02] flex flex-col category-card">
+        <div class={`bg-gradient-to-r ${getCategoryGradient(index)} py-4 px-6 cursor-pointer category-header flex justify-between items-center`}>
           <h3 class="text-xl font-bold text-white">{category.name}</h3>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white transform transition-transform category-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
         </div>
-        <div class="p-4 md:p-6 flex-grow">
+        <div class="p-4 md:p-6 flex-grow category-content hidden">
           <ul class="space-y-3">
             {category.services.map((service) => (
               <li class="relative p-2 rounded-lg hover:bg-blue-50 transition-colors duration-200">
@@ -46,7 +49,7 @@ const getCategoryGradient = (index) => {
                   <span class="text-teal-500 text-lg mr-2 mt-0.5 flex-shrink-0">•</span>
                   <div class="flex-grow">
                     <h4 class="font-medium text-gray-800 hover:text-teal-500 transition-colors duration-200">{service.title}</h4>
-                    <div class="text-sm text-gray-600 mt-2 h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out service-details">
+                    <div class="text-sm text-gray-600 mt-2 service-details">
                       <p>{service.description}</p>
                       {service.benefits && service.benefits.length > 0 && (
                         <div class="mt-2 bg-white bg-opacity-80 p-2 rounded-md border border-teal-100">
@@ -70,23 +73,35 @@ const getCategoryGradient = (index) => {
   </div>
 </div>
 
+<script>
+  // Añadir funcionalidad para mostrar/ocultar el contenido de las categorías
+  document.addEventListener('DOMContentLoaded', () => {
+    const categoryHeaders = document.querySelectorAll('.category-header');
+    
+    categoryHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        const arrow = header.querySelector('.category-arrow');
+        
+        // Toggle content visibility
+        if (content) {
+          content.classList.toggle('hidden');
+          
+          // Rotate arrow
+          if (arrow instanceof HTMLElement) {
+            if (content.classList.contains('hidden')) {
+              arrow.style.transform = 'rotate(0deg)';
+            } else {
+              arrow.style.transform = 'rotate(180deg)';
+            }
+          }
+        }
+      });
+    });
+  });
+</script>
+
 <style>
-  /* Estilos para mostrar los detalles al hacer hover */
-  li:hover .service-details {
-    height: auto;
-    opacity: 1;
-    margin-top: 0.5rem;
-  }
-  
-  /* Para dispositivos táctiles, donde no hay hover */
-  @media (hover: none) {
-    li:active .service-details {
-      height: auto;
-      opacity: 1;
-      margin-top: 0.5rem;
-    }
-  }
-  
   /* Animación de borde con degradado */
   .category-card {
     position: relative;
@@ -115,6 +130,18 @@ const getCategoryGradient = (index) => {
   .category-card:hover::before {
     opacity: 1;
     animation: borderGlow 3s infinite linear;
+  }
+  
+  .category-header {
+    transition: all 0.3s ease;
+  }
+  
+  .category-header:hover {
+    opacity: 0.9;
+  }
+  
+  .category-content {
+    transition: all 0.3s ease;
   }
   
   @keyframes pulse {
