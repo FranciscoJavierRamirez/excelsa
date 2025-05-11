@@ -2,6 +2,14 @@
 // MobileMenu.astro
 import Icon from "./Icon.astro";
 import Logo from "./Logo.astro";
+import { getThemeColors } from '../../utils/colorThemes';
+
+// Recibir los items de navegación y la ruta actual
+const { navItems = [] } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+// Obtener colores de la marca principal
+const brandColors = getThemeColors('brand');
 ---
 
 <div class="relative">
@@ -9,7 +17,7 @@ import Logo from "./Logo.astro";
     <Icon name="menu" class="w-6 h-6" />
   </button>
 
-  <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-50">
+  <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-50 overflow-y-auto">
     <div class="container mx-auto px-4 py-8">
       <div class="flex justify-between items-center mb-8">
         <Logo />
@@ -18,19 +26,23 @@ import Logo from "./Logo.astro";
         </button>
       </div>
 
-      <nav class="flex flex-col space-y-4">
-        <a href="/" class="text-gray-700 hover:text-blue-600 transition-colors py-2">Inicio</a>
-        <a href="/nosotros" class="text-gray-700 hover:text-blue-600 transition-colors py-2">Nosotros</a>
-        <a href="/servicios" class="text-gray-700 hover:text-blue-600 transition-colors py-2">Servicios</a>
-        <a href="/metodologia" class="text-gray-700 hover:text-blue-600 transition-colors py-2">Metodología</a>
-        <a href="/equipo" class="text-gray-700 hover:text-blue-600 transition-colors py-2">Equipo</a>
-        <a href="/testimonios" class="text-gray-700 hover:text-blue-600 transition-colors py-2">Testimonios</a>
-        <a href="/cursos" class="text-gray-700 hover:text-blue-600 transition-colors py-2">Cursos</a>
-        <a href="/blog" class="text-gray-700 hover:text-blue-600 transition-colors py-2">Blog</a>
-        <a href="/contacto" class="text-gray-700 hover:text-blue-600 transition-colors py-2">Contacto</a>
+      <nav class="flex flex-col space-y-1">
+        {navItems.map((item) => (
+          <div class="mobile-nav-item">
+            <div class="flex justify-between items-center py-2">
+              <a 
+                href={item.url}
+                class={`text-gray-700 hover:text-blue-600 transition-colors ${currentPath === item.url ? brandColors.text : ''}`}
+              >
+                {item.title}
+              </a>
+            </div>
+          </div>
+        ))}
+        
         <a href="https://excelsa.site.agendapro.com/cl/sucursal/11444" 
-           class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center">
-          Agendar Cita
+           class={`${brandColors.buttonPrimary} mt-4 px-4 py-2 rounded-lg transition-colors text-center text-white`}>
+          Reservar Cita
         </a>
       </nav>
     </div>
@@ -42,13 +54,14 @@ import Logo from "./Logo.astro";
   const closeButton = document.getElementById('close-menu');
   const mobileMenu = document.getElementById('mobile-menu');
 
-  menuButton.addEventListener('click', () => {
-    mobileMenu.classList.remove('hidden');
+  // Abrir/cerrar menú móvil
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   });
 
-  closeButton.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
+  closeButton?.addEventListener('click', () => {
+    mobileMenu?.classList.add('hidden');
     document.body.style.overflow = '';
   });
 </script> 

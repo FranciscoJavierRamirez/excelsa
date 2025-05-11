@@ -21,41 +21,8 @@ const isActive = (path) => {
 // Estructura de navegación principal
 const mainNavItems = [
   { title: "Inicio", url: "/" },
-  { 
-    title: "Nosotros", 
-    url: "/nosotros",
-    submenu: [
-      { title: "Historia", url: "/nosotros/historia" },
-      { title: "Misión y Visión", url: "/nosotros/mision-vision" },
-      { title: "Valores", url: "/nosotros/valores" }
-    ]
-  },
-  { 
-    title: "Servicios", 
-    url: "/servicios",
-    submenu: [
-      { 
-        title: "Medicina Convencional", 
-        url: "/servicios/medicina-convencional",
-        theme: "conventional" 
-      },
-      { 
-        title: "Medicina Alternativa", 
-        url: "/servicios/medicina-alternativa",
-        theme: "alternative" 
-      },
-      { 
-        title: "Psicología", 
-        url: "/servicios/psicologia",
-        theme: "psychology" 
-      },
-      { 
-        title: "Consultas Integrativas", 
-        url: "/servicios/consultas-integrativas",
-        theme: "integrative" 
-      }
-    ]
-  },
+  { title: "Nosotros", url: "/nosotros" },
+  { title: "Servicios", url: "/servicios" },
   { title: "Metodología", url: "/metodologia" },
   { title: "Equipo", url: "/equipo" },
   { title: "Testimonios", url: "/testimonios" },
@@ -75,7 +42,7 @@ const mainNavItems = [
       <!-- Desktop Navigation -->
       <div class="hidden lg:flex items-center space-x-1">
         {mainNavItems.map(item => (
-          <div class="relative group">
+          <div class="relative">
             <a 
               href={item.url}
               class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
@@ -85,34 +52,7 @@ const mainNavItems = [
               }`}
             >
               {item.title}
-              {item.submenu && (
-                <span class="ml-1 text-xs">▼</span>
-              )}
             </a>
-            
-            {item.submenu && (
-              <div class="absolute left-0 mt-1 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div class="py-1">
-                  {item.submenu.map(subitem => {
-                    const colors = subitem.theme ? getThemeColors(subitem.theme) : brandColors;
-                    const isSubActive = currentPath === subitem.url;
-                    
-                    return (
-                      <a 
-                        href={subitem.url}
-                        class={`block px-4 py-2 text-sm ${
-                          isSubActive
-                            ? colors.activeClasses
-                            : `text-gray-700 ${colors.hoverText} ${colors.hoverBg}`
-                        }`}
-                      >
-                        {subitem.title}
-                      </a>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
           </div>
         ))}
         

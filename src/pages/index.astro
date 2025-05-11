@@ -4,7 +4,6 @@ import ImageCarousel from '../components/home/ImageCarousel.astro';
 import ServiceCategories from '../components/services/ServiceCategories.astro';
 import TeamSection from '../components/about/TeamSection.astro';
 import ContactInfo from '../components/common/ContactInfo.astro';
-import TestimonialsSection from '../components/home/TestimonialsSection.astro';
 
 const serviceCategories = [
   {
@@ -188,36 +187,6 @@ const carouselImages = [
     webp: "/assets/images/carousel/slide5.webp",
     jpg: "/assets/images/carousel/slide5.jpg", 
     alt: "Terapias alternativas en Excelsa" 
-  }
-];
-
-// Definimos los datos de los testimonios
-const testimonials = [
-  {
-    name: "Halima",
-    diagnosis: "Carcinoma mamario ductal infiltrante con compromiso ganglionar (enero 2021).",
-    treatment: "Quimioterapia convencional + Terapia EXCELSA en tres pasos (Psiconeuroinmunología, EFT Tapping, Esencias Florales y Reiki).",
-    process: "Manejo de estrés, detección de condicionante gatillador de la baja inmunológica, automanejo de estilo de vida.",
-    result: "Septiembre 2021, mamografía y biopsia demuestran ausencia total de lesión tumoral y ausencia del compromiso ganglionar. Completó su tratamiento, rechazó radioterapia e intervención quirúrgica, y se mantiene sana hasta 2025 con controles anuales.",
-    image: {
-      avif: "/assets/images/testimonials/halima.avif",
-      webp: "/assets/images/testimonials/halima.webp", 
-      jpg: "/assets/images/testimonials/halima.jpg",
-      alt: "Halima, caso de éxito en tratamiento oncológico"
-    }
-  },
-  {
-    name: "Valentina",
-    diagnosis: "CIA (Comunicación Interauricular) e Hipertensión Pulmonar grave (diciembre 2022) durante su primer embarazo, con pronóstico de incompatibilidad de vida.",
-    treatment: "Terapia EXCELSA en tres pasos (Psiconeuroinmunología, EFT Tapping, Esencias Florales y Reiki).",
-    process: "Manejo de estrés, detección de condicionante gatillador de la descompensación cardíaca y pulmonar, automanejo de estilo de vida, lactancia y maternidad.",
-    result: "Mejora de su Hipertensión Pulmonar en controles sucesivos, aumento de capacidad cardíaca, cierre progresivo de CIA. En diciembre 2024 su corazón funciona como corazón normal, permitiéndole realizar vida normal.",
-    image: {
-      avif: "/assets/images/testimonials/valentina.avif",
-      webp: "/assets/images/testimonials/valentina.webp",
-      jpg: "/assets/images/testimonials/valentina.jpg",
-      alt: "Valentina, caso de éxito en tratamiento cardíaco"
-    }
   }
 ];
 
@@ -405,9 +374,6 @@ const contactInfo = {
       </div>
     </div>
   </section>
-
-  <!-- Sección de Testimonios -->
-  <TestimonialsSection testimonials={testimonials} />
 
   <!-- Pasando la información de contacto al componente ContactInfo -->
   <ContactInfo 
