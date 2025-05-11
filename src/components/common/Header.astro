@@ -1,34 +1,150 @@
 ---
 // src/components/common/Header.astro
-import Button from './Button.astro';
 import Logo from './Logo.astro';
 import MobileMenu from './MobileMenu.astro';
+import { getThemeColors } from '../../utils/colorThemes';
+
+// Determinar la página actual para resaltar el menú activo
+const currentPath = Astro.url.pathname;
+
+// Obtener colores de la marca principal
+const brandColors = getThemeColors('brand');
+
+// Función para verificar si un enlace está activo
+const isActive = (path) => {
+  if (path === '/') {
+    return currentPath === '/';
+  }
+  return currentPath.startsWith(path);
+};
+
+// Estructura de navegación principal
+const mainNavItems = [
+  { title: "Inicio", url: "/" },
+  { 
+    title: "Nosotros", 
+    url: "/nosotros",
+    submenu: [
+      { title: "Historia", url: "/nosotros/historia" },
+      { title: "Misión y Visión", url: "/nosotros/mision-vision" },
+      { title: "Valores", url: "/nosotros/valores" }
+    ]
+  },
+  { 
+    title: "Servicios", 
+    url: "/servicios",
+    submenu: [
+      { 
+        title: "Medicina Convencional", 
+        url: "/servicios/medicina-convencional",
+        theme: "conventional" 
+      },
+      { 
+        title: "Medicina Alternativa", 
+        url: "/servicios/medicina-alternativa",
+        theme: "alternative" 
+      },
+      { 
+        title: "Psicología", 
+        url: "/servicios/psicologia",
+        theme: "psychology" 
+      },
+      { 
+        title: "Consultas Integrativas", 
+        url: "/servicios/consultas-integrativas",
+        theme: "integrative" 
+      }
+    ]
+  },
+  { title: "Metodología", url: "/metodologia" },
+  { title: "Equipo", url: "/equipo" },
+  { title: "Casos de Éxito", url: "/casos-exito" },
+  { title: "Formación", url: "/formacion" },
+  { title: "Blog", url: "/blog" },
+  { title: "Contacto", url: "/contacto" }
+];
 ---
 
-<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 transition-shadow duration-300">
   <div class="container mx-auto px-4">
-    <nav class="flex items-center justify-between h-16">
+    <nav class="flex items-center justify-between h-20">
       <a href="/" class="flex items-center">
         <Logo />
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="/" class="text-gray-700 hover:text-blue-600 transition-colors">Inicio</a>
-        <a href="/nosotros" class="text-gray-700 hover:text-blue-600 transition-colors">Nosotros</a>
-        <a href="/servicios" class="text-gray-700 hover:text-blue-600 transition-colors">Servicios</a>
-        <a href="/cursos" class="text-gray-700 hover:text-blue-600 transition-colors">Cursos</a>
-        <a href="/contacto" class="text-gray-700 hover:text-blue-600 transition-colors">Contacto</a>
-        <a href="https://excelsa.site.agendapro.com/cl/sucursal/11444" 
-           class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-          Agendar Cita
+      <div class="hidden lg:flex items-center space-x-1">
+        {mainNavItems.map(item => (
+          <div class="relative group">
+            <a 
+              href={item.url}
+              class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                isActive(item.url) 
+                  ? brandColors.activeClasses 
+                  : `text-gray-700 ${brandColors.hoverText} ${brandColors.hoverBg}`
+              }`}
+            >
+              {item.title}
+              {item.submenu && (
+                <span class="ml-1 text-xs">▼</span>
+              )}
+            </a>
+            
+            {item.submenu && (
+              <div class="absolute left-0 mt-1 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="py-1">
+                  {item.submenu.map(subitem => {
+                    const colors = subitem.theme ? getThemeColors(subitem.theme) : brandColors;
+                    const isSubActive = currentPath === subitem.url;
+                    
+                    return (
+                      <a 
+                        href={subitem.url}
+                        class={`block px-4 py-2 text-sm ${
+                          isSubActive
+                            ? colors.activeClasses
+                            : `text-gray-700 ${colors.hoverText} ${colors.hoverBg}`
+                        }`}
+                      >
+                        {subitem.title}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+        
+        <a 
+          href="https://excelsa.site.agendapro.com/cl/sucursal/11444"
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class={`ml-2 ${brandColors.buttonPrimary} px-4 py-2 rounded-full text-sm font-medium shadow hover:shadow-md transition-all`}
+        >
+          Reservar Cita
         </a>
       </div>
 
       <!-- Mobile Menu Button -->
-      <div class="md:hidden">
-        <MobileMenu />
+      <div class="lg:hidden">
+        <MobileMenu navItems={mainNavItems} />
       </div>
     </nav>
   </div>
 </header>
+
+<script>
+  // Script para hacer el header sticky con sombra al hacer scroll
+  document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('header');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        header.classList.add('shadow-lg');
+      } else {
+        header.classList.remove('shadow-lg');
+      }
+    });
+  });
+</script>

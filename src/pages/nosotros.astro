@@ -8,14 +8,15 @@ import TeamGallery from '../components/about/TeamGallery.astro';
 
 <Layout title="Nosotros | EXCELSA Calidad de Vida">
   <div class="container mx-auto px-4 py-16">
-    <!-- Hero section with background gradient -->
-    <div class="relative bg-gradient-to-b from-blue-50 to-white py-10 mb-12 rounded-2xl overflow-hidden">
+    <!-- Hero section with background gradient - Mejorado para consistencia -->
+    <div class="relative bg-gradient-to-b from-blue-50 to-white py-20 mb-12 rounded-2xl overflow-hidden">
       <!-- Decorative elements -->
       <div class="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full opacity-30 -translate-y-1/2 translate-x-1/4"></div>
       <div class="absolute bottom-0 left-0 w-72 h-72 bg-teal-100 rounded-full opacity-40 translate-y-1/3 -translate-x-1/3"></div>
+      <div class="absolute top-1/3 left-1/2 w-48 h-48 rounded-full bg-blue-50 opacity-50 -translate-x-1/2 blur-lg"></div>
       
       <div class="relative z-10 text-center px-4">
-        <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-4 py-1 rounded-full mb-4">CONÓCENOS</span>
+        <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-4 py-1 rounded-full mb-4 shadow-md">CONÓCENOS</span>
         <h1 class="text-4xl sm:text-5xl font-bold text-blue-600 mb-4">Nuestra Historia</h1>
         <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-teal-400 mx-auto mb-6 rounded-full"></div>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
@@ -24,9 +25,9 @@ import TeamGallery from '../components/about/TeamGallery.astro';
       </div>
     </div>
 
-    <!-- Historia card with timeline design -->
+    <!-- Historia card with timeline design - Mejorado con efectos hover -->
     <section class="mb-16">
-      <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl">
+      <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl duration-300">
         <div class="relative bg-gradient-to-r from-blue-600 to-teal-500 p-6 text-white">
           <div class="absolute right-0 top-0 w-32 h-32 bg-white rounded-full opacity-10 -translate-y-1/2 translate-x-1/3"></div>
           <h2 class="text-2xl sm:text-3xl font-bold relative z-10 flex items-center">
@@ -71,12 +72,12 @@ import TeamGallery from '../components/about/TeamGallery.astro';
       </div>
     </section>
 
-    <!-- Team section with improved design -->
+    <!-- Team section - Mantenemos el diseño mejorado ya existente -->
     <section class="mb-16">
       <div class="text-center mb-12">
-        <span class="inline-block bg-gradient-to-r from-purple-500 to-pink-400 text-white text-sm font-medium px-4 py-1 rounded-full mb-4">PROFESIONALES</span>
+        <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-4 py-1 rounded-full mb-4 shadow-md">PROFESIONALES</span>
         <h2 class="text-4xl font-bold text-gray-800 mb-4">Nuestro Equipo</h2>
-        <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-400 mx-auto mb-6 rounded-full"></div>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-teal-400 mx-auto mb-6 rounded-full"></div>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
           Conoce a los especialistas que conforman nuestro equipo de profesionales dedicados a mejorar tu salud y bienestar.
         </p>
@@ -84,7 +85,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Dr. Sergio Godorecci -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-1">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300">
           <div class="h-72 overflow-hidden">
             <img 
               src="/assets/images/team/Sergio_G_B.avif" 
@@ -111,7 +112,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
         </div>
 
         <!-- Dra. Sheril Irene Rivera -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-1">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300">
           <div class="h-72 overflow-hidden">
             <img 
               src="/assets/images/team/Sheril.avif" 
@@ -122,13 +123,13 @@ import TeamGallery from '../components/about/TeamGallery.astro';
           <div class="p-6">
             <h3 class="text-xl font-bold text-gray-800 mb-2">Dra. Sheril Irene Rivera Villarroel</h3>
             <div class="flex flex-wrap gap-2 mb-3">
-              <span class="inline-block bg-purple-100 text-purple-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Médico Cirujano</span>
-              <span class="inline-block bg-purple-100 text-purple-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Salud Pública</span>
+              <span class="inline-block bg-teal-100 text-teal-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Médico Cirujano</span>
+              <span class="inline-block bg-teal-100 text-teal-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Salud Pública</span>
             </div>
             <p class="text-gray-600 mb-4">
               Especialista en Psiconeuroinmunología, PNL y Terapias Complementarias con 30 años de experiencia. Creadora de la Metodología EXCELSA.
             </p>
-            <a href="#" class="inline-flex items-center text-purple-600 hover:text-purple-800 transition-colors">
+            <a href="/sheril" class="inline-flex items-center text-teal-600 hover:text-teal-800 transition-colors">
               Ver perfil completo
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -138,7 +139,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
         </div>
 
         <!-- Giancarlo Godorecci Rivera -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-1">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300">
           <div class="h-72 overflow-hidden">
             <img 
               src="/assets/images/team/Giancarlo.avif" 
@@ -155,7 +156,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
             <p class="text-gray-600 mb-4">
               Especialista en Reiki, Digitopuntura, ETT Tapping y PNL. Experiencia en enfermedades físicas y emocionales que cursan con dolores crónicos.
             </p>
-            <a href="#" class="inline-flex items-center text-teal-600 hover:text-teal-800 transition-colors">
+            <a href="/giancarlo" class="inline-flex items-center text-teal-600 hover:text-teal-800 transition-colors">
               Ver perfil completo
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -165,7 +166,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
         </div>
 
         <!-- Gianfranco Godorecci Rivera -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-1">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300">
           <div class="h-72 overflow-hidden">
             <img 
               src="/assets/images/team/Gianfranco.avif" 
@@ -176,13 +177,13 @@ import TeamGallery from '../components/about/TeamGallery.astro';
           <div class="p-6">
             <h3 class="text-xl font-bold text-gray-800 mb-2">Gianfranco Godorecci Rivera</h3>
             <div class="flex flex-wrap gap-2 mb-3">
-              <span class="inline-block bg-amber-100 text-amber-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Psicólogo</span>
-              <span class="inline-block bg-amber-100 text-amber-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Área Laboral y Clínica</span>
+              <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Psicólogo</span>
+              <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Área Laboral y Clínica</span>
             </div>
             <p class="text-gray-600 mb-4">
               12 años de experiencia en atención psicológica de adultos. Forma parte del equipo terapéutico de Excelsa Medicina Alternativa.
             </p>
-            <a href="#" class="inline-flex items-center text-amber-600 hover:text-amber-800 transition-colors">
+            <a href="/gianfranco" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors">
               Ver perfil completo
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -192,7 +193,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
         </div>
 
         <!-- Sergio Matias Godorecci Rivera -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-1">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300">
           <div class="h-72 overflow-hidden">
             <img 
               src="/assets/images/team/Sergio_G_R.avif" 
@@ -209,7 +210,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
             <p class="text-gray-600 mb-4">
               Especialista en apoyo para personas con enfermedades crónicas, autoinmunes, estrés y enfermedades emocionales.
             </p>
-            <a href="#" class="inline-flex items-center text-green-600 hover:text-green-800 transition-colors">
+            <a href="/sergio-matias" class="inline-flex items-center text-green-600 hover:text-green-800 transition-colors">
               Ver perfil completo
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -220,12 +221,12 @@ import TeamGallery from '../components/about/TeamGallery.astro';
       </div>
     </section>
 
-    <!-- Valores y Principios secciones con mejor diseño -->
+    <!-- Valores y Principios secciones - Manteniendo mismo estilo pero con animaciones mejoradas -->
     <section class="mb-16 py-16 bg-gradient-to-b from-gray-50 to-white rounded-2xl">
       <div class="container mx-auto px-4">
         <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           <!-- Valores card -->
-          <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl">
+          <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 duration-300">
             <div class="relative bg-gradient-to-r from-blue-600 to-blue-400 p-6 text-white">
               <div class="absolute right-0 top-0 w-32 h-32 bg-white rounded-full opacity-10 -translate-y-1/2 translate-x-1/3"></div>
               <h2 class="text-2xl font-bold relative z-10 flex items-center">
@@ -285,7 +286,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
           </div>
           
           <!-- Principios card -->
-          <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl">
+          <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 duration-300">
             <div class="relative bg-gradient-to-r from-teal-500 to-green-400 p-6 text-white">
               <div class="absolute right-0 top-0 w-32 h-32 bg-white rounded-full opacity-10 -translate-y-1/2 translate-x-1/3"></div>
               <h2 class="text-2xl font-bold relative z-10 flex items-center">
@@ -388,8 +389,5 @@ import TeamGallery from '../components/about/TeamGallery.astro';
     </section>
   </div>
 </Layout>
-
-<!-- Test Replacement to Check If Edits Are Working -->
-<div class="my-8 p-4 bg-blue-100 text-blue-800">Testing edits</div>
 
 
