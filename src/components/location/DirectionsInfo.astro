@@ -1,0 +1,58 @@
+---
+interface TransportOption {
+  type: string;
+  details: string[];
+}
+
+interface Props {
+  transportOptions: TransportOption[];
+}
+
+const { transportOptions } = Astro.props;
+---
+
+<div class="bg-white rounded-lg shadow-md p-6">
+  <h2 class="text-2xl font-semibold text-primary mb-6">Cómo Llegar</h2>
+  
+  <div class="space-y-6">
+    {transportOptions.map(option => (
+      <div>
+        <h3 class="text-lg font-medium text-gray-800 mb-2">
+          <span class="inline-block mr-2">
+            {option.type === "Transporte Público" ? (
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+              </svg>
+            )}
+          </span>
+          {option.type}
+        </h3>
+        
+        <ul class="space-y-1 ml-7">
+          {option.details.map(detail => (
+            <li class="text-gray-600 flex items-start">
+              <span class="text-primary mr-2">•</span>
+              {detail}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+  
+  <div class="mt-8 pt-4 border-t border-gray-200">
+    <h3 class="text-lg font-medium text-gray-800 mb-2 flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      Información Adicional
+    </h3>
+    <p class="text-gray-600">
+      Para cualquier duda sobre cómo llegar, por favor llámenos al <span class="text-primary font-medium">+52 555 123 4567</span> y estaremos encantados de ayudarle.
+    </p>
+  </div>
+</div> 

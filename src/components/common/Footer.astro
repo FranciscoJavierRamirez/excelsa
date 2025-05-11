@@ -1,0 +1,39 @@
+---
+// src/components/common/Footer.astro
+import SocialLinks from './SocialLinks.astro';
+import ContactInfo from './ContactInfo.astro';
+---
+
+<footer class="bg-gradient-to-b from-sky-200 to-primary text-white">
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-white">Excelsa</h3>
+        <p class="mb-4">Centro de Medicina Integral dedicado a mejorar la calidad de vida de nuestros pacientes a través de un enfoque holístico de la salud.</p>
+        <SocialLinks />
+      </div>
+      
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-white">Enlaces Rápidos</h3>
+        <ul class="space-y-2">
+          <li><a href="/" class="hover:underline hover:text-sky-100 transition-colors">Inicio</a></li>
+          <li><a href="/nosotros" class="hover:underline hover:text-sky-100 transition-colors">Nosotros</a></li>
+          <li><a href="/servicios" class="hover:underline hover:text-sky-100 transition-colors">Servicios</a></li>
+          <li><a href="/ubicacion" class="hover:underline hover:text-sky-100 transition-colors">Ubicación</a></li>
+          <li><a href="/blog" class="hover:underline hover:text-sky-100 transition-colors">Blog</a></li>
+          <li><a href="/contacto" class="hover:underline hover:text-sky-100 transition-colors">Contacto</a></li>
+        </ul>
+      </div>
+      
+      <ContactInfo 
+        phone="+52 555 123 4567"
+        email="info@excelsa.com"
+        address="Av. Salud 123, Col. Bienestar, Ciudad de México"
+      />
+    </div>
+    
+    <div class="border-t border-white border-opacity-20 mt-8 pt-8 text-center">
+      <p>&copy; {new Date().getFullYear()} Excelsa. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>

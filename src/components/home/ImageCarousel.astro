@@ -1,0 +1,111 @@
+---
+// Importaciones y definición de props
+const { 
+  images = [
+    { 
+      avif: "/assets/images/carousel/slide1.avif",
+      webp: "/assets/images/carousel/slide1.webp",
+      jpg: "/assets/images/carousel/slide1.jpg", 
+      alt: "Centro de medicina integral Excelsa" 
+    },
+    { 
+      avif: "/assets/images/carousel/slide2.avif",
+      webp: "/assets/images/carousel/slide2.webp",
+      jpg: "/assets/images/carousel/slide2.jpg", 
+      alt: "Nuestros servicios de salud integral en Excelsa" 
+    },
+    { 
+      avif: "/assets/images/carousel/slide3.avif",
+      webp: "/assets/images/carousel/slide3.webp",
+      jpg: "/assets/images/carousel/slide3.jpg", 
+      alt: "Instalaciones médicas modernas de Excelsa" 
+    },
+    { 
+      avif: "/assets/images/carousel/slide4.avif",
+      webp: "/assets/images/carousel/slide4.webp",
+      jpg: "/assets/images/carousel/slide4.jpg", 
+      alt: "Equipo médico profesional de Excelsa" 
+    },
+    { 
+      avif: "/assets/images/carousel/slide5.avif",
+      webp: "/assets/images/carousel/slide5.webp",
+      jpg: "/assets/images/carousel/slide5.jpg", 
+      alt: "Terapias alternativas en Excelsa" 
+    }
+  ],
+  height = "600px"
+} = Astro.props;
+---
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<div class="image-carousel-container w-full" style={`height: ${height};`}>
+  <!-- Botones de navegación fuera del carrusel para mayor facilidad de cliqueo -->
+  <div class="nav-button-prev-custom absolute left-4 top-1/2 transform -translate-y-1/2 z-30 cursor-pointer">
+    <div class="w-10 h-10 flex items-center justify-center bg-black/40 rounded-full text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </div>
+  </div>
+  
+  <div class="nav-button-next-custom absolute right-4 top-1/2 transform -translate-y-1/2 z-30 cursor-pointer">
+    <div class="w-10 h-10 flex items-center justify-center bg-black/40 rounded-full text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </div>
+  </div>
+  
+  <div class="swiper h-full">
+    <div class="swiper-wrapper">
+      {images.map((image) => (
+        <div class="swiper-slide">
+          <picture>
+            <source srcset={image.avif} type="image/avif">
+            <source srcset={image.webp} type="image/webp">
+            <img src={image.jpg} alt={image.alt} class="w-full h-full object-cover" />
+          </picture>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+        </div>
+      ))}
+    </div>
+    <!-- Paginación -->
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script is:inline>
+  // Esperar a que todo se cargue completamente
+  window.addEventListener('load', function() {
+    // Inicializar el carrusel
+    const swiper = new Swiper('.swiper', {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      loop: true,
+      effect: 'fade', // Efecto de transición
+      fadeEffect: {
+        crossFade: true
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      }
+    });
+    
+    // Agregar eventos a los botones personalizados
+    document.querySelector('.nav-button-prev-custom').addEventListener('click', function() {
+      swiper.slidePrev();
+    });
+    
+    document.querySelector('.nav-button-next-custom').addEventListener('click', function() {
+      swiper.slideNext();
+    });
+  });
+</script> 

@@ -1,0 +1,74 @@
+  ---
+// src/components/home/HeroSection.astro
+import Button from "../common/Button.astro";
+import ImageCarousel from "./ImageCarousel.astro";
+
+const { 
+  videoSrc = "/assets/videos/hero-placeholder.mp4", 
+  heading = "Medicina Integral para tu Bienestar", 
+  subheading = "Cuidamos de tu salud de manera holística" 
+} = Astro.props;
+
+// Definimos las imágenes para el carrusel
+const carouselImages = [
+  { 
+    avif: "/assets/images/carousel/slide1.avif",
+    webp: "/assets/images/carousel/slide1.webp",
+    jpg: "/assets/images/carousel/slide1.jpg", 
+    alt: "Centro de medicina integral Excelsa" 
+  },
+  { 
+    avif: "/assets/images/carousel/slide2.avif",
+    webp: "/assets/images/carousel/slide2.webp",
+    jpg: "/assets/images/carousel/slide2.jpg", 
+    alt: "Nuestros servicios de salud integral en Excelsa" 
+  },
+  { 
+    avif: "/assets/images/carousel/slide3.avif",
+    webp: "/assets/images/carousel/slide3.webp",
+    jpg: "/assets/images/carousel/slide3.jpg", 
+    alt: "Instalaciones médicas modernas de Excelsa" 
+  },
+  { 
+    avif: "/assets/images/carousel/slide4.avif",
+    webp: "/assets/images/carousel/slide4.webp",
+    jpg: "/assets/images/carousel/slide4.jpg", 
+    alt: "Equipo médico profesional de Excelsa" 
+  },
+  { 
+    avif: "/assets/images/carousel/slide5.avif",
+    webp: "/assets/images/carousel/slide5.webp",
+    jpg: "/assets/images/carousel/slide5.jpg", 
+    alt: "Terapias alternativas en Excelsa" 
+  }
+];
+---
+
+<section class="relative w-full h-screen max-h-[600px] overflow-hidden">
+  <!-- Carrusel de imágenes -->
+  <ImageCarousel images={carouselImages} height="600px" />
+  
+  <!-- Overlay con degradado de tonos azules -->
+  <div class="absolute inset-0 bg-gradient-to-r from-primary-dark/40 to-secondary/30 z-10"></div>
+  
+  <!-- Contenido hero -->
+  <div class="relative h-full container mx-auto px-4 flex flex-col justify-center items-start z-20">
+    <div class="max-w-2xl text-white backdrop-blur-sm bg-primary-dark/10 p-6 rounded-lg border border-white/20">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
+        {heading}
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 text-white/90">
+        {subheading}
+      </p>
+      <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+        <a href="/contacto" class="bg-white text-primary hover:bg-sky-100 py-3 px-6 rounded-md font-medium transition-colors text-center">
+          Reserva tu Cita
+        </a>
+        <a href="/servicios" class="border border-white text-white hover:bg-white/20 py-3 px-6 rounded-md font-medium transition-colors text-center">
+          Nuestros Servicios
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+

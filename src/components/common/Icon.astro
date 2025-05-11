@@ -1,0 +1,28 @@
+---
+// src/components/common/Icon.astro
+const { name, class: className = '' } = Astro.props;
+
+// Mapeo de nombres de iconos a rutas SVG (esto puede expandirse según sea necesario)
+const iconPaths = {
+  stethoscope: 'M19 10h-7m0 0v7m0-7c0-1.105.895-2 2-2h0a2 2 0 012 2v0m-4 0a2 2 0 10-4 0m0 0v7m-2-10v.01M17 21h-6a4 4 0 01-4-4v-6',
+  acupuncture: 'M15 13.5V17m0-10v3.5m0 0a2 2 0 100 4 2 2 0 000-4zM8.5 5.5l7 7m0-7l-7 7',
+  meditation: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z',
+  nutrition: 'M9.879 16.121A3 3 0 1012.015 11L11 16H9c0 .768.293 1.536.879 2.121z M7 20l4-16m2 16l4-16',
+  // Añada más iconos según sea necesario
+};
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  class={`h-6 w-6 ${className}`}
+  fill="none"
+  viewBox="0 0 24 24"
+  stroke="currentColor"
+>
+  <path
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    d={iconPaths[name] || 'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'}
+  />
+</svg>

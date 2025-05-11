@@ -1,0 +1,50 @@
+---
+// src/pages/ubicacion.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import GoogleMap from '../components/location/GoogleMap.astro';
+import DirectionsInfo from '../components/location/DirectionsInfo.astro';
+import BusinessHours from '../components/location/BusinessHours.astro';
+
+const businessHours = [
+  { day: "Lunes a Viernes", hours: "8:00 - 20:00" },
+  { day: "Sábados", hours: "9:00 - 14:00" },
+  { day: "Domingos", hours: "Cerrado" }
+];
+
+const transportOptions = [
+  { 
+    type: "Transporte Público", 
+    details: [
+      "Metro: Línea 2, Estación 'Salud', salida Norte",
+      "Autobús: Líneas 45, 67 y 89 con parada frente al centro"
+    ] 
+  },
+  { 
+    type: "Estacionamiento", 
+    details: [
+      "Estacionamiento propio con 30 espacios",
+      "Estacionamiento público a 100m (tarifa preferencial para pacientes)"
+    ] 
+  }
+];
+---
+
+<MainLayout title="Ubicación | Vida Plena"
+            description="Encuentre cómo llegar a nuestro centro médico y nuestros horarios de atención">
+  <div class="container mx-auto px-4 py-12 mt-16">
+    <h1 class="text-4xl font-bold text-center mb-12 text-primary">Nuestra Ubicación</h1>
+    
+    <GoogleMap 
+      address="Av. Salud 123, Col. Bienestar, Ciudad de México"
+      lat={19.4326}
+      lng={-99.1332}
+      zoom={16}
+      height="450px"
+    />
+    
+    <div class="grid md:grid-cols-2 gap-8 mt-12">
+      <DirectionsInfo transportOptions={transportOptions} />
+      <BusinessHours hours={businessHours} />
+    </div>
+  </div>
+</MainLayout>

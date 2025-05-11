@@ -1,0 +1,34 @@
+---
+// src/components/common/Header.astro
+import Button from './Button.astro';
+import Logo from './Logo.astro';
+import MobileMenu from './MobileMenu.astro';
+---
+
+<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+  <div class="container mx-auto px-4">
+    <nav class="flex items-center justify-between h-16">
+      <a href="/" class="flex items-center">
+        <Logo />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/" class="text-gray-700 hover:text-blue-600 transition-colors">Inicio</a>
+        <a href="/nosotros" class="text-gray-700 hover:text-blue-600 transition-colors">Nosotros</a>
+        <a href="/servicios" class="text-gray-700 hover:text-blue-600 transition-colors">Servicios</a>
+        <a href="/cursos" class="text-gray-700 hover:text-blue-600 transition-colors">Cursos</a>
+        <a href="/contacto" class="text-gray-700 hover:text-blue-600 transition-colors">Contacto</a>
+        <a href="https://excelsa.site.agendapro.com/cl/sucursal/11444" 
+           class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+          Agendar Cita
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <MobileMenu />
+      </div>
+    </nav>
+  </div>
+</header>

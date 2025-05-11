@@ -1,0 +1,28 @@
+---
+const { textClass = "hidden md:block", logoHeight = "50px" } = Astro.props;
+---
+
+<a href="/" class="flex items-center gap-2">
+  <img 
+    src="/assets/images/logo/excelsa-logo.avif" 
+    alt="Excelsa Logo" 
+    height={logoHeight} 
+    style={`height: ${logoHeight};`}
+    class="object-contain"
+  />
+  <span class={`text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary ${textClass}`}>
+    <!-- Nombre como respaldo si lo necesitas -->
+  </span>
+</a>
+
+<!-- 
+INSTRUCCIONES PARA COLOCAR EL LOGO:
+
+1. Guardado como:
+   /public/assets/images/logo/excelsa-logo.avif
+   
+2. Formato AVIF - formato moderno con excelente compresión
+   
+3. Puedes ajustar el tamaño del logo modificando el 
+   parámetro "logoHeight" cuando usas este componente.
+--> 

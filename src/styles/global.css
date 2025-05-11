@@ -1,0 +1,73 @@
+  /* src/styles/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables CSS personalizadas */
+:root {
+  --color-primary: #3B82F6;
+  --color-primary-light: #60A5FA;
+  --color-primary-dark: #2563EB;
+  --color-secondary: #0EA5E9;
+  --color-secondary-light: #38BDF8;
+  --color-secondary-dark: #0284C7;
+  --color-sky-50: #f0f9ff;
+  --color-sky-100: #e0f2fe;
+  --color-sky-200: #bae6fd;
+}
+
+/* Estilos globales personalizados */
+body {
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to right, var(--color-sky-50), var(--color-sky-100));
+}
+
+/* Estilos personalizados adicionales */
+
+@layer base {
+  body {
+    @apply font-sans text-gray-800 bg-page;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-primary-dark;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden border border-sky-100;
+  }
+  
+  .transition-base {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-r from-sky-gradient-start to-sky-gradient-end;
+  }
+
+  .button-primary {
+    @apply bg-primary hover:bg-primary-dark text-white py-2 px-6 rounded-md transition-colors;
+  }
+
+  .button-secondary {
+    @apply bg-secondary hover:bg-secondary-dark text-white py-2 px-6 rounded-md transition-colors;
+  }
+
+  .button-outline {
+    @apply border border-primary text-primary hover:bg-primary hover:text-white py-2 px-6 rounded-md transition-colors;
+  }
+}

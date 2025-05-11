@@ -1,0 +1,174 @@
+---
+// src/pages/servicios.astro
+import Layout from '../layouts/MainLayout.astro';
+
+const serviceCategories = [
+  {
+    name: "Medicina General",
+    services: [
+      {
+        title: "Consulta General",
+        description: "Evaluación integral del estado de salud...",
+        benefits: ["Diagnóstico temprano", "Plan de tratamiento personalizado"],
+        icon: "stethoscope"
+      },
+      // Más servicios...
+    ]
+  },
+  {
+    name: "Terapias Alternativas",
+    services: [
+      {
+        title: "Acupuntura",
+        description: "Técnica milenaria para el manejo del dolor...",
+        benefits: ["Alivio del dolor", "Equilibrio energético"],
+        icon: "acupuncture"
+      },
+      // Más servicios...
+    ]
+  },
+  // Más categorías...
+];
+
+const faqs = [
+  {
+    question: "¿Qué debo llevar a mi primera consulta?",
+    answer: "Para su primera consulta, le recomendamos traer..."
+  },
+  // Más preguntas...
+];
+---
+
+<Layout title="Servicios | EXCELSA Calidad de Vida">
+  <div class="container mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold text-center mb-12 text-gray-800">Nuestros Servicios</h1>
+
+    <!-- Medicina Interna -->
+    <section class="mb-16">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Medicina Interna</h2>
+        <p class="text-gray-600 mb-4">
+          Especialidad médica que se dedica al diagnóstico y tratamiento no quirúrgico de enfermedades que afectan a los órganos y sistemas internos del adulto. Nuestros internistas tienen un enfoque integral de la salud.
+        </p>
+        <h3 class="text-xl font-semibold text-gray-700 mb-2">Condiciones tratadas:</h3>
+        <ul class="list-disc list-inside text-gray-600 mb-4">
+          <li>Hipertensión Arterial</li>
+          <li>Enfermedades respiratorias</li>
+          <li>Trastornos digestivos</li>
+          <li>Problemas endocrinos</li>
+          <li>Enfermedades cardiovasculares</li>
+          <li>Enfermedades infecciosas</li>
+        </ul>
+        <p class="text-gray-600">
+          <strong>Horarios:</strong> Miércoles de 15:00 a 19:00 hrs.
+        </p>
+      </div>
+    </section>
+
+    <!-- Diabetología -->
+    <section class="mb-16">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Diabetología</h2>
+        <p class="text-gray-600 mb-4">
+          Atención médica que se enfoca en el diagnóstico, tratamiento y control de seguimiento de personas con Diabetes Mellitus y Diabetes Insulinodependiente y sus complicaciones, en pacientes adultos.
+        </p>
+        <h3 class="text-xl font-semibold text-gray-700 mb-2">Procedimientos:</h3>
+        <ul class="list-disc list-inside text-gray-600 mb-4">
+          <li>Evaluación clínica completa</li>
+          <li>Interpretación de estudios de laboratorio</li>
+          <li>Tratamiento, control y seguimiento</li>
+          <li>Atención de padecimientos asociados</li>
+          <li>Prevención de complicaciones médicas</li>
+          <li>Educación en salud</li>
+        </ul>
+        <p class="text-gray-600">
+          <strong>Horarios:</strong> Miércoles de 15:00 a 19:00 hrs.
+        </p>
+      </div>
+    </section>
+
+    <!-- Psicología -->
+    <section class="mb-16">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Psicología</h2>
+        <p class="text-gray-600 mb-4">
+          Atención psicológica destinada a personas desde la adolescencia hasta adultos mayores, enfocada en el apoyo psicológico especializado, con manejo de PNL, con diagnóstico y uso de test psicológicos, test de personalidad y test proyectivos.
+        </p>
+        <h3 class="text-xl font-semibold text-gray-700 mb-2">Condiciones tratadas:</h3>
+        <ul class="list-disc list-inside text-gray-600 mb-4">
+          <li>Fobias</li>
+          <li>Crisis de pánico</li>
+          <li>Depresión</li>
+          <li>Intentos suicidio</li>
+          <li>Adicciones</li>
+          <li>Pre y post cirugía bariátrica</li>
+          <li>Estrés de todo tipo</li>
+          <li>Duelos</li>
+          <li>Relaciones familiares</li>
+        </ul>
+        <p class="text-gray-600">
+          <strong>Horarios:</strong> Sábados 9:00 a 14:00 Hrs centro San Francisco
+        </p>
+      </div>
+    </section>
+
+    <!-- Terapias Complementarias -->
+    <section class="mb-16">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Terapias Complementarias</h2>
+        
+        <!-- Flores de Bach -->
+        <div class="mb-8">
+          <h3 class="text-xl font-semibold text-gray-700 mb-2">Terapia con Flores de Bach</h3>
+          <p class="text-gray-600 mb-4">
+            Sistema terapéutico que utiliza esencias florales para tratar desequilibrios emocionales que pueden asociarse y manifestarse como malestar físico. Esta terapia complementa los tratamientos de patologías graves y crónicas.
+          </p>
+          <p class="text-gray-600">
+            <strong>Horarios:</strong> Lunes a viernes de 8:30 a 19:00 hrs. centro La Reina<br>
+            Sábados 10:00 a 14:00 Hrs centro San Francisco
+          </p>
+        </div>
+
+        <!-- Reiki -->
+        <div class="mb-8">
+          <h3 class="text-xl font-semibold text-gray-700 mb-2">Terapia Reiki y Alineación de Chakras</h3>
+          <p class="text-gray-600 mb-4">
+            Terapia natural enfocada en la detección de bloqueos y desbloqueo de funcionamiento electromagnético de centros neurológicos, afectados por la patología de base y descompensación emocional de la persona.
+          </p>
+        </div>
+
+        <!-- EFT Tapping -->
+        <div class="mb-8">
+          <h3 class="text-xl font-semibold text-gray-700 mb-2">Terapia EFT Tapping</h3>
+          <p class="text-gray-600 mb-4">
+            Terapia natural que combina digitopuntura y PNL destinada a liberar emociones reprimidas a nivel de centros electromagnéticos específicos del organismo que agravan la patología de base.
+          </p>
+        </div>
+
+        <!-- Aceites Esenciales -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-700 mb-2">Terapia con Aceites Esenciales</h3>
+          <p class="text-gray-600 mb-4">
+            Sistema terapéutico natural que utiliza aceites esenciales para tratar desequilibrios físicos, emocionales y ambientales que pueden asociarse y manifestarse como malestar físico.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Consulta Integrativa -->
+    <section class="mb-16">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Consulta Integrativa</h2>
+        <p class="text-gray-600 mb-4">
+          Servicio que combina la Atención de Psiconeuroinmunología con enfoque en medicina alternativa, Flores de Bach y Reiki con alineación de chakras. Durante una sesión de 120 minutos, el paciente es atendido por un médico especialista en medicina convencional y Psiconeuroinmunología, con formación en terapias alternativas.
+        </p>
+        <h3 class="text-xl font-semibold text-gray-700 mb-2">Beneficios:</h3>
+        <ul class="list-disc list-inside text-gray-600 mb-4">
+          <li>Diagnóstico integral que considera múltiples factores</li>
+          <li>Plan de tratamiento personalizado que incluye Metodología Excelsa</li>
+          <li>Mayor tiempo de atención que una consulta convencional</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</Layout>

@@ -1,0 +1,59 @@
+---
+// src/components/services/ServiceDetail.astro
+import Icon from '../common/Icon.astro';
+
+interface Service {
+  title: string;
+  description: string;
+  benefits: string[];
+  icon: string;
+}
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+
+// Función para mostrar un icono adecuado basado en el nombre
+const getIconSVG = (iconName: string) => {
+  const icons = {
+    stethoscope: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+    </svg>`,
+    acupuncture: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+    </svg>`,
+    default: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>`
+  };
+
+  return icons[iconName] || icons.default;
+};
+---
+
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+  <div class="p-6">
+    <div class="flex items-center mb-4">
+      <div class="text-primary mr-4" set:html={getIconSVG(service.icon)} />
+      <h3 class="text-xl font-semibold text-gray-800">{service.title}</h3>
+    </div>
+    
+    <p class="text-gray-600 mb-6">{service.description}</p>
+    
+    {service.benefits && service.benefits.length > 0 && (
+      <div>
+        <h4 class="text-sm font-medium text-gray-700 mb-2">Beneficios:</h4>
+        <ul class="space-y-1">
+          {service.benefits.map(benefit => (
+            <li class="flex items-start">
+              <span class="text-primary font-bold mr-2">✓</span>
+              <span class="text-gray-600 text-sm">{benefit}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+</div>

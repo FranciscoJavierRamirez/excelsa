@@ -1,0 +1,267 @@
+---
+import Layout from '../layouts/MainLayout.astro';
+import HeroSection from '../components/home/HeroSection.astro';
+import ServiceCategories from '../components/services/ServiceCategories.astro';
+import TeamSection from '../components/about/TeamSection.astro';
+import ContactInfo from '../components/common/ContactInfo.astro';
+
+const serviceCategories = [
+  {
+    name: "Medicina Convencional",
+    services: [
+      {
+        title: "Medicina Interna",
+        description: "Atención médica especializada para adultos",
+        benefits: ["Diagnóstico preciso", "Tratamiento personalizado"],
+        icon: "medical"
+      },
+      {
+        title: "Diabetología",
+        description: "Especialistas en diabetes y su manejo integral",
+        benefits: ["Control metabólico", "Prevención de complicaciones"],
+        icon: "diabetes"
+      }
+    ]
+  },
+  {
+    name: "Psicología",
+    services: [
+      {
+        title: "Atención especializada para adolescentes",
+        description: "Terapia adaptada a las necesidades de adolescentes",
+        benefits: ["Apoyo en etapa de desarrollo", "Manejo de crisis"],
+        icon: "psychology"
+      },
+      {
+        title: "Terapia para adultos y adultos mayores",
+        description: "Atención psicológica adaptada a cada etapa vital",
+        benefits: ["Bienestar emocional", "Calidad de vida"],
+        icon: "adult"
+      },
+      {
+        title: "Evaluación psicológica con test proyectivos",
+        description: "Evaluación mediante test Rorschach, Lüscher y otros",
+        benefits: ["Diagnóstico preciso", "Evaluación profunda"],
+        icon: "test"
+      },
+      {
+        title: "Terapia para fobias, crisis de pánico y depresión",
+        description: "Tratamiento especializado para trastornos emocionales",
+        benefits: ["Reducción de síntomas", "Herramientas de afrontamiento"],
+        icon: "therapy"
+      },
+      {
+        title: "Apoyo en adicciones y estrés",
+        description: "Tratamiento para manejo de adicciones y estrés crónico",
+        benefits: ["Recuperación progresiva", "Estrategias de afrontamiento"],
+        icon: "stress"
+      },
+      {
+        title: "Acompañamiento pre/post cirugía bariátrica",
+        description: "Soporte psicológico para el proceso de cirugía bariátrica",
+        benefits: ["Preparación emocional", "Adaptación a cambios"],
+        icon: "support"
+      },
+      {
+        title: "Terapia familiar",
+        description: "Abordaje sistémico para dinámicas familiares",
+        benefits: ["Mejora comunicación", "Resolución de conflictos"],
+        icon: "family"
+      }
+    ]
+  },
+  {
+    name: "Medicina Alternativa",
+    services: [
+      {
+        title: "Psiconeuroinmunología, Flores de Bach y PNL",
+        description: "Enfoque integrado para equilibrio emocional y biológico",
+        benefits: ["Equilibrio cuerpo-mente", "Bienestar integral"],
+        icon: "flower"
+      },
+      {
+        title: "Reiki y Alineación de Chakras",
+        description: "Sanación energética y equilibrio de centros energéticos",
+        benefits: ["Armonización energética", "Bienestar integral"],
+        icon: "reiki"
+      },
+      {
+        title: "EFT Tapping",
+        description: "Técnica de liberación emocional mediante acupresión",
+        benefits: ["Libera bloqueos", "Reduce trauma emocional"],
+        icon: "tapping"
+      },
+      {
+        title: "Terapia con Aceites Esenciales",
+        description: "Aromaterapia terapéutica personalizada",
+        benefits: ["Estimula sistemas corporales", "Bienestar físico y mental"],
+        icon: "oils"
+      }
+    ]
+  },
+  {
+    name: "Consulta Integrativa",
+    services: [
+      {
+        title: "Psiconeuroinmunología, Flores de Bach, PNL, Reiki y EFT",
+        description: "Enfoque holístico combinando múltiples terapias complementarias",
+        benefits: ["Tratamiento integral", "Abordaje personalizado"],
+        icon: "complete"
+      },
+      {
+        title: "Consulta Integrativa Básica",
+        description: "Abordaje terapéutico integral en formato reducido (60 min)",
+        benefits: ["Evaluación centrada", "Soluciones específicas"],
+        icon: "basic"
+      }
+    ]
+  }
+];
+
+const teamMembers = [
+  {
+    name: "Dra. Sheril Irene Rivera Villarroel",
+    position: "Directora Médica",
+    specialty: "Salud Pública, Psiconeuroinmunología, PNL, Esencias Florales",
+    bio: "Médico Cirujano con 30 años de experiencia en Medicina Alternativa. Creadora de la Metodología EXCELSA que integra diversas disciplinas complementarias con 95% de eficacia en patologías crónicas, autoinmunes y cáncer.",
+    image: "/assets/images/team/Sheril.avif"
+  },
+  {
+    name: "Dr. Sergio Godorecci",
+    position: "Especialista en Medicina Interna",
+    specialty: "Medicina Interna y Diabetología",
+    bio: "Cofundador del Centro EXCELSA. Médico cirujano con especialidad en Medicina Interna y Diabetología con más de 20 años de experiencia.",
+    image: "/assets/images/team/Sergio_G_B.avif"
+  },
+  {
+    name: "Giancarlo Godorecci Rivera",
+    position: "Terapeuta en Medicina Complementaria",
+    specialty: "Reiki, Digitopuntura, ETT Tapping",
+    bio: "Especialista en terapias energéticas y técnicas de sanación natural con enfoque integral.",
+    image: "/assets/images/team/Giancarlo.avif"
+  },
+  {
+    name: "Gianfranco Godorecci Rivera",
+    position: "Psicólogo",
+    specialty: "Área Laboral y Clínica",
+    bio: "12 años de experiencia. Forma parte del equipo terapéutico de Excelsa Medicina Alternativa. Especialista en atención Psicológica de adultos en todas las edades.",
+    image: "/assets/images/team/Gianfranco.avif"
+  },
+  {
+    name: "Sergio Matias Godorecci Rivera",
+    position: "Terapeuta de Aromaterapia",
+    specialty: "Elaborador de Aceites Esenciales",
+    bio: "Especialista en apoyo de personas con enfermedades crónicas, autoinmunes, estrés y enfermedades musculo esqueléticas.",
+    image: "/assets/images/team/Sergio_G_R.avif"
+  }
+];
+---
+
+<Layout title="EXCELSA Calidad de Vida, Medicina Alternativa">
+  <HeroSection 
+    title="EXCELSA Calidad de Vida, Medicina Alternativa"
+    subtitle="Encontrar el camino interior a la propia salud y calidad de vida en todas las edades"
+    image="/images/hero-bg.jpg"
+  />
+
+  <!-- Mission & Vision Section -->
+  <section class="py-20 relative overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute top-0 left-0 w-64 h-64 rounded-full bg-blue-50 opacity-70 -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-green-50 opacity-70 translate-x-1/3 translate-y-1/3"></div>
+    <div class="absolute top-1/2 left-1/2 w-48 h-48 rounded-full bg-yellow-50 opacity-50 -translate-x-1/2 -translate-y-1/2 blur-lg"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-5xl mx-auto">
+        <!-- Mission Card -->
+        <div class="mb-16 bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl">
+          <div class="flex flex-col md:flex-row">
+            <div class="w-full md:w-1/3 bg-gradient-to-br from-blue-500 to-teal-400 p-8 flex items-center justify-center">
+              <div class="text-center">
+                <div class="w-24 h-24 mx-auto bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2">Nuestra Misión</h3>
+              </div>
+            </div>
+            <div class="w-full md:w-2/3 p-8">
+              <p class="text-lg text-gray-700 leading-relaxed italic">
+                "Contribuir al <span class="font-semibold text-blue-600">mejoramiento de la Salud y Calidad de Vida</span> de las Personas, ayudando a desarrollar <span class="font-semibold text-blue-600">capacidades auto sanadoras</span> a través de prácticas integrativas de medicina alternativa, a nivel de terapias y actividades educativas"
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Vision Card -->
+        <div class="mb-16 bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl">
+          <div class="flex flex-col md:flex-row-reverse">
+            <div class="w-full md:w-1/3 bg-gradient-to-br from-purple-500 to-pink-400 p-8 flex items-center justify-center">
+              <div class="text-center">
+                <div class="w-24 h-24 mx-auto bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2">Nuestra Visión</h3>
+              </div>
+            </div>
+            <div class="w-full md:w-2/3 p-8">
+              <p class="text-lg text-gray-700 leading-relaxed italic">
+                "Ser <span class="font-semibold text-purple-600">líder en servicios de Salud y Calidad de Vida</span>, con medicina Integrativa alternativa de excelencia, tanto en terapia como a nivel de capacitación, para el desarrollo de <span class="font-semibold text-purple-600">capacidades de auto sanación</span> en personas con enfermedades graves y a nivel preventivo, con reconocimiento en su aporte a la vida."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12 max-w-3xl mx-auto">
+        <div class="inline-block p-3 bg-gradient-to-r from-teal-400 to-sky-400 rounded-full mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+          </svg>
+        </div>
+        <h2 class="text-4xl font-bold text-gray-800 mb-3">Nuestros Servicios</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-teal-400 to-sky-400 mx-auto mb-6 rounded-full"></div>
+        <p class="text-xl text-gray-600 mb-4">
+          Combinamos medicina convencional y alternativa para una atención integral a su salud.
+        </p>
+        <p class="text-md text-gray-500 italic mb-2">
+          Explore nuestras categorías de servicios para conocer todas las opciones disponibles.
+        </p>
+        <p class="text-sm text-teal-500 font-medium animate-pulse">
+          Pase el cursor sobre cada servicio para ver más detalles
+        </p>
+      </div>
+      
+      <div class="bg-gradient-to-br from-sky-50 to-teal-50 rounded-3xl p-6 md:p-10 shadow-inner mb-12 max-w-6xl mx-auto relative overflow-hidden">
+        <!-- Elementos decorativos de fondo -->
+        <div class="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-teal-100 opacity-30"></div>
+        <div class="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-sky-100 opacity-30"></div>
+        
+        <div class="relative z-10">
+          <ServiceCategories categories={serviceCategories} />
+        </div>
+      </div>
+      
+      <div class="text-center">
+        <a href="/servicios" class="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-teal-500 to-sky-500 text-white rounded-lg hover:from-teal-600 hover:to-sky-600 transition-all duration-300 font-medium shadow-md hover:shadow-lg transform hover:scale-105">
+          Ver todos los detalles
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <TeamSection team={teamMembers} />
+  <ContactInfo />
+</Layout>
+

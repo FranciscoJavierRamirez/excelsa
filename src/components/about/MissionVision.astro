@@ -1,0 +1,35 @@
+---
+interface Props {
+  mission: string;
+  vision: string;
+  values: string[];
+}
+
+const { mission, vision, values } = Astro.props;
+---
+
+<section class="py-12">
+  <div class="grid md:grid-cols-2 gap-10 mb-12">
+    <div class="bg-white p-8 rounded-lg shadow-md">
+      <h2 class="text-2xl font-bold text-primary mb-4">Nuestra Misión</h2>
+      <p class="text-gray-700 text-lg">{mission}</p>
+    </div>
+    
+    <div class="bg-white p-8 rounded-lg shadow-md">
+      <h2 class="text-2xl font-bold text-primary mb-4">Nuestra Visión</h2>
+      <p class="text-gray-700 text-lg">{vision}</p>
+    </div>
+  </div>
+  
+  <div class="bg-white p-8 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold text-primary mb-6">Nuestros Valores</h2>
+    <ul class="grid md:grid-cols-2 gap-4">
+      {values.map(value => (
+        <li class="flex items-start">
+          <span class="text-primary mr-2">✓</span>
+          <span class="text-gray-700">{value}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section> 

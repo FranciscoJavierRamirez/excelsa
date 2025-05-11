@@ -1,0 +1,69 @@
+---
+interface TeamMember {
+  name: string;
+  position: string;
+  specialty: string;
+  bio: string;
+  image: string;
+}
+
+interface Props {
+  team?: TeamMember[];
+}
+
+const { team = [] } = Astro.props;
+---
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Nuestro Equipo</h2>
+    
+    <div class="flex flex-col items-center">
+      <!-- First row - 3 members -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 w-full">
+        {team.slice(0, 3).map(member => (
+          <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+            <div class="relative h-64 overflow-hidden">
+              <img 
+                src={member.image} 
+                alt={member.name}
+                class="w-full h-full object-cover"
+                onerror="this.src='/assets/images/placeholder-profile.jpg'; this.onerror=null;"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-1">{member.name}</h3>
+              <p class="text-primary font-medium mb-1">{member.position}</p>
+              <p class="text-gray-600 text-sm mb-3">Especialidad: {member.specialty}</p>
+              <p class="text-gray-700 text-sm line-clamp-3">{member.bio}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Second row - 2 members centered -->
+      {team.length > 3 && (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+          {team.slice(3).map(member => (
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+              <div class="relative h-64 overflow-hidden">
+                <img 
+                  src={member.image} 
+                  alt={member.name}
+                  class="w-full h-full object-cover"
+                  onerror="this.src='/assets/images/placeholder-profile.jpg'; this.onerror=null;"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-1">{member.name}</h3>
+                <p class="text-primary font-medium mb-1">{member.position}</p>
+                <p class="text-gray-600 text-sm mb-3">Especialidad: {member.specialty}</p>
+                <p class="text-gray-700 text-sm line-clamp-3">{member.bio}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</section> 

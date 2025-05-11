@@ -1,0 +1,215 @@
+---
+// src/pages/sergio.astro
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Dr. Sergio Godorecci - EXCELSA">
+  <div class="bg-gradient-to-b from-blue-50 to-white">
+    <div class="container mx-auto px-4 py-16">
+      <!-- Hero section -->
+      <div class="grid md:grid-cols-5 gap-8 items-center mb-16">
+        <div class="md:col-span-3">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Dr. Sergio Godorecci Baeriswyl</h1>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="inline-block bg-blue-100 text-blue-600 text-sm font-medium px-3 py-1 rounded-full">Médico Cirujano</span>
+            <span class="inline-block bg-blue-100 text-blue-600 text-sm font-medium px-3 py-1 rounded-full">Medicina Interna</span>
+            <span class="inline-block bg-blue-100 text-blue-600 text-sm font-medium px-3 py-1 rounded-full">Diabetología</span>
+          </div>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            Cofundador y Director Médico del Centro EXCELSA Salud y Calidad de Vida. Especialista con enfoque integrador en medicina, aplicando sus conocimientos en neurociencia para abordar la salud de manera holística.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contacto" class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
+              Agendar Consulta
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </a>
+            <a href="#biografia" class="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-600 font-medium rounded-lg border border-blue-600 hover:bg-blue-50 transition-colors">
+              Conocer más
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <img 
+            src="/assets/images/team/Sergio_G_B.avif" 
+            alt="Dr. Sergio Godorecci" 
+            class="w-full h-auto rounded-xl shadow-lg"
+          />
+        </div>
+      </div>
+
+      <!-- Biografía section -->
+      <div id="biografia" class="mb-16 scroll-mt-24">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Biografía Profesional</h2>
+          
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Formación Académica</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <div class="flex-shrink-0 h-6 w-6 text-blue-600 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <p class="text-lg text-gray-700">Médico Cirujano, Universidad de Chile</p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 h-6 w-6 text-blue-600 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <p class="text-lg text-gray-700">Especialista en Medicina Interna</p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 h-6 w-6 text-blue-600 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <p class="text-lg text-gray-700">Subespecialista en Diabetología, con más de 20 años de experiencia</p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 h-6 w-6 text-blue-600 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <p class="text-lg text-gray-700">Estudios avanzados en Neurociencia y su relación con la salud integral</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Enfoque Terapéutico</h3>
+            <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+              El Dr. Sergio Godorecci ha desarrollado un enfoque médico integral que va más allá del tratamiento convencional de enfermedades. Su metodología se basa en:
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <div class="flex-shrink-0 h-6 w-6 text-blue-600 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <p class="text-lg text-gray-700"><strong>Atención personalizada:</strong> Dedica el tiempo necesario para cada paciente, con una acogida cálida y cercana.</p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 h-6 w-6 text-blue-600 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <p class="text-lg text-gray-700"><strong>Integración de la neurociencia:</strong> Aplica conocimientos sobre las conexiones entre el cerebro y el cuerpo para un tratamiento más efectivo.</p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 h-6 w-6 text-blue-600 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <p class="text-lg text-gray-700"><strong>Medicina holística:</strong> Considera los aspectos físicos, emocionales y ambientales en el diagnóstico y tratamiento.</p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 h-6 w-6 text-blue-600 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <p class="text-lg text-gray-700"><strong>Colaboración interdisciplinaria:</strong> Trabaja en conjunto con otros especialistas del centro EXCELSA para ofrecer un tratamiento completo.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Áreas de Especialización</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="flex flex-col items-center p-4 bg-blue-50 rounded-lg">
+                <div class="h-16 w-16 flex items-center justify-center bg-blue-100 text-blue-600 rounded-full mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                  </svg>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">Diabetes</h4>
+                <p class="text-gray-700 text-center">
+                  Diagnóstico y tratamiento de diabetes tipo 1 y 2, con enfoque en prevención de complicaciones.
+                </p>
+              </div>
+              
+              <div class="flex flex-col items-center p-4 bg-blue-50 rounded-lg">
+                <div class="h-16 w-16 flex items-center justify-center bg-blue-100 text-blue-600 rounded-full mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">Medicina Interna</h4>
+                <p class="text-gray-700 text-center">
+                  Diagnóstico y tratamiento de enfermedades crónicas y complejas con enfoque multidisciplinario.
+                </p>
+              </div>
+              
+              <div class="flex flex-col items-center p-4 bg-blue-50 rounded-lg">
+                <div class="h-16 w-16 flex items-center justify-center bg-blue-100 text-blue-600 rounded-full mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">Neurociencia</h4>
+                <p class="text-gray-700 text-center">
+                  Implementación de protocolos basados en la conexión mente-cuerpo para mejorar resultados terapéuticos.
+                </p>
+              </div>
+              
+              <div class="flex flex-col items-center p-4 bg-blue-50 rounded-lg">
+                <div class="h-16 w-16 flex items-center justify-center bg-blue-100 text-blue-600 rounded-full mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">Medicina Integrativa</h4>
+                <p class="text-gray-700 text-center">
+                  Integración de prácticas convencionales y complementarias para un abordaje completo de la salud.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- CTA Section -->
+      <div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-8 text-white text-center">
+        <h2 class="text-3xl font-bold mb-4">¿Necesitas atención médica personalizada?</h2>
+        <p class="text-xl mb-6 max-w-3xl mx-auto">
+          El Dr. Sergio Godorecci está disponible para consultas presenciales y telemedicina.
+        </p>
+        <a href="/contacto" class="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-600 font-medium rounded-lg hover:bg-gray-100 transition-colors">
+          Agenda tu consulta ahora
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</MainLayout> 

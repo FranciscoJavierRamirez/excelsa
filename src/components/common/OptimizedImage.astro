@@ -1,0 +1,21 @@
+---
+// src/components/common/OptimizedImage.astro
+import { Image } from 'astro:assets';
+
+const { 
+  src, 
+  alt, 
+  width, 
+  height, 
+  class: className = '' 
+} = Astro.props;
+---
+
+<Image
+  src={src}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading="lazy"
+/>

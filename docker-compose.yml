@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    image: node:18-alpine
+    working_dir: /app
+    ports:
+      - "4321:4321"
+    volumes:
+      - ${PWD}:/app
+    environment:
+      - HOST=0.0.0.0
+      - NODE_ENV=development
+    command: sh -c "npm install && npm run dev"
+    tty: true
+    stdin_open: true
+    init: true  # Mejor manejo de procesos
+    security_opt:
+      - no-new-privileges:true  # Previene la escalación de privilegios
+    user: node

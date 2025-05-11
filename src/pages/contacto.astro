@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/MainLayout.astro';
+---
+
+<Layout title="Contacto | EXCELSA Calidad de Vida">
+  <div class="container mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold text-center mb-12 text-gray-800">Contáctanos</h1>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Información de Contacto -->
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Información de Contacto</h2>
+        
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold text-gray-700 mb-2">Centro La Reina</h3>
+          <p class="text-gray-600">
+            Simón Bolívar 5958, La Reina, Santiago, Chile<br>
+            Horarios: Lunes a viernes de 8:30 a 19:00 hrs.
+          </p>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold text-gray-700 mb-2">Centro San Francisco de Chacabuco</h3>
+          <p class="text-gray-600">
+            Condominio San Francisco de Chacabuco parcela 84 km 37 Los Libertadores<br>
+            Horarios: Sábados de 10:00 a 14:00 hrs.
+          </p>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold text-gray-700 mb-2">Contacto General</h3>
+          <p class="text-gray-600">
+            Teléfono: +56 9 8228 9832<br>
+            Email: excelsa1@gmail.com
+          </p>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold text-gray-700 mb-2">Redes Sociales</h3>
+          <p class="text-gray-600">
+            Facebook: grupoexcelsa<br>
+            Instagram: @excelsa.vida
+          </p>
+        </div>
+      </div>
+
+      <!-- Agendamiento de Citas -->
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Agenda tu Cita</h2>
+        
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold text-gray-700 mb-2">Plataformas de Agendamiento</h3>
+          <div class="space-y-4">
+            <a href="https://excelsa.site.agendapro.com/cl/sucursal/11444" 
+               class="block bg-blue-600 text-white py-3 px-6 rounded-lg text-center hover:bg-blue-700 transition-colors">
+              Agendar en AgendaPro
+            </a>
+            <a href="https://post3r.app/excelsa" 
+               class="block bg-green-600 text-white py-3 px-6 rounded-lg text-center hover:bg-green-700 transition-colors">
+              Agendar en Post3r
+            </a>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold text-gray-700 mb-2">Información Requerida para Citas</h3>
+          <ul class="list-disc list-inside text-gray-600">
+            <li>Nombre completo</li>
+            <li>Teléfono</li>
+            <li>Correo electrónico</li>
+            <li>Fecha de nacimiento</li>
+            <li>Tipo de consulta solicitada</li>
+            <li>Preferencia de terapeuta</li>
+            <li>Horario elegido</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-gray-700 mb-2">Política de Cancelaciones</h3>
+          <p class="text-gray-600">
+            Se solicita cancelar con mínimo 24 horas de anticipación. Cancelaciones con menos tiempo o inasistencias pueden generar un cargo del 30% en la siguiente consulta. Entendemos emergencias y casos especiales.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documentación para Primera Consulta -->
+    <div class="mt-12 bg-white rounded-lg shadow-lg p-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Documentación para Primera Consulta</h2>
+      <ul class="list-disc list-inside text-gray-600">
+        <li>Identificación oficial</li>
+        <li>Estudios médicos previos relacionados con su padecimiento actual</li>
+        <li>Lista de medicamentos que consume actualmente</li>
+        <li>En caso de haber estado hospitalizado, traer epicrisis</li>
+        <li>Idealmente traer los exámenes de laboratorio realizados el último año</li>
+      </ul>
+    </div>
+  </div>
+</Layout> 
