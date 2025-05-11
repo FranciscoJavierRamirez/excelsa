@@ -5,6 +5,7 @@ Sitio web para el Centro de Salud Vida Plena, desarrollado con Astro, TypeScript
 ## 🚀 Tecnologías
 
 - [Astro](https://astro.build/) - Framework web moderno
+- [Astro MCP](https://www.npmjs.com/package/astro-mcp) - Servidor de desarrollo optimizado
 - [TypeScript](https://www.typescriptlang.org/) - Superset de JavaScript
 - [Tailwind CSS](https://tailwindcss.com/) - Framework CSS
 - [Jest](https://jestjs.io/) - Framework de testing
@@ -14,6 +15,7 @@ Sitio web para el Centro de Salud Vida Plena, desarrollado con Astro, TypeScript
 - [Prettier](https://prettier.io/) - Formateo de código
 - [Husky](https://typicode.github.io/husky/) - Git hooks
 - [GitHub Actions](https://github.com/features/actions) - CI/CD
+- [Docker](https://www.docker.com/) - Contenedorización
 
 ## 📁 Estructura del Proyecto
 
@@ -36,17 +38,19 @@ Sitio web para el Centro de Salud Vida Plena, desarrollado con Astro, TypeScript
 │   ├── pages/            # Páginas de la aplicación
 │   ├── styles/           # Estilos globales
 │   └── utils/            # Utilidades y helpers
+├── .dockerignore         # Archivos ignorados por Docker
 ├── .eslintrc.js          # Configuración de ESLint
 ├── .prettierrc           # Configuración de Prettier
 ├── astro.config.mjs      # Configuración de Astro
 ├── cypress.config.ts     # Configuración de Cypress
 ├── docker-compose.yml    # Configuración de Docker Compose
-├── Dockerfile.cursor     # Dockerfile para desarrollo
+├── Dockerfile           # Dockerfile unificado para todos los entornos
+├── docker-entrypoint.sh # Script de entrada para Docker
 ├── jest.config.js        # Configuración de Jest
 ├── jest.setup.js         # Configuración de setup de Jest
 ├── package.json          # Dependencias y scripts
-├── postcss.config.js     # Configuración de PostCSS
-├── tailwind.config.js    # Configuración de Tailwind CSS
+├── postcss.config.cjs    # Configuración de PostCSS
+├── tailwind.config.cjs   # Configuración de Tailwind CSS
 └── tsconfig.json         # Configuración de TypeScript
 ```
 
@@ -54,7 +58,7 @@ Sitio web para el Centro de Salud Vida Plena, desarrollado con Astro, TypeScript
 
 ```bash
 # Desarrollo
-npm run dev          # Inicia el servidor de desarrollo
+npm run dev          # Inicia el servidor de desarrollo con MCP
 npm run start        # Alias para dev
 
 # Testing
@@ -79,21 +83,55 @@ npm run preview      # Vista previa de la build
 
 ## 🐳 Docker
 
-El proyecto incluye configuración de Docker para desarrollo:
+El proyecto utiliza una configuración Docker unificada que soporta tanto desarrollo como producción:
+
+### Características Principales
+
+- **Node 20 Alpine** como imagen base
+- **Astro MCP** para desarrollo optimizado
+- **Multi-stage builds** para optimización
+- **Hot-reload** en desarrollo
+- **Caché optimizada** de dependencias
+- **Herramientas de desarrollo** pre-configuradas
+- **Entornos aislados** para cada servicio
+- **Healthchecks** integrados
+
+### Entornos Disponibles
 
 ```bash
-# Construir y levantar los contenedores
-docker-compose up --build
+# Desarrollo con hot-reload y MCP
+docker-compose up dev
 
-# Ejecutar tests en el contenedor
-docker-compose exec web npm run test
+# Producción
+docker-compose up prod
 
-# Abrir Cypress
-docker-compose exec cypress npm run cypress:open
+# Testing
+docker-compose up test
 
-# Abrir Storybook
-docker-compose exec storybook npm run storybook
+# Cypress
+docker-compose up cypress
+
+# Storybook
+docker-compose up storybook
+
+# Linting
+docker-compose up lint
+
+# Formateo
+docker-compose up format
 ```
+
+### Puertos Expuestos
+
+- **4321**: Servidor web principal (Astro)
+- **6006**: Storybook
+- **9323**: Herramientas adicionales
+
+### Requisitos
+
+- Docker 20.10.0 o superior
+- Docker Compose v2.0.0 o superior
+- 2GB de RAM mínimo recomendado
 
 ## 🧪 Testing
 
@@ -140,9 +178,14 @@ El proyecto utiliza GitHub Actions para CI/CD con los siguientes flujos:
 El proyecto requiere las siguientes variables de entorno:
 
 ```env
-SENTRY_AUTH_TOKEN=your_sentry_token
-DEPLOY_KEY=your_deploy_key
-CODECOV_TOKEN=your_codecov_token
+# Requeridas para producción
+NODE_ENV=production
+HOST=0.0.0.0
+PORT=4321
+
+# Opcionales para desarrollo
+STORYBOOK_DISABLE_TELEMETRY=1
+CYPRESS_BASE_URL=http://web:4321
 ```
 
 ## 📚 Documentación

@@ -1,40 +1,34 @@
 version: '3.8'
 
+# Configuraciones comunes que se pueden reutilizar
+x-common-config: &common-config
+  build:
+    context: .
+    dockerfile: Dockerfile
+  environment:
+    - HOST=0.0.0.0
+
+# Volúmenes comunes para desarrollo
+x-dev-volumes: &dev-volumes
+  - ./src:/app/src
+  - ./public:/app/public
+  - /app/node_modules
+
+# Volúmenes para herramientas de desarrollo
+x-tool-volumes: &tool-volumes
+  - ./src:/app/src
+  - /app/node_modules
+
 services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "4321:4321"
-    volumes:
-      - ./src:/app/src
-      - ./public:/app/public
-      - /app/node_modules
-    environment:
-      - NODE_ENV=development
-      - HOST=0.0.0.0
-    command: npm run dev -- --host
-    healthcheck:
-      test: ["CMD", "wget", "--spider", "http://localhost:4321"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-
-  # Servicio para desarrollo con hot-reload
+  # Servicio principal de desarrollo con MCP
   dev:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    <<: *common-config
     ports:
       - "4321:4321"
-    volumes:
-      - ./src:/app/src
-      - ./public:/app/public
-      - /app/node_modules
+      - "6006:6006"  # Para Storybook cuando sea necesario
+    volumes: *dev-volumes
     environment:
       - NODE_ENV=development
-      - HOST=0.0.0.0
     command: npm run dev -- --host
     healthcheck:
       test: ["CMD", "wget", "--spider", "http://localhost:4321"]
@@ -42,16 +36,13 @@ services:
       timeout: 5s
       retries: 3
 
-  # Servicio para producción
+  # Servicio de producción optimizado
   prod:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    <<: *common-config
     ports:
       - "4321:4321"
     environment:
       - NODE_ENV=production
-      - HOST=0.0.0.0
     command: npm run preview -- --host
     healthcheck:
       test: ["CMD", "wget", "--spider", "http://localhost:4321"]
@@ -59,74 +50,59 @@ services:
       timeout: 10s
       retries: 3
 
+  # Testing unitario y de integración
   test:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: npm run test
-    volumes:
-      - ./src:/app/src
-      - ./tests:/app/tests
-      - /app/node_modules
+    <<: *common-config
+    volumes: *tool-volumes
     environment:
       - NODE_ENV=test
+    command: npm run test
     depends_on:
-      web:
+      dev:
         condition: service_healthy
 
+  # Testing E2E con Cypress
   cypress:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: npm run cypress:run
+    <<: *common-config
     volumes:
       - ./cypress:/app/cypress
       - ./src:/app/src
       - /app/node_modules
     environment:
-      - CYPRESS_BASE_URL=http://web:4321
+      - CYPRESS_BASE_URL=http://dev:4321
+    command: npm run cypress:run
     depends_on:
-      web:
+      dev:
         condition: service_healthy
 
+  # Desarrollo de componentes con Storybook
   storybook:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: npm run storybook
+    <<: *common-config
+    volumes:
+      - ./.storybook:/app/.storybook
+      - ./stories:/app/stories
+      - ./src:/app/src
+      - /app/node_modules
     ports:
       - "6006:6006"
-    volumes:
-      - ./src:/app/src
-      - ./stories:/app/stories
-      - /app/node_modules
     environment:
       - NODE_ENV=development
       - STORYBOOK_DISABLE_TELEMETRY=1
+    command: npm run storybook
     depends_on:
-      web:
+      dev:
         condition: service_healthy
 
-  lint:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: npm run lint
-    volumes:
-      - ./src:/app/src
-      - /app/node_modules
-    depends_on:
-      web:
-        condition: service_healthy
-
-  format:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: npm run format
-    volumes:
-      - ./src:/app/src
-      - /app/node_modules
-    depends_on:
-      web:
-        condition: service_healthy
+  # Utilidades de desarrollo (lint y format)
+  tools:
+    <<: *common-config
+    volumes: *tool-volumes
+    profiles:
+      - tools
+    environment:
+      - NODE_ENV=development
+    # Permite ejecutar diferentes comandos:
+    # docker-compose run --rm tools npm run lint
+    # docker-compose run --rm tools npm run format
+    entrypoint: []
+    command: ["echo", "Especifica un comando para ejecutar (lint o format)"]
