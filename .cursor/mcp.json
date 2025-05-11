@@ -1,0 +1,5 @@
+{
+    "servers": [
+      { "id": "astro-mcp", "command": "npx astro-mcp", "transport": "stdio" }
+    ]
+  }

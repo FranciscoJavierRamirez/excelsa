@@ -1,19 +1,20 @@
-version: '3'
 services:
   web:
-    image: node:18-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.cursor  # referencia explícita al Dockerfile personalizado
     working_dir: /app
     ports:
       - "4321:4321"
     volumes:
-      - /Users/frank/Documents/GitHub/excelsa:/app:cached
+      - ./:/app:cached
     environment:
-      - HOST=0.0.0.0
-      - NODE_ENV=development
-    command: sh -c "npm install && npm run dev"
+      HOST: 0.0.0.0
+      NODE_ENV: development
+    command: npm run dev
     tty: true
     stdin_open: true
-    init: true  # Mejor manejo de procesos
+    init: true
     security_opt:
-      - no-new-privileges:true  # Previene la escalación de privilegios
+      - no-new-privileges:true
     user: node

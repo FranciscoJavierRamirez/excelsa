@@ -1,0 +1,18 @@
+FROM node:18-alpine
+
+RUN apk add --no-cache git
+WORKDIR /app
+
+# Copia dependencias primero para aprovechar la caché
+COPY package*.json ./
+RUN npm ci
+
+# Instala astro‑mcp y lo registra en astro.config.mjs
+RUN npm install --save-dev astro-mcp && \
+    npx astro add astro-mcp
+
+# Copia el resto del código y la configuración de Cursor
+COPY . .
+
+EXPOSE 4321
+CMD ["npm", "run", "dev"]
