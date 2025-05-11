@@ -1,18 +1,42 @@
 FROM node:18-alpine
 
-RUN apk add --no-cache git
+# Instalación de dependencias del sistema
+RUN apk add --no-cache git curl
+
 WORKDIR /app
 
 # Copia dependencias primero para aprovechar la caché
 COPY package*.json ./
 RUN npm ci
 
-# Instala astro‑mcp y lo registra en astro.config.mjs
-RUN npm install --save-dev astro-mcp && \
+# Instalación de herramientas de desarrollo
+RUN npm install --save-dev \
+    # Testing
+    jest @types/jest ts-jest \
+    cypress \
+    # Linting y formateo
+    eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin \
+    prettier eslint-config-prettier eslint-plugin-prettier \
+    # Documentación
+    @storybook/cli \
+    # Monitoreo
+    @sentry/cli \
+    # Herramientas de desarrollo
+    astro-mcp && \
     npx astro add astro-mcp
 
-# Copia el resto del código y la configuración de Cursor
+# Instalación de herramientas de CI/CD
+RUN npm install --save-dev \
+    husky lint-staged
+
+# Configuración de husky
+RUN npx husky install
+
+# Copia el resto del código
 COPY . .
+
+# Configuración de permisos
+RUN chown -R node:node /app
 
 EXPOSE 4321
 CMD ["npm", "run", "dev"]

@@ -2,15 +2,22 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile.cursor  # referencia explícita al Dockerfile personalizado
+      dockerfile: Dockerfile.cursor
     working_dir: /app
     ports:
       - "4321:4321"
+      - "6006:6006"  # Puerto para Storybook
+      - "9323:9323"  # Puerto para Cypress
     volumes:
       - ./:/app:cached
+      - /app/node_modules  # Volumen para node_modules
     environment:
       HOST: 0.0.0.0
       NODE_ENV: development
+      # Variables de entorno para herramientas
+      CYPRESS_BASE_URL: http://localhost:4321
+      STORYBOOK_DISABLE_TELEMETRY: 1
+      SENTRY_AUTH_TOKEN: ${SENTRY_AUTH_TOKEN}
     command: npm run dev
     tty: true
     stdin_open: true
@@ -18,3 +25,32 @@ services:
     security_opt:
       - no-new-privileges:true
     user: node
+
+  # Servicio para Storybook
+  storybook:
+    build:
+      context: .
+      dockerfile: Dockerfile.cursor
+    command: npm run storybook
+    ports:
+      - "6006:6006"
+    volumes:
+      - ./:/app:cached
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+      STORYBOOK_DISABLE_TELEMETRY: 1
+
+  # Servicio para Cypress
+  cypress:
+    build:
+      context: .
+      dockerfile: Dockerfile.cursor
+    command: npm run cypress:open
+    ports:
+      - "9323:9323"
+    volumes:
+      - ./:/app:cached
+      - /app/node_modules
+    environment:
+      CYPRESS_BASE_URL: http://web:4321
