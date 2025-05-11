@@ -8,11 +8,18 @@ services:
     ports:
       - "4321:4321"
     volumes:
-      - .:/app
+      - ./src:/app/src
+      - ./public:/app/public
       - /app/node_modules
     environment:
       - NODE_ENV=development
+      - HOST=0.0.0.0
     command: npm run dev -- --host
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:4321"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   # Servicio para desarrollo con hot-reload
   dev:
@@ -22,11 +29,18 @@ services:
     ports:
       - "4321:4321"
     volumes:
-      - .:/app
+      - ./src:/app/src
+      - ./public:/app/public
       - /app/node_modules
     environment:
       - NODE_ENV=development
+      - HOST=0.0.0.0
     command: npm run dev -- --host
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:4321"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   # Servicio para producción
   prod:
@@ -37,18 +51,25 @@ services:
       - "4321:4321"
     environment:
       - NODE_ENV=production
+      - HOST=0.0.0.0
     command: npm run preview -- --host
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:4321"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   test:
     build:
       context: .
-      dockerfile: Dockerfile.cursor
-    command: test
+      dockerfile: Dockerfile
+    command: npm run test
     volumes:
-      - ./:/app:cached
+      - ./src:/app/src
+      - ./tests:/app/tests
       - /app/node_modules
     environment:
-      NODE_ENV: test
+      - NODE_ENV=test
     depends_on:
       web:
         condition: service_healthy
@@ -56,15 +77,14 @@ services:
   cypress:
     build:
       context: .
-      dockerfile: Dockerfile.cursor
-    command: cypress
-    ports:
-      - "9323:9323"
+      dockerfile: Dockerfile
+    command: npm run cypress:run
     volumes:
-      - ./:/app:cached
+      - ./cypress:/app/cypress
+      - ./src:/app/src
       - /app/node_modules
     environment:
-      CYPRESS_BASE_URL: http://web:4321
+      - CYPRESS_BASE_URL=http://web:4321
     depends_on:
       web:
         condition: service_healthy
@@ -72,16 +92,17 @@ services:
   storybook:
     build:
       context: .
-      dockerfile: Dockerfile.cursor
-    command: storybook
+      dockerfile: Dockerfile
+    command: npm run storybook
     ports:
       - "6006:6006"
     volumes:
-      - ./:/app:cached
+      - ./src:/app/src
+      - ./stories:/app/stories
       - /app/node_modules
     environment:
-      NODE_ENV: development
-      STORYBOOK_DISABLE_TELEMETRY: 1
+      - NODE_ENV=development
+      - STORYBOOK_DISABLE_TELEMETRY=1
     depends_on:
       web:
         condition: service_healthy
@@ -89,10 +110,10 @@ services:
   lint:
     build:
       context: .
-      dockerfile: Dockerfile.cursor
-    command: lint
+      dockerfile: Dockerfile
+    command: npm run lint
     volumes:
-      - ./:/app:cached
+      - ./src:/app/src
       - /app/node_modules
     depends_on:
       web:
@@ -101,10 +122,10 @@ services:
   format:
     build:
       context: .
-      dockerfile: Dockerfile.cursor
-    command: format
+      dockerfile: Dockerfile
+    command: npm run format
     volumes:
-      - ./:/app:cached
+      - ./src:/app/src
       - /app/node_modules
     depends_on:
       web:
