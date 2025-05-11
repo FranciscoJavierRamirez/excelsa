@@ -58,8 +58,8 @@ const mainNavItems = [
   },
   { title: "Metodología", url: "/metodologia" },
   { title: "Equipo", url: "/equipo" },
-  { title: "Casos de Éxito", url: "/casos-exito" },
-  { title: "Formación", url: "/formacion" },
+  { title: "Testimonios", url: "/testimonios" },
+  { title: "Cursos", url: "/cursos" },
   { title: "Blog", url: "/blog" },
   { title: "Contacto", url: "/contacto" }
 ];
@@ -139,12 +139,14 @@ const mainNavItems = [
   document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('header');
     
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 10) {
-        header.classList.add('shadow-lg');
-      } else {
-        header.classList.remove('shadow-lg');
-      }
-    });
+    if (header) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) {
+          header.classList.add('shadow-lg');
+        } else {
+          header.classList.remove('shadow-lg');
+        }
+      });
+    }
   });
 </script>

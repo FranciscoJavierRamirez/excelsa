@@ -362,6 +362,9 @@ const contactInfo = {
     </div>
   </section>
 
+  <!-- Sección de Testimonios -->
+  <TestimonialsSection testimonials={testimonials} />
+
   <!-- Sección de equipo mejorada -->
   <section class="py-16 bg-gradient-to-b from-white to-blue-50">
     <div class="container mx-auto px-4">
@@ -405,9 +408,6 @@ const contactInfo = {
       </div>
     </div>
   </section>
-
-  <!-- Sección de Testimonios -->
-  <TestimonialsSection testimonials={testimonials} />
 
   <!-- Pasando la información de contacto al componente ContactInfo -->
   <ContactInfo 

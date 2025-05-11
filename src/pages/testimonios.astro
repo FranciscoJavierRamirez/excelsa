@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/MainLayout.astro';
+import TestimonialsSection from '../components/home/TestimonialsSection.astro';
+
+// Definimos los datos de los testimonios (mismo contenido que en index.astro)
+const testimonials = [
+  {
+    name: "Halima",
+    diagnosis: "Carcinoma mamario ductal infiltrante con compromiso ganglionar (enero 2021).",
+    treatment: "Quimioterapia convencional + Terapia EXCELSA en tres pasos (Psiconeuroinmunología, EFT Tapping, Esencias Florales y Reiki).",
+    process: "Manejo de estrés, detección de condicionante gatillador de la baja inmunológica, automanejo de estilo de vida.",
+    result: "Septiembre 2021, mamografía y biopsia demuestran ausencia total de lesión tumoral y ausencia del compromiso ganglionar. Completó su tratamiento, rechazó radioterapia e intervención quirúrgica, y se mantiene sana hasta 2025 con controles anuales.",
+    image: {
+      avif: "/assets/images/testimonials/halima.avif",
+      webp: "/assets/images/testimonials/halima.webp", 
+      jpg: "/assets/images/testimonials/halima.jpg",
+      alt: "Halima, caso de éxito en tratamiento oncológico"
+    }
+  },
+  {
+    name: "Valentina",
+    diagnosis: "CIA (Comunicación Interauricular) e Hipertensión Pulmonar grave (diciembre 2022) durante su primer embarazo, con pronóstico de incompatibilidad de vida.",
+    treatment: "Terapia EXCELSA en tres pasos (Psiconeuroinmunología, EFT Tapping, Esencias Florales y Reiki).",
+    process: "Manejo de estrés, detección de condicionante gatillador de la descompensación cardíaca y pulmonar, automanejo de estilo de vida, lactancia y maternidad.",
+    result: "Mejora de su Hipertensión Pulmonar en controles sucesivos, aumento de capacidad cardíaca, cierre progresivo de CIA. En diciembre 2024 su corazón funciona como corazón normal, permitiéndole realizar vida normal.",
+    image: {
+      avif: "/assets/images/testimonials/valentina.avif",
+      webp: "/assets/images/testimonials/valentina.webp",
+      jpg: "/assets/images/testimonials/valentina.jpg",
+      alt: "Valentina, caso de éxito en tratamiento cardíaco"
+    }
+  }
+];
+---
+
+<Layout title="Testimonios | EXCELSA Calidad de Vida">
+  <!-- Sección de cabecera de la página -->
+  <section class="py-16 bg-gradient-to-r from-blue-600/90 to-teal-500/90 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Testimonios</h1>
+        <p class="text-xl opacity-90">
+          Historias de transformación y esperanza a través de nuestro enfoque terapéutico integral.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contenido principal: Testimonios -->
+  <TestimonialsSection testimonials={testimonials} />
+
+  <!-- Sección de llamado a la acción -->
+  <section class="py-16 bg-gradient-to-b from-white to-blue-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">¿Quieres compartir tu experiencia?</h2>
+        <p class="text-lg text-gray-600 mb-8">
+          Si has experimentado resultados positivos con nuestro enfoque terapéutico y te gustaría compartir tu testimonio,
+          nos encantaría escuchar tu historia.
+        </p>
+        <a href="/contacto" class="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500 to-teal-400 text-white rounded-lg hover:from-blue-600 hover:to-teal-500 transition-all duration-300 font-medium shadow-md hover:shadow-lg transform hover:scale-105">
+          Contáctanos
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

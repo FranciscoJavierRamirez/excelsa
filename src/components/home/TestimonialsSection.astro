@@ -1,0 +1,90 @@
+---
+// Definimos el tipo para los testimonios
+type Testimonial = {
+  name: string;
+  diagnosis: string;
+  treatment: string;
+  process: string;
+  result: string;
+  image: {
+    avif: string;
+    webp: string;
+    jpg: string;
+    alt: string;
+  };
+};
+
+// Propiedades del componente
+interface Props {
+  testimonials: Testimonial[];
+}
+
+const { testimonials } = Astro.props;
+---
+
+<section class="py-20 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
+  <!-- Elementos decorativos de fondo -->
+  <div class="absolute top-0 right-0 w-64 h-64 rounded-full bg-teal-50 opacity-70 translate-x-1/3 -translate-y-1/3"></div>
+  <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-blue-50 opacity-70 -translate-x-1/3 translate-y-1/3"></div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-12">
+      <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-4 py-1 rounded-full mb-4">TESTIMONIOS</span>
+      <h2 class="text-4xl font-bold text-gray-800 mb-4">Transformando Vidas</h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-teal-400 mx-auto mb-6 rounded-full"></div>
+      <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+        Conoce historias reales de personas que han transformado su salud con nuestro enfoque terapéutico integral.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      {testimonials.map((testimonial) => (
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300 flex flex-col h-full">
+          <div class="flex flex-col md:flex-row h-full">
+            <div class="md:w-2/5 overflow-hidden">
+              <picture>
+                <source srcset={testimonial.image.avif} type="image/avif" />
+                <source srcset={testimonial.image.webp} type="image/webp" />
+                <img 
+                  src={testimonial.image.jpg} 
+                  alt={testimonial.image.alt} 
+                  class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500"
+                />
+              </picture>
+            </div>
+            <div class="md:w-3/5 p-6 flex flex-col h-full">
+              <h3 class="text-2xl font-bold text-gray-800 mb-3">{testimonial.name}</h3>
+              
+              <ul class="space-y-3 text-gray-700 flex-grow">
+                <li class="flex items-start">
+                  <span class="text-blue-500 font-bold mr-2">•</span>
+                  <div>
+                    <span class="font-bold">Diagnóstico:</span> {testimonial.diagnosis}
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-blue-500 font-bold mr-2">•</span>
+                  <div>
+                    <span class="font-bold">Tratamiento:</span> {testimonial.treatment}
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-blue-500 font-bold mr-2">•</span>
+                  <div>
+                    <span class="font-bold">Proceso:</span> {testimonial.process}
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-teal-500 font-bold mr-2">•</span>
+                  <div>
+                    <span class="font-bold">Resultado:</span> {testimonial.result}
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
