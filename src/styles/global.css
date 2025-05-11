@@ -1,4 +1,4 @@
-  /* src/styles/global.css */
+/* src/styles/global.css */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap');
 
 @tailwind base;
@@ -7,6 +7,7 @@
 
 /* Variables CSS personalizadas */
 :root {
+  /* Colores originales */
   --color-primary: #3B82F6;
   --color-primary-light: #60A5FA;
   --color-primary-dark: #2563EB;
@@ -16,6 +17,36 @@
   --color-sky-50: #f0f9ff;
   --color-sky-100: #e0f2fe;
   --color-sky-200: #bae6fd;
+  
+  /* Colores base por especialidad */
+  /* Medicina Convencional */
+  --color-medicina: #3b82f6;
+  --color-medicina-light: #eff6ff;
+  --color-medicina-dark: #2563eb;
+  --color-teal: #2dd4bf;
+  
+  /* Psiconeuroinmunología y terapias alternativas */
+  --color-psico: #8b5cf6;
+  --color-psico-light: #f5f3ff;
+  --color-psico-dark: #7c3aed;
+  --color-pink: #f472b6;
+  
+  /* Terapias complementarias */
+  --color-terapias: #10b981;
+  --color-terapias-light: #ecfdf5;
+  --color-terapias-dark: #059669;
+  
+  /* Psicología */
+  --color-psicologia: #f59e0b;
+  --color-psicologia-light: #fffbeb;
+  --color-psicologia-dark: #d97706;
+  --color-orange: #fb923c;
+  
+  /* Gradientes por especialidad */
+  --gradient-medicina: linear-gradient(to right, var(--color-medicina), var(--color-teal));
+  --gradient-psico: linear-gradient(to right, var(--color-psico), var(--color-pink));
+  --gradient-terapias: linear-gradient(to right, var(--color-terapias), var(--color-teal));
+  --gradient-psicologia: linear-gradient(to right, var(--color-psicologia), var(--color-orange));
 }
 
 /* Estilos globales personalizados */
@@ -69,5 +100,141 @@ body {
 
   .button-outline {
     @apply border border-primary text-primary hover:bg-primary hover:text-white py-2 px-6 rounded-md transition-colors;
+  }
+  
+  /* Clases de gradientes por especialidad */
+  .bg-medicina-gradient {
+    background: var(--gradient-medicina);
+  }
+  
+  .bg-psico-gradient {
+    background: var(--gradient-psico);
+  }
+  
+  .bg-terapias-gradient {
+    background: var(--gradient-terapias);
+  }
+  
+  .bg-psicologia-gradient {
+    background: var(--gradient-psicologia);
+  }
+  
+  /* Botones por especialidad */
+  .button-medicina {
+    @apply bg-medicina hover:bg-medicina-dark text-white py-2 px-6 rounded-md transition-colors;
+  }
+  
+  .button-psico {
+    @apply bg-psico hover:bg-psico-dark text-white py-2 px-6 rounded-md transition-colors;
+  }
+  
+  .button-terapias {
+    @apply bg-terapias hover:bg-terapias-dark text-white py-2 px-6 rounded-md transition-colors;
+  }
+  
+  .button-psicologia {
+    @apply bg-psicologia hover:bg-psicologia-dark text-white py-2 px-6 rounded-md transition-colors;
+  }
+  
+  /* Badges por especialidad */
+  .badge-medicina {
+    @apply bg-medicina-light text-medicina px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .badge-psico {
+    @apply bg-psico-light text-psico px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .badge-terapias {
+    @apply bg-terapias-light text-terapias px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .badge-psicologia {
+    @apply bg-psicologia-light text-psicologia px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  /* Bordes con degradado */
+  .border-gradient-medicina {
+    @apply relative before:absolute before:inset-0 before:p-0.5 before:bg-medicina-gradient before:rounded-lg before:-z-10;
+  }
+  
+  .border-gradient-psico {
+    @apply relative before:absolute before:inset-0 before:p-0.5 before:bg-psico-gradient before:rounded-lg before:-z-10;
+  }
+  
+  .border-gradient-terapias {
+    @apply relative before:absolute before:inset-0 before:p-0.5 before:bg-terapias-gradient before:rounded-lg before:-z-10;
+  }
+  
+  .border-gradient-psicologia {
+    @apply relative before:absolute before:inset-0 before:p-0.5 before:bg-psicologia-gradient before:rounded-lg before:-z-10;
+  }
+  
+  /* Títulos por especialidad */
+  .title-medicina {
+    @apply text-medicina font-bold;
+  }
+  
+  .title-psico {
+    @apply text-psico font-bold;
+  }
+  
+  .title-terapias {
+    @apply text-terapias font-bold;
+  }
+  
+  .title-psicologia {
+    @apply text-psicologia font-bold;
+  }
+  
+  /* Tarjetas con estilo completo para cada especialidad */
+  .card-medicina {
+    @apply bg-white p-6 rounded-xl border-l-4 border-medicina shadow-md hover:shadow-lg transition-shadow;
+  }
+  
+  .card-psico {
+    @apply bg-white p-6 rounded-xl border-l-4 border-psico shadow-md hover:shadow-lg transition-shadow;
+  }
+  
+  .card-terapias {
+    @apply bg-white p-6 rounded-xl border-l-4 border-terapias shadow-md hover:shadow-lg transition-shadow;
+  }
+  
+  .card-psicologia {
+    @apply bg-white p-6 rounded-xl border-l-4 border-psicologia shadow-md hover:shadow-lg transition-shadow;
+  }
+  
+  /* Divisores con gradiente */
+  .divider-medicina {
+    @apply h-1 w-24 bg-medicina-gradient rounded-full mx-auto mb-6;
+  }
+  
+  .divider-psico {
+    @apply h-1 w-24 bg-psico-gradient rounded-full mx-auto mb-6;
+  }
+  
+  .divider-terapias {
+    @apply h-1 w-24 bg-terapias-gradient rounded-full mx-auto mb-6;
+  }
+  
+  .divider-psicologia {
+    @apply h-1 w-24 bg-psicologia-gradient rounded-full mx-auto mb-6;
+  }
+  
+  /* Iconos con colores por especialidad */
+  .icon-medicina {
+    @apply w-10 h-10 rounded-full bg-medicina text-white flex items-center justify-center;
+  }
+  
+  .icon-psico {
+    @apply w-10 h-10 rounded-full bg-psico text-white flex items-center justify-center;
+  }
+  
+  .icon-terapias {
+    @apply w-10 h-10 rounded-full bg-terapias text-white flex items-center justify-center;
+  }
+  
+  .icon-psicologia {
+    @apply w-10 h-10 rounded-full bg-psicologia text-white flex items-center justify-center;
   }
 }

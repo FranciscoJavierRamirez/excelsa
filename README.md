@@ -83,42 +83,36 @@ npm run preview      # Vista previa de la build
 
 ## 🐳 Docker
 
-El proyecto utiliza una configuración Docker unificada que soporta tanto desarrollo como producción:
+El proyecto utiliza una configuración Docker optimizada y unificada que soporta todos los entornos de desarrollo y producción.
 
 ### Características Principales
 
-- **Node 20 Alpine** como imagen base
-- **Astro MCP** para desarrollo optimizado
-- **Multi-stage builds** para optimización
-- **Hot-reload** en desarrollo
-- **Caché optimizada** de dependencias
-- **Herramientas de desarrollo** pre-configuradas
-- **Entornos aislados** para cada servicio
-- **Healthchecks** integrados
+- **Node 20 Alpine** como imagen base optimizada
+- **Astro MCP** para desarrollo rápido y eficiente
+- **Configuración DRY** usando YAML anchors y aliases
+- **Hot-reload** en desarrollo con volúmenes optimizados
+- **Healthchecks** integrados para todos los servicios web
+- **Multi-stage builds** para optimización de imágenes
 
-### Entornos Disponibles
+### Comandos Docker
 
 ```bash
-# Desarrollo con hot-reload y MCP
-docker-compose up dev
+# Desarrollo
+docker-compose up dev           # Inicia el entorno de desarrollo con hot-reload y MCP
 
 # Producción
-docker-compose up prod
+docker-compose up prod          # Inicia el entorno de producción optimizado
 
 # Testing
-docker-compose up test
-
-# Cypress
-docker-compose up cypress
+docker-compose up test          # Ejecuta tests unitarios
+docker-compose up cypress       # Ejecuta tests E2E
 
 # Storybook
-docker-compose up storybook
+docker-compose up storybook     # Inicia Storybook para desarrollo de componentes
 
-# Linting
-docker-compose up lint
-
-# Formateo
-docker-compose up format
+# Herramientas de desarrollo
+docker-compose run --rm tools npm run lint    # Ejecuta linting
+docker-compose run --rm tools npm run format  # Ejecuta formateo de código
 ```
 
 ### Puertos Expuestos
@@ -127,11 +121,31 @@ docker-compose up format
 - **6006**: Storybook
 - **9323**: Herramientas adicionales
 
-### Requisitos
+### Volúmenes Optimizados
+
+El proyecto utiliza tres configuraciones de volúmenes optimizadas:
+
+1. **Desarrollo** (`dev`):
+   ```yaml
+   - ./src:/app/src
+   - ./public:/app/public
+   - /app/node_modules
+   ```
+
+2. **Herramientas** (`tools`):
+   ```yaml
+   - ./src:/app/src
+   - /app/node_modules
+   ```
+
+3. **Específicos** (por servicio según necesidad)
+
+### Requisitos del Sistema
 
 - Docker 20.10.0 o superior
 - Docker Compose v2.0.0 o superior
 - 2GB de RAM mínimo recomendado
+- Puertos 4321, 6006 y 9323 disponibles
 
 ## 🧪 Testing
 
@@ -185,7 +199,7 @@ PORT=4321
 
 # Opcionales para desarrollo
 STORYBOOK_DISABLE_TELEMETRY=1
-CYPRESS_BASE_URL=http://web:4321
+CYPRESS_BASE_URL=http://dev:4321
 ```
 
 ## 📚 Documentación

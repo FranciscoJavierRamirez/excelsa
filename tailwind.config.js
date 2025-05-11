@@ -26,6 +26,31 @@ module.exports = {
           800: "#075985",
           900: "#0c4a6e",
         },
+        // Nuevos colores por especialidad
+        medicina: {
+          DEFAULT: "#3b82f6",
+          light: "#eff6ff",
+          dark: "#2563eb",
+        },
+        psico: {
+          DEFAULT: "#8b5cf6",
+          light: "#f5f3ff",
+          dark: "#7c3aed",
+        },
+        terapias: {
+          DEFAULT: "#10b981",
+          light: "#ecfdf5",
+          dark: "#059669",
+        },
+        psicologia: {
+          DEFAULT: "#f59e0b",
+          light: "#fffbeb",
+          dark: "#d97706",
+        },
+        // Colores complementarios
+        teal: "#2dd4bf",
+        pink: "#f472b6",
+        orange: "#fb923c",
       },
       backgroundColor: theme => ({
         ...theme('colors'),
@@ -36,8 +61,21 @@ module.exports = {
         'sky-gradient-start': '#e0f2fe',
         'sky-gradient-end': '#f0f9ff',
       }),
+      backgroundImage: {
+        'medicina-gradient': 'linear-gradient(to right, #3b82f6, #2dd4bf)',
+        'psico-gradient': 'linear-gradient(to right, #8b5cf6, #f472b6)',
+        'terapias-gradient': 'linear-gradient(to right, #10b981, #2dd4bf)',
+        'psicologia-gradient': 'linear-gradient(to right, #f59e0b, #fb923c)',
+      },
+      fontFamily: {
+        sans: ["Montserrat", "sans-serif"],
+        serif: ["Merriweather", "serif"],
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
+  ],
 }
-
