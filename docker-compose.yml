@@ -6,7 +6,7 @@ services:
     ports:
       - "4321:4321"
     volumes:
-      - ${PWD}:/app
+      - /Users/frank/Documents/GitHub/excelsa:/app:cached
     environment:
       - HOST=0.0.0.0
       - NODE_ENV=development
