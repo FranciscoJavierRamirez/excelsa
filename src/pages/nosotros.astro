@@ -7,381 +7,551 @@ import TeamGallery from '../components/about/TeamGallery.astro';
 ---
 
 <Layout title="Nosotros | EXCELSA Calidad de Vida">
-  <div class="container mx-auto px-4 py-16">
-    <!-- Hero section with background gradient - Mejorado para consistencia -->
-    <div class="relative bg-gradient-to-b from-blue-50 to-white py-20 mb-12 rounded-2xl overflow-hidden">
-      <!-- Decorative elements -->
-      <div class="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full opacity-30 -translate-y-1/2 translate-x-1/4"></div>
-      <div class="absolute bottom-0 left-0 w-72 h-72 bg-teal-100 rounded-full opacity-40 translate-y-1/3 -translate-x-1/3"></div>
-      <div class="absolute top-1/3 left-1/2 w-48 h-48 rounded-full bg-blue-50 opacity-50 -translate-x-1/2 blur-lg"></div>
-      
-      <div class="relative z-10 text-center px-4">
-        <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-4 py-1 rounded-full mb-4 shadow-md">CONÓCENOS</span>
-        <h1 class="text-4xl sm:text-5xl font-bold text-blue-600 mb-4">Nuestra Historia</h1>
-        <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-teal-400 mx-auto mb-6 rounded-full"></div>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          Conoce los orígenes y la misión que nos inspira a transformar vidas a través de la medicina alternativa.
-        </p>
-      </div>
-    </div>
+  <!-- Nuevo diseño de fondo cohesivo -->
+  <style is:global>
+    /* Fondo base con degradado de alta calidad */
+    body {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #e0f7fa 100%) !important;
+    }
+    
+    /* Ocultar el div de gradiente del MainLayout */
+    body > div:first-of-type {
+      display: none !important;
+    }
+    
+    /* Patrón sutil para añadir textura */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2399c5dc' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    /* Variables CSS para consistencia */
+    :root {
+      --card-radius: 1.25rem;
+      --section-radius: 1.5rem;
+      --shadow-standard: 0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 15px -6px rgba(0, 152, 163, 0.05);
+      --shadow-hover: 0 20px 35px -10px rgba(59, 130, 246, 0.18), 0 10px 20px -10px rgba(0, 152, 163, 0.08);
+      --gradient-primary: linear-gradient(135deg, #3b82f6, #0ea5e9);
+      --gradient-secondary: linear-gradient(135deg, #0ea5e9, #14b8a6);
+      --border-light: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    
+    /* Clases comunes para las secciones */
+    .section-container {
+      position: relative;
+      margin-bottom: 6rem;
+      border-radius: var(--section-radius);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+    
+    .section-container:hover {
+      transform: translateY(-0.25rem);
+    }
+    
+    .section-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--section-radius);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-standard);
+      border: var(--border-light);
+      transition: box-shadow 0.5s ease;
+    }
+    
+    .section-container:hover .section-bg {
+      box-shadow: var(--shadow-hover);
+    }
+    
+    /* Clases para tarjetas */
+    .card-container {
+      background: white;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-container:hover {
+      transform: translateY(-0.25rem);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-header {
+      background: var(--gradient-primary);
+      padding: 1.5rem;
+      color: white;
+    }
+    
+    /* Animaciones sutiles */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+  </style>
 
-    <!-- Historia card with timeline design - Mejorado con efectos hover -->
-    <section class="mb-16">
-      <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl duration-300">
-        <div class="relative bg-gradient-to-r from-blue-600 to-teal-500 p-6 text-white">
-          <div class="absolute right-0 top-0 w-32 h-32 bg-white rounded-full opacity-10 -translate-y-1/2 translate-x-1/3"></div>
-          <h2 class="text-2xl sm:text-3xl font-bold relative z-10 flex items-center">
-            <span class="inline-block w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </span>
-            Nuestra Historia
-          </h2>
-        </div>
-        
-        <div class="p-8 md:p-10">
-          <div class="relative border-l-4 border-blue-100 pl-8 pb-6">
-            <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-teal-400 -translate-x-1/2 flex items-center justify-center">
-              <div class="w-2 h-2 bg-white rounded-full"></div>
-            </div>
-            <span class="text-sm font-bold text-blue-500 mb-2 block">1992</span>
-            <p class="text-gray-700 text-lg leading-relaxed mb-4">
-              Nuestra Empresa fue Fundada por <span class="font-semibold text-blue-600">Dr. Sergio Godorecci</span>, especialista en Medicina Interna y Diabetología y <span class="font-semibold text-blue-600">Dra. Sheril Irene Rivera</span> especialista en Salud Pública, Psiconeuroinmunología, PNL y Terapias Complementarias.
+  <!-- Elementos de fondo decorativos -->
+  <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+    <!-- Formas orgánicas flotantes -->
+    <div class="absolute top-20 right-[10%] w-[500px] h-[500px] bg-gradient-to-bl from-blue-200/10 to-transparent rounded-full blur-3xl floating"></div>
+    <div class="absolute bottom-40 left-[5%] w-[600px] h-[600px] bg-gradient-to-tr from-teal-200/10 to-transparent rounded-full blur-3xl floating" style="animation-delay: -2s;"></div>
+    <div class="absolute top-[40%] left-[30%] w-[300px] h-[300px] bg-gradient-to-tr from-blue-100/10 to-teal-100/10 rounded-full blur-3xl floating" style="animation-delay: -4s;"></div>
+  </div>
+
+  <!-- Contenedor principal con estilo mejorado -->
+  <div class="container mx-auto px-4 py-16 relative">
+    <!-- SECCIÓN 1: VALORES Y PRINCIPIOS -->
+    <section class="section-container">
+      <div class="section-bg"></div>
+      <div class="relative z-10 px-6 py-12">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-5 py-1.5 rounded-full mb-4 shadow-md">FUNDAMENTOS</span>
+            <h2 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent mb-4">Nuestros Valores y Principios</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-teal-400 mx-auto mb-6 rounded-full"></div>
+            <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+              Los pilares fundamentales que guían nuestra labor y definen la metodología EXCELSA.
             </p>
           </div>
           
-          <div class="relative border-l-4 border-blue-100 pl-8 pb-6">
-            <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-teal-400 -translate-x-1/2 flex items-center justify-center">
-              <div class="w-2 h-2 bg-white rounded-full"></div>
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Valores card -->
+            <div class="card-container group">
+              <div class="card-header relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600/90 to-blue-500/90"></div>
+                <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20.01l20-20 1.41 1.41L1.41 21.42H0v-1.41zM20 1.41l18.59 18.59H40V21.41L20 1.41zM30 10.01l10-10V1.41L29.42 12.01 30 12.6z' /%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+                <h2 class="text-2xl font-bold text-white relative z-10 flex items-center">
+                  <span class="inline-block w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                  </span>
+                  Nuestros Valores
+                </h2>
+              </div>
+              
+              <div class="p-8">
+                <ul class="space-y-3">
+                  <li class="flex items-center text-gray-800">
+                    <span class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span class="text-lg">Excelencia</span>
+                  </li>
+                  <li class="flex items-center text-gray-800">
+                    <span class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span class="text-lg">Acogida</span>
+                  </li>
+                  <li class="flex items-center text-gray-800">
+                    <span class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span class="text-lg">Autovalencia</span>
+                  </li>
+                  <li class="flex items-center text-gray-800">
+                    <span class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span class="text-lg">Innovación</span>
+                  </li>
+                  <li class="flex items-center text-gray-800">
+                    <span class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span class="text-lg">Autoresponsabilidad</span>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <p class="text-gray-700 text-lg leading-relaxed mb-4">
-              La motivación en la creación del centro, nace después de la curación del Dr. Godorecci de un <span class="font-semibold text-blue-600">cáncer terminal con 3 meses de sobrevida</span>, fuera del alcance de tratamiento con medicina convencional. El cual fue tratado con Psiconeuroinmunología y terapias complementarias.
-            </p>
-          </div>
-          
-          <div class="relative border-l-4 border-blue-100 pl-8">
-            <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-teal-400 -translate-x-1/2 flex items-center justify-center">
-              <div class="w-2 h-2 bg-white rounded-full"></div>
+            
+            <!-- Principios card -->
+            <div class="card-container group">
+              <div class="card-header relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-teal-600/90 to-teal-500/90"></div>
+                <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20.01l20-20 1.41 1.41L1.41 21.42H0v-1.41zM20 1.41l18.59 18.59H40V21.41L20 1.41zM30 10.01l10-10V1.41L29.42 12.01 30 12.6z' /%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+                <h2 class="text-2xl font-bold text-white relative z-10 flex items-center">
+                  <span class="inline-block w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </span>
+                  Principios Metodología EXCELSA
+                </h2>
+              </div>
+              
+              <div class="p-8">
+                <ul class="space-y-2">
+                  <li class="flex items-start text-gray-800">
+                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>Todo es posible</span>
+                  </li>
+                  <li class="flex items-start text-gray-800">
+                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>Dentro de nosotros está toda la capacidad</span>
+                  </li>
+                  <li class="flex items-start text-gray-800">
+                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>Todo resultado es mejorable</span>
+                  </li>
+                  <li class="flex items-start text-gray-800">
+                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>El amor es vida y esencia de la existencia</span>
+                  </li>
+                  <li class="flex items-start text-gray-800">
+                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>La paz es la madre de la sanación</span>
+                  </li>
+                  <li class="flex items-start text-gray-800">
+                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>La alegría es el motor</span>
+                  </li>
+                  <li class="flex items-start text-gray-800">
+                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>El propósito es la dirección</span>
+                  </li>
+                  <li class="flex items-start text-gray-800">
+                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>El amor al prójimo nutre la existencia</span>
+                  </li>
+                  <li class="flex items-start text-gray-800">
+                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>Somos consciencia eterna y parte del todo</span>
+                  </li>
+                  <li class="flex items-start text-gray-800">
+                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>El poder sanador sobre nosotros mismos, aumenta cuánto más nos amamos</span>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <p class="text-gray-700 text-lg leading-relaxed">
-              Esto genera el anhelo de <span class="font-semibold text-blue-600">contribuir a la sanación de personas con enfermedades graves</span> en que el eje del tratamiento es apoyar con terapias naturales no invasivas, en el desarrollo de las capacidades de autocuración de las personas y que se encuentra en zonas ocultas del inconsciente.
-            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Team section - Mantenemos el diseño mejorado ya existente -->
-    <section class="mb-16">
-      <div class="text-center mb-12">
-        <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-4 py-1 rounded-full mb-4 shadow-md">PROFESIONALES</span>
-        <h2 class="text-4xl font-bold text-gray-800 mb-4">Nuestro Equipo</h2>
-        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-teal-400 mx-auto mb-6 rounded-full"></div>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          Conoce a los especialistas que conforman nuestro equipo de profesionales dedicados a mejorar tu salud y bienestar.
-        </p>
-      </div>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Dr. Sergio Godorecci -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300">
-          <div class="h-72 overflow-hidden">
-            <img 
-              src="/assets/images/team/Sergio_G_B.avif" 
-              alt="Dr. Sergio Godorecci" 
-              class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Dr. Sergio Godorecci Baeriswyl</h3>
-            <div class="flex flex-wrap gap-2 mb-3">
-              <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Médico Cirujano</span>
-              <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Medicina Interna</span>
-            </div>
-            <p class="text-gray-600 mb-4">
-              Cofundador Centro EXCELSA Salud y Calidad de Vida. Especialista en Medicina Interna y Diabetología con 20 años de experiencia.
+    <!-- SECCIÓN 2: NUESTRA HISTORIA -->
+    <section class="section-container">
+      <div class="section-bg"></div>
+      <div class="relative z-10 px-6 py-12">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-12">
+            <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-5 py-1.5 rounded-full mb-4 shadow-md">HISTORIA</span>
+            <h2 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent mb-4">Nuestra Historia</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-teal-400 mx-auto mb-6 rounded-full"></div>
+            <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+              Descubre cómo comenzó nuestra misión de transformar vidas a través de la medicina alternativa.
             </p>
-            <a href="/sergio" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors">
-              Ver perfil completo
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
           </div>
-        </div>
-
-        <!-- Dra. Sheril Irene Rivera -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300">
-          <div class="h-72 overflow-hidden">
-            <img 
-              src="/assets/images/team/Sheril.avif" 
-              alt="Dra. Sheril Irene Rivera" 
-              class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Dra. Sheril Irene Rivera Villarroel</h3>
-            <div class="flex flex-wrap gap-2 mb-3">
-              <span class="inline-block bg-teal-100 text-teal-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Médico Cirujano</span>
-              <span class="inline-block bg-teal-100 text-teal-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Salud Pública</span>
+          
+          <div class="card-container">
+            <div class="card-header relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-r from-blue-600/90 to-teal-500/90"></div>
+              <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20.01l20-20 1.41 1.41L1.41 21.42H0v-1.41zM20 1.41l18.59 18.59H40V21.41L20 1.41zM30 10.01l10-10V1.41L29.42 12.01 30 12.6z' /%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+              <div class="flex items-center gap-4 px-8 py-4 relative z-10">
+                <span class="inline-block w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+                <h3 class="text-2xl font-bold text-white">Nuestros Inicios</h3>
+              </div>
             </div>
-            <p class="text-gray-600 mb-4">
-              Especialista en Psiconeuroinmunología, PNL y Terapias Complementarias con 30 años de experiencia. Creadora de la Metodología EXCELSA.
-            </p>
-            <a href="/sheril" class="inline-flex items-center text-teal-600 hover:text-teal-800 transition-colors">
-              Ver perfil completo
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Giancarlo Godorecci Rivera -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300">
-          <div class="h-72 overflow-hidden">
-            <img 
-              src="/assets/images/team/Giancarlo.avif" 
-              alt="Giancarlo Godorecci Rivera" 
-              class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Giancarlo Godorecci Rivera</h3>
-            <div class="flex flex-wrap gap-2 mb-3">
-              <span class="inline-block bg-teal-100 text-teal-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Terapeuta</span>
-              <span class="inline-block bg-teal-100 text-teal-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Medicina Complementaria</span>
+            
+            <div class="p-8">
+              <div class="relative border-l-4 border-blue-200 pl-10 pb-10">
+                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center -translate-x-1/2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <circle cx="12" cy="12" r="10" stroke="white" stroke-width="0" fill="white" opacity="0" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span class="text-base font-bold text-blue-700 mb-2 block">1992</span>
+                <p class="text-gray-800 text-lg leading-relaxed mb-6">
+                  Nuestra Empresa fue Fundada por <span class="font-semibold text-blue-700">Dr. Sergio Godorecci</span>, especialista en Medicina Interna y Diabetología y <span class="font-semibold text-blue-700">Dra. Sheril Irene Rivera</span> especialista en Salud Pública, Psiconeuroinmunología, PNL y Terapias Complementarias.
+                </p>
+              </div>
+              <div class="relative border-l-4 border-blue-200 pl-10 pb-10">
+                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center -translate-x-1/2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <circle cx="12" cy="12" r="10" stroke="white" stroke-width="0" fill="white" opacity="0" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <p class="text-gray-800 text-lg leading-relaxed mb-6">
+                  La motivación en la creación del centro, nace después de la curación del Dr. Godorecci de un <span class="font-semibold text-blue-700">cáncer terminal con 3 meses de sobrevida</span>, fuera del alcance de tratamiento con medicina convencional. El cual fue tratado con Psiconeuroinmunología y terapias complementarias.
+                </p>
+              </div>
+              <div class="relative border-l-4 border-blue-200 pl-10">
+                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center -translate-x-1/2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <circle cx="12" cy="12" r="10" stroke="white" stroke-width="0" fill="white" opacity="0" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <p class="text-gray-800 text-lg leading-relaxed">
+                  Esto genera el anhelo de <span class="font-semibold text-blue-700">contribuir a la sanación de personas con enfermedades graves</span> en que el eje del tratamiento es apoyar con terapias naturales no invasivas, en el desarrollo de las capacidades de autocuración de las personas y que se encuentra en zonas ocultas del inconsciente.
+                </p>
+              </div>
             </div>
-            <p class="text-gray-600 mb-4">
-              Especialista en Reiki, Digitopuntura, ETT Tapping y PNL. Experiencia en enfermedades físicas y emocionales que cursan con dolores crónicos.
-            </p>
-            <a href="/giancarlo" class="inline-flex items-center text-teal-600 hover:text-teal-800 transition-colors">
-              Ver perfil completo
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Gianfranco Godorecci Rivera -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300">
-          <div class="h-72 overflow-hidden">
-            <img 
-              src="/assets/images/team/Gianfranco.avif" 
-              alt="Gianfranco Godorecci Rivera" 
-              class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Gianfranco Godorecci Rivera</h3>
-            <div class="flex flex-wrap gap-2 mb-3">
-              <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Psicólogo</span>
-              <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Área Laboral y Clínica</span>
-            </div>
-            <p class="text-gray-600 mb-4">
-              12 años de experiencia en atención psicológica de adultos. Forma parte del equipo terapéutico de Excelsa Medicina Alternativa.
-            </p>
-            <a href="/gianfranco" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors">
-              Ver perfil completo
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Sergio Matias Godorecci Rivera -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300">
-          <div class="h-72 overflow-hidden">
-            <img 
-              src="/assets/images/team/Sergio_G_R.avif" 
-              alt="Sergio Matías Godorecci Rivera" 
-              class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Sergio Matías Godorecci Rivera</h3>
-            <div class="flex flex-wrap gap-2 mb-3">
-              <span class="inline-block bg-green-100 text-green-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Terapeuta</span>
-              <span class="inline-block bg-green-100 text-green-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Aromaterapia</span>
-            </div>
-            <p class="text-gray-600 mb-4">
-              Especialista en apoyo para personas con enfermedades crónicas, autoinmunes, estrés y enfermedades emocionales.
-            </p>
-            <a href="/sergio-matias" class="inline-flex items-center text-green-600 hover:text-green-800 transition-colors">
-              Ver perfil completo
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Valores y Principios secciones - Manteniendo mismo estilo pero con animaciones mejoradas -->
-    <section class="mb-16 py-16 bg-gradient-to-b from-gray-50 to-white rounded-2xl">
-      <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          <!-- Valores card -->
-          <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 duration-300">
-            <div class="relative bg-gradient-to-r from-blue-600 to-blue-400 p-6 text-white">
-              <div class="absolute right-0 top-0 w-32 h-32 bg-white rounded-full opacity-10 -translate-y-1/2 translate-x-1/3"></div>
-              <h2 class="text-2xl font-bold relative z-10 flex items-center">
-                <span class="inline-block w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                  </svg>
-                </span>
-                Nuestros Valores
-              </h2>
-            </div>
-            
-            <div class="p-8">
-              <ul class="space-y-3">
-                <li class="flex items-center text-gray-700">
-                  <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span class="text-lg">Excelencia</span>
-                </li>
-                <li class="flex items-center text-gray-700">
-                  <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span class="text-lg">Acogida</span>
-                </li>
-                <li class="flex items-center text-gray-700">
-                  <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span class="text-lg">Autovalencia</span>
-                </li>
-                <li class="flex items-center text-gray-700">
-                  <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span class="text-lg">Innovación</span>
-                </li>
-                <li class="flex items-center text-gray-700">
-                  <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span class="text-lg">Autoresponsabilidad</span>
-                </li>
-              </ul>
-            </div>
+    <!-- SECCIÓN 3: PROFESIONALES ESPECIALISTAS -->
+    <section class="section-container">
+      <div class="section-bg"></div>
+      <div class="relative z-10 px-6 py-12">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-12">
+            <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-5 py-1.5 rounded-full mb-4 shadow-md">NUESTRO EQUIPO</span>
+            <h2 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent mb-4">Profesionales Especialistas</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-teal-400 mx-auto mb-6 rounded-full"></div>
+            <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+              Conoce a los especialistas que conforman nuestro equipo de profesionales dedicados a mejorar tu salud y bienestar.
+            </p>
           </div>
           
-          <!-- Principios card -->
-          <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 duration-300">
-            <div class="relative bg-gradient-to-r from-teal-500 to-green-400 p-6 text-white">
-              <div class="absolute right-0 top-0 w-32 h-32 bg-white rounded-full opacity-10 -translate-y-1/2 translate-x-1/3"></div>
-              <h2 class="text-2xl font-bold relative z-10 flex items-center">
-                <span class="inline-block w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          <!-- Primera fila: 2 médicos principales -->
+          <div class="grid md:grid-cols-2 gap-10 mb-16">
+            <!-- Dr. Sergio Godorecci -->
+            <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 flex flex-col max-w-xl mx-auto w-full relative">
+              <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <img 
+                  src="/assets/images/team/Sergio_G_B.avif" 
+                  alt="Dr. Sergio Godorecci" 
+                  class="absolute top-0 left-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+                  style="object-position: center 30%; object-fit: contain; padding: 1.75rem;"
+                />
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-teal-100 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+              </div>
+              <div class="p-7 flex-grow">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Dr. Sergio Godorecci Baeriswyl</h3>
+                <div class="flex flex-wrap gap-2 mb-3">
+                  <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Médico Cirujano</span>
+                  <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Medicina Interna</span>
+                </div>
+                <p class="text-gray-600 mb-4 text-sm">
+                  Cofundador Centro EXCELSA Salud y Calidad de Vida. Especialista en Medicina Interna y Diabetología con 20 años de experiencia.
+                </p>
+                <a href="/sergio" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                  Ver perfil completo
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                   </svg>
-                </span>
-                Principios Metodología EXCELSA
-              </h2>
+                </a>
+              </div>
+              <!-- Decorative corner elements -->
+              <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-blue-200 rounded-tl-lg"></div>
+              <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-blue-200 rounded-tr-lg"></div>
+              <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-blue-200 rounded-bl-lg"></div>
+              <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-blue-200 rounded-br-lg"></div>
             </div>
-            
-            <div class="p-8">
-              <ul class="space-y-2">
-                <li class="flex items-start text-gray-700">
-                  <span class="w-6 h-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span>Todo es posible</span>
-                </li>
-                <li class="flex items-start text-gray-700">
-                  <span class="w-6 h-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span>Dentro de nosotros está toda la capacidad</span>
-                </li>
-                <li class="flex items-start text-gray-700">
-                  <span class="w-6 h-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span>Todo resultado es mejorable</span>
-                </li>
-                <li class="flex items-start text-gray-700">
-                  <span class="w-6 h-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span>El amor es vida y esencia de la existencia</span>
-                </li>
-                <li class="flex items-start text-gray-700">
-                  <span class="w-6 h-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span>La paz es la madre de la sanación</span>
-                </li>
-                <li class="flex items-start text-gray-700">
-                  <span class="w-6 h-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span>La alegría es el motor</span>
-                </li>
-                <li class="flex items-start text-gray-700">
-                  <span class="w-6 h-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span>El propósito es la dirección</span>
-                </li>
-                <li class="flex items-start text-gray-700">
-                  <span class="w-6 h-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span>El amor al prójimo nutre la existencia</span>
-                </li>
-                <li class="flex items-start text-gray-700">
-                  <span class="w-6 h-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span>Somos consciencia eterna y parte del todo</span>
-                </li>
-                <li class="flex items-start text-gray-700">
-                  <span class="w-6 h-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span>El poder sanador sobre nosotros mismos, aumenta cuánto más nos amamos</span>
-                </li>
-              </ul>
+            <!-- Dra. Sheril Irene Rivera Villarroel -->
+            <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 flex flex-col max-w-xl mx-auto w-full relative">
+              <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <img 
+                  src="/assets/images/team/Sheril.avif" 
+                  alt="Dra. Sheril Irene Rivera Villarroel" 
+                  class="absolute top-0 left-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+                  style="object-position: center 30%; object-fit: contain; padding: 1.75rem;"
+                />
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-teal-100 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+              </div>
+              <div class="p-7 flex-grow">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Dra. Sheril Irene Rivera Villarroel</h3>
+                <div class="flex flex-wrap gap-2 mb-3">
+                  <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Directora Médica</span>
+                  <span class="inline-block bg-teal-100 text-teal-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Salud Pública, Psiconeuroinmunología, PNL, Esencias Florales</span>
+                </div>
+                <p class="text-gray-600 mb-4 text-sm">
+                  Médico Cirujano con 30 años de experiencia en Medicina Alternativa. Creadora de la Metodología EXCELSA que integra diversas disciplinas complementarias con 95% de eficacia en patologías crónicas, autoinmunes y cáncer.
+                </p>
+                <a href="/sheril" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                  Ver perfil completo
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+              <!-- Decorative corner elements -->
+              <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-blue-200 rounded-tl-lg"></div>
+              <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-blue-200 rounded-tr-lg"></div>
+              <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-blue-200 rounded-bl-lg"></div>
+              <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-blue-200 rounded-br-lg"></div>
+            </div>
+          </div>
+          <!-- Segunda fila: 3 miembros adicionales -->
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Giancarlo Godorecci Rivera -->
+            <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
+              <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <img 
+                  src="/assets/images/team/Giancarlo.avif" 
+                  alt="Giancarlo Godorecci Rivera" 
+                  class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
+                  style="object-fit: contain; padding: 1.75rem;"
+                />
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-teal-100 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Giancarlo Godorecci Rivera</h3>
+                <div class="flex flex-wrap gap-2 mb-3">
+                  <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Terapeuta en Medicina Complementaria</span>
+                  <span class="inline-block bg-teal-100 text-teal-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Reiki, Digitopuntura, ETT Tapping</span>
+                </div>
+                <p class="text-gray-600 mb-4 text-sm">
+                  Especialista en terapias energéticas y técnicas de sanación natural con enfoque integral.
+                </p>
+                <a href="/giancarlo" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                  Ver perfil completo
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+              <!-- Decorative corner elements -->
+              <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-blue-200 rounded-tl-lg"></div>
+              <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-blue-200 rounded-tr-lg"></div>
+              <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-blue-200 rounded-bl-lg"></div>
+              <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-blue-200 rounded-br-lg"></div>
+            </div>
+            <!-- Gianfranco Godorecci Rivera -->
+            <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
+              <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <img 
+                  src="/assets/images/team/Gianfranco.avif" 
+                  alt="Gianfranco Godorecci Rivera" 
+                  class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
+                  style="object-fit: contain; padding: 1.75rem;"
+                />
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-teal-100 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Gianfranco Godorecci Rivera</h3>
+                <div class="flex flex-wrap gap-2 mb-3">
+                  <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Psicólogo</span>
+                  <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Área Laboral y Clínica</span>
+                </div>
+                <p class="text-gray-600 mb-4 text-sm">
+                  12 años de experiencia. Forma parte del equipo terapéutico de Excelsa Medicina Alternativa. Especialista en atención Psicológica de adultos en todas las edades.
+                </p>
+                <a href="/gianfranco" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                  Ver perfil completo
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+              <!-- Decorative corner elements -->
+              <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-blue-200 rounded-tl-lg"></div>
+              <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-blue-200 rounded-tr-lg"></div>
+              <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-blue-200 rounded-bl-lg"></div>
+              <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-blue-200 rounded-br-lg"></div>
+            </div>
+            <!-- Sergio Matias Godorecci Rivera -->
+            <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
+              <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <img 
+                  src="/assets/images/team/Sergio_G_R.avif" 
+                  alt="Sergio Matias Godorecci Rivera" 
+                  class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
+                  style="object-fit: contain; padding: 1.75rem;"
+                />
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-teal-100 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Sergio Matias Godorecci Rivera</h3>
+                <div class="flex flex-wrap gap-2 mb-3">
+                  <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Terapeuta de Aromaterapia</span>
+                  <span class="inline-block bg-teal-100 text-teal-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Elaborador de Aceites Esenciales</span>
+                </div>
+                <p class="text-gray-600 mb-4 text-sm">
+                  Especialista en apoyo de personas con enfermedades crónicas, autoinmunes, estrés y enfermedades musculo esqueléticas.
+                </p>
+                <a href="/sergio-matias" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                  Ver perfil completo
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+              <!-- Decorative corner elements -->
+              <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-blue-200 rounded-tl-lg"></div>
+              <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-blue-200 rounded-tr-lg"></div>
+              <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-blue-200 rounded-bl-lg"></div>
+              <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-blue-200 rounded-br-lg"></div>
             </div>
           </div>
         </div>

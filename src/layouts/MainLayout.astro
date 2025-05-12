@@ -6,9 +6,22 @@ import Footer from "../components/common/Footer.astro";
 interface Props {
   title: string;
   description?: string;
+  contactInfo?: {
+    phone: string;
+    email: string;
+    address: string;
+  };
 }
 
-const { title, description = "Excelsa - Centro de Medicina Integral para tu bienestar" } = Astro.props;
+const { 
+  title, 
+  description = "Excelsa - Centro de Medicina Integral para tu bienestar",
+  contactInfo = {
+    phone: "+52 555 123 4567",
+    email: "info@excelsa.com",
+    address: "Av. Salud 123, Col. Bienestar, Ciudad de México"
+  }
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -23,11 +36,12 @@ const { title, description = "Excelsa - Centro de Medicina Integral para tu bien
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body class="min-h-screen bg-sky-50 flex flex-col">
-    <div class="absolute inset-0 bg-gradient-to-b from-sky-100 to-white opacity-70 z-0"></div>
+    <!-- Remover o comentar este div que está causando problemas -->
+    <!-- <div class="absolute inset-0 bg-gradient-to-b from-sky-100 to-white opacity-70 z-0"></div> -->
     <Header />
     <main class="flex-grow pt-[60px] relative z-10">
       <slot />
     </main>
-    <Footer />
+    <Footer phone={contactInfo.phone} email={contactInfo.email} address={contactInfo.address} />
   </body>
 </html>

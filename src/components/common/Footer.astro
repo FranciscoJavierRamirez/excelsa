@@ -2,38 +2,46 @@
 // src/components/common/Footer.astro
 import SocialLinks from './SocialLinks.astro';
 import ContactInfo from './ContactInfo.astro';
+
+interface Props {
+  phone: string;
+  email: string;
+  address: string;
+}
+
+const { phone, email, address } = Astro.props;
 ---
 
-<footer class="bg-gradient-to-b from-sky-200 to-primary text-white">
+<footer class="bg-gradient-to-b from-blue-300 to-blue-600 text-white">
   <div class="container mx-auto px-4 py-12">
     <div class="grid md:grid-cols-3 gap-8">
       <div>
         <h3 class="text-xl font-semibold mb-4 text-white">Excelsa</h3>
-        <p class="mb-4">Centro de Medicina Integral dedicado a mejorar la calidad de vida de nuestros pacientes a través de un enfoque holístico de la salud.</p>
+        <p class="mb-4 text-white">Centro de Medicina Integral dedicado a mejorar la calidad de vida de nuestros pacientes a través de un enfoque holístico de la salud.</p>
         <SocialLinks />
       </div>
       
       <div>
         <h3 class="text-xl font-semibold mb-4 text-white">Enlaces Rápidos</h3>
-        <ul class="space-y-2">
-          <li><a href="/" class="hover:underline hover:text-sky-100 transition-colors">Inicio</a></li>
-          <li><a href="/nosotros" class="hover:underline hover:text-sky-100 transition-colors">Nosotros</a></li>
-          <li><a href="/servicios" class="hover:underline hover:text-sky-100 transition-colors">Servicios</a></li>
-          <li><a href="/ubicacion" class="hover:underline hover:text-sky-100 transition-colors">Ubicación</a></li>
-          <li><a href="/blog" class="hover:underline hover:text-sky-100 transition-colors">Blog</a></li>
-          <li><a href="/contacto" class="hover:underline hover:text-sky-100 transition-colors">Contacto</a></li>
+        <ul class="space-y-2 text-white">
+          <li><a href="/" class="text-white hover:underline hover:text-sky-100 transition-colors">Inicio</a></li>
+          <li><a href="/nosotros" class="text-white hover:underline hover:text-sky-100 transition-colors">Nosotros</a></li>
+          <li><a href="/servicios" class="text-white hover:underline hover:text-sky-100 transition-colors">Servicios</a></li>
+          <li><a href="/ubicacion" class="text-white hover:underline hover:text-sky-100 transition-colors">Ubicación</a></li>
+          <li><a href="/blog" class="text-white hover:underline hover:text-sky-100 transition-colors">Blog</a></li>
+          <li><a href="/contacto" class="text-white hover:underline hover:text-sky-100 transition-colors">Contacto</a></li>
         </ul>
       </div>
       
       <ContactInfo 
-        phone="+52 555 123 4567"
-        email="info@excelsa.com"
-        address="Av. Salud 123, Col. Bienestar, Ciudad de México"
+        phone={phone}
+        email={email}
+        address={address}
       />
     </div>
     
     <div class="border-t border-white border-opacity-20 mt-8 pt-8 text-center">
-      <p>&copy; {new Date().getFullYear()} Excelsa. Todos los derechos reservados.</p>
+      <p class="text-white">&copy; {new Date().getFullYear()} Excelsa. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>

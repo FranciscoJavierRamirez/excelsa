@@ -4,6 +4,7 @@ import ImageCarousel from '../components/home/ImageCarousel.astro';
 import ServiceCategories from '../components/services/ServiceCategories.astro';
 import TeamSection from '../components/about/TeamSection.astro';
 import ContactInfo from '../components/common/ContactInfo.astro';
+import Footer from '../components/common/Footer.astro';
 
 const serviceCategories = [
   {
@@ -198,9 +199,54 @@ const contactInfo = {
 };
 ---
 
-<Layout title="EXCELSA Calidad de Vida, Medicina Alternativa">
-  <!-- Hero Section Mejorado con Carrusel -->
-  <section class="relative w-full h-screen max-h-[600px] overflow-hidden">
+<Layout title="EXCELSA Calidad de Vida, Medicina Alternativa" contactInfo={contactInfo}>
+  <!-- Control completo del fondo base mediante un div absolutamente posicionado con un degradado más atractivo -->
+  <div class="fixed inset-0 z-[-5]">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-100 via-sky-50 to-teal-100"></div>
+    <!-- Patrón sutil para añadir textura -->
+    <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%233b82f6\' fill-opacity=\'1\' fill-rule=\'evenodd\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/svg%3E');"></div>
+  </div>
+
+  <!-- Elementos decorativos flotantes -->
+  <div class="fixed inset-0 z-[-4] overflow-hidden pointer-events-none">
+    <div class="absolute top-20 right-[10%] w-[600px] h-[600px] bg-gradient-to-bl from-blue-200/10 to-transparent rounded-full blur-3xl floating"></div>
+    <div class="absolute bottom-40 left-[5%] w-[700px] h-[700px] bg-gradient-to-tr from-teal-200/10 to-transparent rounded-full blur-3xl floating" style="animation-delay: -2s;"></div>
+    <div class="absolute top-[40%] left-[30%] w-[400px] h-[400px] bg-gradient-to-tr from-blue-100/10 to-teal-100/10 rounded-full blur-3xl floating" style="animation-delay: -4s;"></div>
+  </div>
+
+  <style>
+    /* Animación para los elementos flotantes */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    /* Estilos para secciones */
+    .content-section {
+      position: relative;
+      margin-bottom: 6rem;
+      border-radius: 1.5rem;
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1);
+      overflow: hidden;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+    
+    .content-section:hover {
+      transform: translateY(-0.25rem);
+      box-shadow: 0 20px 35px -10px rgba(59, 130, 246, 0.18);
+    }
+  </style>
+
+  <!-- Hero Section con Carrusel -->
+  <section class="relative w-full h-screen max-h-[600px] overflow-hidden rounded-3xl mb-20 shadow-xl">
     <!-- Carrusel de imágenes de fondo -->
     <div class="absolute inset-0 z-0">
       <ImageCarousel images={carouselImages} height="600px" />
@@ -209,7 +255,7 @@ const contactInfo = {
     <!-- Fondo con gradiente y elementos decorativos -->
     <div class="absolute inset-0 bg-gradient-to-r from-blue-600/70 to-teal-500/70 z-10"></div>
     
-    <!-- Elementos decorativos -->
+    <!-- Elementos decorativos mejorados -->
     <div class="absolute top-1/4 left-1/5 w-64 h-64 rounded-full bg-white opacity-10 blur-xl z-10"></div>
     <div class="absolute bottom-1/4 right-1/5 w-80 h-80 rounded-full bg-teal-200 opacity-20 blur-xl z-10"></div>
     
@@ -234,14 +280,9 @@ const contactInfo = {
     </div>
   </section>
 
-  <!-- Mission & Vision Section (mantener pero con pequeñas mejoras de animación) -->
-  <section class="py-20 relative overflow-hidden">
-    <!-- Decorative background elements -->
-    <div class="absolute top-0 left-0 w-64 h-64 rounded-full bg-blue-50 opacity-70 -translate-x-1/2 -translate-y-1/2"></div>
-    <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-green-50 opacity-70 translate-x-1/3 translate-y-1/3"></div>
-    <div class="absolute top-1/2 left-1/2 w-48 h-48 rounded-full bg-yellow-50 opacity-50 -translate-x-1/2 -translate-y-1/2 blur-lg"></div>
-    
-    <div class="container mx-auto px-4 relative z-10">
+  <!-- Mission & Vision Section -->
+  <section class="content-section p-10">
+    <div class="container mx-auto">
       <div class="max-w-5xl mx-auto">
         <!-- Mission Card -->
         <div class="mb-16 bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 duration-300">
@@ -288,16 +329,16 @@ const contactInfo = {
     </div>
   </section>
 
-  <!-- Services Section con mejoras visuales -->
-  <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
-    <div class="container mx-auto px-4">
+  <!-- Services Section -->
+  <section class="content-section p-10">
+    <div class="container mx-auto">
       <div class="text-center mb-12 max-w-3xl mx-auto">
         <div class="inline-block p-3 bg-gradient-to-r from-teal-400 to-sky-400 rounded-full mb-4 shadow-lg">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
           </svg>
         </div>
-        <h2 class="text-4xl font-bold text-gray-800 mb-3">Nuestros Servicios</h2>
+        <h2 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent mb-3">Nuestros Servicios</h2>
         <div class="w-24 h-1 bg-gradient-to-r from-teal-400 to-sky-400 mx-auto mb-6 rounded-full"></div>
         <p class="text-xl text-gray-600 mb-4">
           Combinamos medicina convencional y alternativa para una atención integral a su salud.
@@ -310,10 +351,10 @@ const contactInfo = {
         </p>
       </div>
       
-      <div class="bg-gradient-to-br from-sky-50 to-teal-50 rounded-3xl p-6 md:p-10 shadow-xl mb-12 max-w-6xl mx-auto relative overflow-hidden">
-        <!-- Elementos decorativos de fondo -->
-        <div class="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-teal-100 opacity-30"></div>
-        <div class="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-sky-100 opacity-30"></div>
+      <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-6 md:p-10 shadow-xl mb-12 max-w-6xl mx-auto relative overflow-hidden">
+        <!-- Elementos decorativos sutiles -->
+        <div class="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-teal-100/30 blur-xl"></div>
+        <div class="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-sky-100/30 blur-xl"></div>
         
         <div class="relative z-10">
           <ServiceCategories categories={serviceCategories} />
@@ -331,16 +372,12 @@ const contactInfo = {
     </div>
   </section>
 
-  <!-- Sección de equipo mejorada -->
-  <section class="py-16 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
-    <!-- Decorative elements -->
-    <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-100 to-teal-50 rounded-full opacity-30 blur-3xl -mr-48 -mt-48"></div>
-    <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-teal-100 to-blue-50 rounded-full opacity-30 blur-3xl -ml-48 -mb-48"></div>
-    
-    <div class="container mx-auto px-4 relative z-10">
+  <!-- Team Section -->
+  <section class="content-section p-10">
+    <div class="container mx-auto">
       <div class="text-center mb-16">
         <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-4 py-1 rounded-full mb-4 shadow-md">NUESTRO EQUIPO</span>
-        <h2 class="text-4xl font-bold text-gray-800 mb-4">Profesionales Especialistas</h2>
+        <h2 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent mb-4">Profesionales Especialistas</h2>
         <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-teal-400 mx-auto mb-6 rounded-full"></div>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
           Conoce a los especialistas que conforman nuestro equipo de profesionales dedicados a mejorar tu salud y bienestar.
@@ -357,7 +394,7 @@ const contactInfo = {
               <img 
                 src={teamMembers[1].image} 
                 alt={teamMembers[1].name} 
-                class="absolute top-0 left-0 w-full h-full object-cover transform group-hover:scale-103 transition-transform duration-700"
+                class="absolute top-0 left-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                 style="object-position: center 30%; object-fit: contain; padding: 1.75rem;"
               />
               <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
@@ -393,7 +430,7 @@ const contactInfo = {
               <img 
                 src={teamMembers[0].image} 
                 alt={teamMembers[0].name} 
-                class="absolute top-0 left-0 w-full h-full object-cover transform group-hover:scale-103 transition-transform duration-700"
+                class="absolute top-0 left-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                 style="object-position: center 30%; object-fit: contain; padding: 1.75rem;"
               />
               <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
@@ -423,21 +460,21 @@ const contactInfo = {
           </div>
         </div>
         
-        <!-- Segunda fila: 3 miembros adicionales -->
+        <!-- Segunda fila: 3 miembros adicionales con estilo estandarizado -->
         <div class="grid md:grid-cols-3 gap-8">
           {teamMembers.slice(2).map((member, index) => {
             return (
-              <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
+              <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
                 <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
                   <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                   <img 
                     src={member.image} 
                     alt={member.name} 
-                    class="absolute top-0 left-0 w-full h-full transform hover:scale-103 transition-transform duration-700"
+                    class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
                     style="object-fit: contain; padding: 1.75rem;"
                   />
-                  <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 hover:opacity-70 transition-opacity duration-300"></div>
-                  <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-teal-100 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 hover:opacity-70 transition-opacity duration-300"></div>
+                  <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                  <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-teal-100 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
                 </div>
                 <div class="p-6">
                   <h3 class="text-xl font-bold text-gray-800 mb-2">{member.name}</h3>
@@ -468,8 +505,8 @@ const contactInfo = {
     </div>
   </section>
 
-  <!-- Pasando la información de contacto al componente ContactInfo -->
-  <ContactInfo 
+  <!-- Footer Section -->
+  <Footer 
     phone={contactInfo.phone}
     email={contactInfo.email}
     address={contactInfo.address}
