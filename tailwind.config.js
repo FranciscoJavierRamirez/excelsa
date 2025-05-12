@@ -54,12 +54,12 @@ module.exports = {
       },
       backgroundColor: theme => ({
         ...theme('colors'),
-        'page': '#f0f9ff',
+        'page': '#ffffff',
       }),
       gradientColorStops: theme => ({
         ...theme('colors'),
         'sky-gradient-start': '#e0f2fe',
-        'sky-gradient-end': '#f0f9ff',
+        'sky-gradient-end': '#ffffff',
       }),
       backgroundImage: {
         'medicina-gradient': 'linear-gradient(to right, #3b82f6, #2dd4bf)',

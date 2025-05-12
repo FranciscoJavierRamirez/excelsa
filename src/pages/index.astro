@@ -4,7 +4,6 @@ import ImageCarousel from '../components/home/ImageCarousel.astro';
 import ServiceCategories from '../components/services/ServiceCategories.astro';
 import TeamSection from '../components/about/TeamSection.astro';
 import ContactInfo from '../components/common/ContactInfo.astro';
-import Footer from '../components/common/Footer.astro';
 
 const serviceCategories = [
   {
@@ -201,14 +200,14 @@ const contactInfo = {
 
 <Layout title="EXCELSA Calidad de Vida, Medicina Alternativa" contactInfo={contactInfo}>
   <!-- Control completo del fondo base mediante un div absolutamente posicionado con un degradado más atractivo -->
-  <div class="fixed inset-0 z-[-5]">
+  <div class="fixed inset-0 z-[-8]">
     <div class="absolute inset-0 bg-gradient-to-br from-blue-100 via-sky-50 to-teal-100"></div>
     <!-- Patrón sutil para añadir textura -->
     <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%233b82f6\' fill-opacity=\'1\' fill-rule=\'evenodd\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/svg%3E');"></div>
   </div>
 
   <!-- Elementos decorativos flotantes -->
-  <div class="fixed inset-0 z-[-4] overflow-hidden pointer-events-none">
+  <div class="fixed inset-0 z-[-7] overflow-hidden pointer-events-none">
     <div class="absolute top-20 right-[10%] w-[600px] h-[600px] bg-gradient-to-bl from-blue-200/10 to-transparent rounded-full blur-3xl floating"></div>
     <div class="absolute bottom-40 left-[5%] w-[700px] h-[700px] bg-gradient-to-tr from-teal-200/10 to-transparent rounded-full blur-3xl floating" style="animation-delay: -2s;"></div>
     <div class="absolute top-[40%] left-[30%] w-[400px] h-[400px] bg-gradient-to-tr from-blue-100/10 to-teal-100/10 rounded-full blur-3xl floating" style="animation-delay: -4s;"></div>
@@ -373,7 +372,7 @@ const contactInfo = {
   </section>
 
   <!-- Team Section -->
-  <section class="content-section p-10">
+  <section class="content-section p-10 mb-16">
     <div class="container mx-auto">
       <div class="text-center mb-16">
         <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-4 py-1 rounded-full mb-4 shadow-md">NUESTRO EQUIPO</span>
@@ -504,12 +503,5 @@ const contactInfo = {
       </div>
     </div>
   </section>
-
-  <!-- Footer Section -->
-  <Footer 
-    phone={contactInfo.phone}
-    email={contactInfo.email}
-    address={contactInfo.address}
-  />
 </Layout>
 

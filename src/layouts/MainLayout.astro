@@ -35,13 +35,14 @@ const {
     <title>{title} | Excelsa</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
   </head>
-  <body class="min-h-screen bg-sky-50 flex flex-col">
-    <!-- Remover o comentar este div que está causando problemas -->
-    <!-- <div class="absolute inset-0 bg-gradient-to-b from-sky-100 to-white opacity-70 z-0"></div> -->
+  <body class="min-h-screen flex flex-col">
+    <div class="fixed inset-0 bg-sky-50 z-[-10]"></div>
     <Header />
     <main class="flex-grow pt-[60px] relative z-10">
       <slot />
     </main>
-    <Footer phone={contactInfo.phone} email={contactInfo.email} address={contactInfo.address} />
+    <div class="w-full relative z-20">
+      <Footer phone={contactInfo.phone} email={contactInfo.email} address={contactInfo.address} />
+    </div>
   </body>
 </html>
