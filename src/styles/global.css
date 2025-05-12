@@ -1,24 +1,29 @@
-/* src/styles/global.css */
+/* src/styles/global.css - Versión actualizada */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Variables CSS personalizadas */
+/* Variables CSS mejoradas */
 :root {
-  /* Colores originales */
-  --color-primary: #3B82F6;
-  --color-primary-light: #60A5FA;
-  --color-primary-dark: #2563EB;
-  --color-secondary: #0EA5E9;
-  --color-secondary-light: #38BDF8;
-  --color-secondary-dark: #0284C7;
+  /* Colores principales (identidad de marca) */
+  --color-primary: #0EA5E9; /* sky-500 */
+  --color-primary-light: #38BDF8; /* sky-400 */
+  --color-primary-dark: #0284C7; /* sky-600 */
+  
+  /* Neutros */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
   --color-sky-50: #f0f9ff;
   --color-sky-100: #e0f2fe;
   --color-sky-200: #bae6fd;
+  --color-sky-300: #7DD3FC;
+  --color-sky-400: #38BDF8;
+  --color-sky-500: #0EA5E9;
+  --color-sky-600: #0284C7;
   
-  /* Colores base por especialidad */
+  /* Colores base por especialidad - Mantener para compatibilidad */
   /* Medicina Convencional */
   --color-medicina: #3b82f6;
   --color-medicina-light: #eff6ff;
@@ -42,23 +47,39 @@
   --color-psicologia-dark: #d97706;
   --color-orange: #fb923c;
   
-  /* Gradientes por especialidad */
-  --gradient-medicina: linear-gradient(to right, var(--color-medicina), var(--color-teal));
-  --gradient-psico: linear-gradient(to right, var(--color-psico), var(--color-pink));
-  --gradient-terapias: linear-gradient(to right, var(--color-terapias), var(--color-teal));
-  --gradient-psicologia: linear-gradient(to right, var(--color-psicologia), var(--color-orange));
+  /* Gradientes por especialidad - Mejorando consistencia de dirección */
+  --gradient-primary: linear-gradient(135deg, var(--color-sky-400), var(--color-sky-500));
+  --gradient-primary-dark: linear-gradient(135deg, var(--color-sky-500), var(--color-sky-600));
+  
+  --gradient-medicina: linear-gradient(135deg, var(--color-medicina), var(--color-teal));
+  --gradient-psico: linear-gradient(135deg, var(--color-psico), var(--color-pink));
+  --gradient-terapias: linear-gradient(135deg, var(--color-terapias), var(--color-teal));
+  --gradient-psicologia: linear-gradient(135deg, var(--color-psicologia), var(--color-orange));
+  
+  /* Colores adicionales para metodología y profesionales */
+  --gradient-metodologia: linear-gradient(135deg, #8B5CF6, #818CF8); /* purple-indigo */
+  
+  /* Gradientes de profesionales */
+  --gradient-sergio: linear-gradient(135deg, #3B82F6, #2DD4BF); /* blue-teal */
+  --gradient-sheril: linear-gradient(135deg, #A855F7, #EC4899); /* purple-pink */
+  --gradient-giancarlo: linear-gradient(135deg, #14B8A6, #22C55E); /* teal-green */
+  --gradient-gianfranco: linear-gradient(135deg, #F59E0B, #F97316); /* amber-orange */
+  --gradient-sergiomatias: linear-gradient(135deg, #6366F1, #3B82F6); /* indigo-blue */
+  
+  /* Estilos de fondo */
+  --background-gradient: linear-gradient(135deg, var(--color-white) 0%, var(--color-sky-100) 50%, var(--color-white) 100%);
+  --background-pattern: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%2338bdf8" fill-opacity="0.05" fill-rule="evenodd"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/svg%3E');
 }
 
-/* Estilos globales personalizados */
+/* Estilos globales actualizados */
 body {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to right, #e0f2fe, #ffffff);
+  background: var(--background-gradient);
 }
 
-/* Estilos personalizados adicionales */
-
+/* Mantener los estilos personalizados originales */
 @layer base {
   body {
     @apply font-sans text-gray-800 bg-page;
@@ -70,6 +91,7 @@ body {
 }
 
 @layer components {
+  /* Mantener los componentes existentes */
   .container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
@@ -90,19 +112,20 @@ body {
     @apply bg-gradient-to-r from-sky-gradient-start to-sky-gradient-end;
   }
 
+  /* Clases de componentes actualizadas */
   .button-primary {
-    @apply bg-primary hover:bg-primary-dark text-white py-2 px-6 rounded-md transition-colors;
+    @apply bg-sky-500 hover:bg-sky-600 text-white py-2 px-6 rounded-md transition-colors;
   }
 
   .button-secondary {
-    @apply bg-secondary hover:bg-secondary-dark text-white py-2 px-6 rounded-md transition-colors;
+    @apply bg-sky-400 hover:bg-sky-500 text-white py-2 px-6 rounded-md transition-colors;
   }
 
   .button-outline {
-    @apply border border-primary text-primary hover:bg-primary hover:text-white py-2 px-6 rounded-md transition-colors;
+    @apply border border-sky-500 text-sky-500 hover:bg-sky-50 py-2 px-6 rounded-md transition-colors;
   }
   
-  /* Clases de gradientes por especialidad */
+  /* Mantener las clases existentes por compatibilidad */
   .bg-medicina-gradient {
     background: var(--gradient-medicina);
   }
@@ -119,7 +142,6 @@ body {
     background: var(--gradient-psicologia);
   }
   
-  /* Botones por especialidad */
   .button-medicina {
     @apply bg-medicina hover:bg-medicina-dark text-white py-2 px-6 rounded-md transition-colors;
   }
@@ -136,7 +158,6 @@ body {
     @apply bg-psicologia hover:bg-psicologia-dark text-white py-2 px-6 rounded-md transition-colors;
   }
   
-  /* Badges por especialidad */
   .badge-medicina {
     @apply bg-medicina-light text-medicina px-3 py-1 rounded-full text-sm font-medium;
   }
@@ -153,7 +174,7 @@ body {
     @apply bg-psicologia-light text-psicologia px-3 py-1 rounded-full text-sm font-medium;
   }
   
-  /* Bordes con degradado */
+  /* Mantener los estilos de borde con gradiente existentes */
   .border-gradient-medicina {
     @apply relative before:absolute before:inset-0 before:p-0.5 before:bg-medicina-gradient before:rounded-lg before:-z-10;
   }
@@ -170,7 +191,7 @@ body {
     @apply relative before:absolute before:inset-0 before:p-0.5 before:bg-psicologia-gradient before:rounded-lg before:-z-10;
   }
   
-  /* Títulos por especialidad */
+  /* Mantener títulos por especialidad */
   .title-medicina {
     @apply text-medicina font-bold;
   }
@@ -187,7 +208,7 @@ body {
     @apply text-psicologia font-bold;
   }
   
-  /* Tarjetas con estilo completo para cada especialidad */
+  /* Mantener tarjetas con estilo por especialidad */
   .card-medicina {
     @apply bg-white p-6 rounded-xl border-l-4 border-medicina shadow-md hover:shadow-lg transition-shadow;
   }
@@ -204,7 +225,7 @@ body {
     @apply bg-white p-6 rounded-xl border-l-4 border-psicologia shadow-md hover:shadow-lg transition-shadow;
   }
   
-  /* Divisores con gradiente */
+  /* Mantener divisores con gradiente */
   .divider-medicina {
     @apply h-1 w-24 bg-medicina-gradient rounded-full mx-auto mb-6;
   }
@@ -221,7 +242,7 @@ body {
     @apply h-1 w-24 bg-psicologia-gradient rounded-full mx-auto mb-6;
   }
   
-  /* Iconos con colores por especialidad */
+  /* Mantener iconos con colores por especialidad */
   .icon-medicina {
     @apply w-10 h-10 rounded-full bg-medicina text-white flex items-center justify-center;
   }
@@ -236,5 +257,72 @@ body {
   
   .icon-psicologia {
     @apply w-10 h-10 rounded-full bg-psicologia text-white flex items-center justify-center;
+  }
+  
+  /* Nuevas clases de utilidad para el sistema refinado */
+  
+  /* Clases para fondos de degradado */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-primary-dark {
+    background: var(--gradient-primary-dark);
+  }
+  
+  .bg-gradient-metodologia {
+    background: var(--gradient-metodologia);
+  }
+  
+  /* Clases para texto gradiente */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-primary {
+    background-image: var(--gradient-primary);
+    @apply bg-clip-text text-transparent;
+  }
+  
+  /* Clases para divisores/líneas con gradiente */
+  .divider-primary {
+    @apply h-1 w-24 rounded-full mx-auto mb-6;
+    background: var(--gradient-primary);
+  }
+  
+  .divider-metodologia {
+    @apply h-1 w-24 rounded-full mx-auto mb-6;
+    background: var(--gradient-metodologia);
+  }
+  
+  /* Clases de utilidad para badges con gradiente */
+  .badge {
+    @apply inline-block px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .badge-primary {
+    background: var(--gradient-primary);
+    color: var(--color-white);
+  }
+  
+  /* Clases de utilidad para profesionales */
+  .gradient-sergio {
+    background: var(--gradient-sergio);
+  }
+  
+  .gradient-sheril {
+    background: var(--gradient-sheril);
+  }
+  
+  .gradient-giancarlo {
+    background: var(--gradient-giancarlo);
+  }
+  
+  .gradient-gianfranco {
+    background: var(--gradient-gianfranco);
+  }
+  
+  .gradient-sergiomatias {
+    background: var(--gradient-sergiomatias);
   }
 }
