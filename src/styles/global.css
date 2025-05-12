@@ -139,7 +139,7 @@ body {
   }
   
   .bg-psicologia-gradient {
-    background: var(--gradient-psicologia);
+    background: linear-gradient(135deg, #f59e0b, #fb923c);
   }
   
   .button-medicina {
@@ -172,6 +172,11 @@ body {
   
   .badge-psicologia {
     @apply bg-psicologia-light text-psicologia px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  /* Badge para consultas integrativas - Elemento pendiente #3 */
+  .badge-integrativa {
+    @apply bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium;
   }
   
   /* Mantener los estilos de borde con gradiente existentes */
@@ -240,6 +245,11 @@ body {
   
   .divider-psicologia {
     @apply h-1 w-24 bg-psicologia-gradient rounded-full mx-auto mb-6;
+  }
+  
+  /* Línea divisoria (sky) - Elemento pendiente #3 */
+  .section-divider {
+    @apply w-24 h-1 bg-gradient-to-r from-sky-400 to-sky-300 mx-auto mb-6 rounded-full;
   }
   
   /* Mantener iconos con colores por especialidad */
@@ -324,5 +334,180 @@ body {
   
   .gradient-sergiomatias {
     background: var(--gradient-sergiomatias);
+  }
+  
+  /* Elementos pendientes de equipo.astro - Elemento pendiente #2 */
+  /* Giancarlo */
+  .miembro-border-giancarlo {
+    @apply p-1 bg-gradient-to-r from-teal-500 to-green-400;
+  }
+  .miembro-icon-badge-giancarlo {
+    @apply inline-block w-10 h-10 rounded-full bg-gradient-to-r from-teal-500 to-green-400 text-white flex items-center justify-center mr-3 flex-shrink-0;
+  }
+  .miembro-tag-giancarlo {
+    @apply bg-green-50 text-green-600 px-3 py-1 rounded-full text-sm font-medium;
+  }
+  .miembro-highlight-giancarlo {
+    @apply text-green-600;
+  }
+
+  /* Gianfranco */
+  .miembro-border-gianfranco {
+    @apply p-1 bg-gradient-to-r from-amber-500 to-orange-400;
+  }
+  .miembro-icon-badge-gianfranco {
+    @apply inline-block w-10 h-10 rounded-full bg-gradient-to-r from-amber-500 to-orange-400 text-white flex items-center justify-center mr-3 flex-shrink-0;
+  }
+  .miembro-tag-gianfranco {
+    @apply bg-orange-50 text-orange-600 px-3 py-1 rounded-full text-sm font-medium;
+  }
+  .miembro-highlight-gianfranco {
+    @apply text-orange-600;
+  }
+
+  /* Sergio Matias */
+  .miembro-border-sergiomatias {
+    @apply p-1 bg-gradient-to-r from-indigo-500 to-blue-400;
+  }
+  .miembro-icon-badge-sergiomatias {
+    @apply inline-block w-10 h-10 rounded-full bg-gradient-to-r from-indigo-500 to-blue-400 text-white flex items-center justify-center mr-3 flex-shrink-0;
+  }
+  .miembro-tag-sergiomatias {
+    @apply bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full text-sm font-medium;
+  }
+  .miembro-highlight-sergiomatias {
+    @apply text-indigo-600;
+  }
+  
+  /* Estilos para cursos.astro - Elemento pendiente #1 y #4 */
+  /* Nivel 2 */
+  .curso-nivel-2-title {
+    @apply text-xl font-semibold text-teal-700;
+  }
+  
+  /* Nivel 3 */
+  .curso-nivel-3 {
+    @apply bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl p-6 shadow-sm;
+  }
+  .curso-nivel-3-badge {
+    @apply w-10 h-10 rounded-full bg-gradient-to-r from-emerald-500 to-green-500 text-white flex items-center justify-center mr-3 text-lg font-bold;
+  }
+  .curso-nivel-3-title {
+    @apply text-xl font-semibold text-emerald-700;
+  }
+  
+  /* Elementos decorativos - Elemento pendiente #3 */
+  .team-card-corner {
+    @apply border-t-2 border-l-2 border-sky-200 rounded-tl-lg;
+  }
+  
+  /* Botón CTA (call-to-action) - Elemento pendiente #3 */
+  .btn-cta {
+    @apply inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-sky-500 to-sky-400 text-white rounded-lg hover:from-sky-600 hover:to-sky-500 transition-all duration-300 font-medium shadow-md hover:shadow-lg transform hover:scale-105;
+  }
+  
+  /* CTA final - Elemento pendiente #3 */
+  .cta-container {
+    @apply bg-gradient-to-r from-sky-500 to-sky-400 rounded-2xl p-8 text-white text-center;
+  }
+
+  /* Clases para bordes con gradiente por categoría */
+  .gradient-border {
+    @apply p-[3px] rounded-2xl overflow-hidden;
+  }
+
+  .gradient-border-conventional {
+    background: linear-gradient(135deg, #3b82f6, #2dd4bf);
+  }
+
+  .gradient-border-psychology {
+    background: linear-gradient(135deg, #f59e0b, #fb923c);
+  }
+
+  .gradient-border-alternative {
+    background: linear-gradient(135deg, #22c55e, #2dd4bf);
+  }
+
+  .gradient-border-integrative {
+    background: linear-gradient(135deg, #9333ea, #ec4899);
+  }
+
+  .gradient-border-methodology {
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  }
+  
+  /* Iconos redondeados con gradientes por categoría */
+  .gradient-icon {
+    @apply w-10 h-10 rounded-full text-white flex items-center justify-center;
+  }
+  
+  .gradient-icon-conventional {
+    background: linear-gradient(135deg, #3b82f6, #2dd4bf);
+  }
+  
+  .gradient-icon-psychology {
+    background: linear-gradient(135deg, #f59e0b, #fb923c);
+  }
+  
+  .gradient-icon-alternative {
+    background: linear-gradient(135deg, #22c55e, #2dd4bf);
+  }
+  
+  .gradient-icon-integrative {
+    background: linear-gradient(135deg, #9333ea, #ec4899);
+  }
+  
+  .gradient-icon-methodology {
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  }
+  
+  /* Botones con gradientes por categoría */
+  .gradient-button {
+    @apply py-2 px-6 rounded-lg text-sm font-medium shadow-md text-white transition-all;
+  }
+  
+  .gradient-button:hover {
+    @apply shadow-lg transform -translate-y-0.5;
+  }
+  
+  .gradient-button-conventional {
+    background: linear-gradient(135deg, #3b82f6, #2dd4bf);
+  }
+  
+  .gradient-button-psychology {
+    background: linear-gradient(135deg, #f59e0b, #fb923c);
+  }
+  
+  .gradient-button-alternative {
+    background: linear-gradient(135deg, #22c55e, #2dd4bf);
+  }
+  
+  .gradient-button-integrative {
+    background: linear-gradient(135deg, #9333ea, #ec4899);
+  }
+  
+  .gradient-button-methodology {
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  }
+
+  /* Asegurar que el degradado de Psicología sea visible */
+  .gradient-border-psychology,
+  .gradient-icon-psychology,
+  .gradient-button-psychology {
+    background: linear-gradient(135deg, #f59e0b, #fb923c) !important;
+  }
+
+  /* Clases específicas para la tarjeta de psicología */
+  .psicologia-card-gradient {
+    background: linear-gradient(135deg, #f59e0b, #fb923c) !important;
+    padding: 3px !important;
+    border-radius: 1rem !important;
+    background-image: linear-gradient(135deg, #f59e0b, #fb923c) !important;
+  }
+
+  .psicologia-card-content {
+    background-color: white !important;
+    background: white !important;
+    border-radius: 0.75rem !important;
   }
 }
