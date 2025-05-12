@@ -11,7 +11,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
   <style is:global>
     /* Fondo base con degradado de alta calidad */
     body {
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #e0f7fa 100%) !important;
+      background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #ffffff 100%) !important;
     }
     
     /* Ocultar el div de gradiente del MainLayout */
@@ -24,7 +24,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
       content: "";
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2399c5dc' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338bdf8' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
       z-index: -1;
       pointer-events: none;
     }
@@ -33,10 +33,10 @@ import TeamGallery from '../components/about/TeamGallery.astro';
     :root {
       --card-radius: 1.25rem;
       --section-radius: 1.5rem;
-      --shadow-standard: 0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 15px -6px rgba(0, 152, 163, 0.05);
-      --shadow-hover: 0 20px 35px -10px rgba(59, 130, 246, 0.18), 0 10px 20px -10px rgba(0, 152, 163, 0.08);
-      --gradient-primary: linear-gradient(135deg, #3b82f6, #0ea5e9);
-      --gradient-secondary: linear-gradient(135deg, #0ea5e9, #14b8a6);
+      --shadow-standard: 0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 15px -6px rgba(59, 130, 246, 0.05);
+      --shadow-hover: 0 20px 35px -10px rgba(59, 130, 246, 0.18), 0 10px 20px -10px rgba(59, 130, 246, 0.08);
+      --gradient-primary: linear-gradient(135deg, #38bdf8, #0284c7);
+      --gradient-secondary: linear-gradient(135deg, #0284c7, #0284c7);
       --border-light: 1px solid rgba(255, 255, 255, 0.6);
     }
     
@@ -102,9 +102,9 @@ import TeamGallery from '../components/about/TeamGallery.astro';
   <!-- Elementos de fondo decorativos -->
   <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
     <!-- Formas orgánicas flotantes -->
-    <div class="absolute top-20 right-[10%] w-[500px] h-[500px] bg-gradient-to-bl from-blue-200/10 to-transparent rounded-full blur-3xl floating"></div>
-    <div class="absolute bottom-40 left-[5%] w-[600px] h-[600px] bg-gradient-to-tr from-teal-200/10 to-transparent rounded-full blur-3xl floating" style="animation-delay: -2s;"></div>
-    <div class="absolute top-[40%] left-[30%] w-[300px] h-[300px] bg-gradient-to-tr from-blue-100/10 to-teal-100/10 rounded-full blur-3xl floating" style="animation-delay: -4s;"></div>
+    <div class="absolute top-20 right-[10%] w-[500px] h-[500px] bg-gradient-to-bl from-sky-100/10 to-transparent rounded-full blur-3xl floating"></div>
+    <div class="absolute bottom-40 left-[5%] w-[600px] h-[600px] bg-gradient-to-tr from-sky-100/10 to-transparent rounded-full blur-3xl floating" style="animation-delay: -2s;"></div>
+    <div class="absolute top-[40%] left-[30%] w-[300px] h-[300px] bg-gradient-to-tr from-sky-100/10 to-sky-50/10 rounded-full blur-3xl floating" style="animation-delay: -4s;"></div>
   </div>
 
   <!-- Contenedor principal con estilo mejorado -->
@@ -115,9 +115,9 @@ import TeamGallery from '../components/about/TeamGallery.astro';
       <div class="relative z-10 px-6 py-12">
         <div class="max-w-6xl mx-auto">
           <div class="text-center mb-12">
-            <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-5 py-1.5 rounded-full mb-4 shadow-md">FUNDAMENTOS</span>
-            <h2 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent mb-4">Nuestros Valores y Principios</h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-teal-400 mx-auto mb-6 rounded-full"></div>
+            <span class="inline-block bg-gradient-to-r from-sky-500 to-sky-400 text-white text-sm font-medium px-5 py-1.5 rounded-full mb-4 shadow-md">FUNDAMENTOS</span>
+            <h2 class="text-4xl font-bold bg-gradient-to-r from-sky-600 to-sky-500 bg-clip-text text-transparent mb-4">Nuestros Valores y Principios</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-sky-400 to-sky-300 mx-auto mb-6 rounded-full"></div>
             <p class="text-gray-600 text-lg max-w-3xl mx-auto">
               Los pilares fundamentales que guían nuestra labor y definen la metodología EXCELSA.
             </p>
@@ -127,7 +127,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
             <!-- Valores card -->
             <div class="card-container group">
               <div class="card-header relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600/90 to-blue-500/90"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-sky-600/90 to-sky-500/90"></div>
                 <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20.01l20-20 1.41 1.41L1.41 21.42H0v-1.41zM20 1.41l18.59 18.59H40V21.41L20 1.41zM30 10.01l10-10V1.41L29.42 12.01 30 12.6z' /%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
                 <h2 class="text-2xl font-bold text-white relative z-10 flex items-center">
                   <span class="inline-block w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mr-4">
@@ -142,7 +142,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
               <div class="p-8">
                 <ul class="space-y-3">
                   <li class="flex items-center text-gray-800">
-                    <span class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-3">
+                    <span class="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center mr-3">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -150,7 +150,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                     <span class="text-lg">Excelencia</span>
                   </li>
                   <li class="flex items-center text-gray-800">
-                    <span class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-3">
+                    <span class="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center mr-3">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -158,7 +158,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                     <span class="text-lg">Acogida</span>
                   </li>
                   <li class="flex items-center text-gray-800">
-                    <span class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-3">
+                    <span class="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center mr-3">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -166,7 +166,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                     <span class="text-lg">Autovalencia</span>
                   </li>
                   <li class="flex items-center text-gray-800">
-                    <span class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-3">
+                    <span class="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center mr-3">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -174,7 +174,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                     <span class="text-lg">Innovación</span>
                   </li>
                   <li class="flex items-center text-gray-800">
-                    <span class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-3">
+                    <span class="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center mr-3">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -188,7 +188,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
             <!-- Principios card -->
             <div class="card-container group">
               <div class="card-header relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-teal-600/90 to-teal-500/90"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-sky-600/90 to-sky-500/90"></div>
                 <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20.01l20-20 1.41 1.41L1.41 21.42H0v-1.41zM20 1.41l18.59 18.59H40V21.41L20 1.41zM30 10.01l10-10V1.41L29.42 12.01 30 12.6z' /%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
                 <h2 class="text-2xl font-bold text-white relative z-10 flex items-center">
                   <span class="inline-block w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mr-4">
@@ -203,7 +203,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
               <div class="p-8">
                 <ul class="space-y-2">
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-sky-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -211,7 +211,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                     <span>Todo es posible</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-sky-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -219,7 +219,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                     <span>Dentro de nosotros está toda la capacidad</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-sky-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -227,7 +227,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                     <span>Todo resultado es mejorable</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-sky-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -235,7 +235,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                     <span>El amor es vida y esencia de la existencia</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-sky-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -243,7 +243,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                     <span>La paz es la madre de la sanación</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-sky-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -251,7 +251,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                     <span>La alegría es el motor</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-sky-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -259,7 +259,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                     <span>El propósito es la dirección</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-sky-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -267,7 +267,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                     <span>El amor al prójimo nutre la existencia</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-sky-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -275,7 +275,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                     <span>Somos consciencia eterna y parte del todo</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-sky-500 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -296,9 +296,9 @@ import TeamGallery from '../components/about/TeamGallery.astro';
       <div class="relative z-10 px-6 py-12">
         <div class="max-w-5xl mx-auto">
           <div class="text-center mb-12">
-            <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-5 py-1.5 rounded-full mb-4 shadow-md">HISTORIA</span>
-            <h2 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent mb-4">Nuestra Historia</h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-teal-400 mx-auto mb-6 rounded-full"></div>
+            <span class="inline-block bg-gradient-to-r from-sky-500 to-sky-400 text-white text-sm font-medium px-5 py-1.5 rounded-full mb-4 shadow-md">HISTORIA</span>
+            <h2 class="text-4xl font-bold bg-gradient-to-r from-sky-600 to-sky-500 bg-clip-text text-transparent mb-4">Nuestra Historia</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-sky-400 to-sky-300 mx-auto mb-6 rounded-full"></div>
             <p class="text-gray-600 text-lg max-w-3xl mx-auto">
               Descubre cómo comenzó nuestra misión de transformar vidas a través de la medicina alternativa.
             </p>
@@ -306,7 +306,7 @@ import TeamGallery from '../components/about/TeamGallery.astro';
           
           <div class="card-container">
             <div class="card-header relative overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-r from-blue-600/90 to-teal-500/90"></div>
+              <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-sky-50 group-hover:opacity-80 transition-opacity duration-300"></div>
               <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20.01l20-20 1.41 1.41L1.41 21.42H0v-1.41zM20 1.41l18.59 18.59H40V21.41L20 1.41zM30 10.01l10-10V1.41L29.42 12.01 30 12.6z' /%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
               <div class="flex items-center gap-4 px-8 py-4 relative z-10">
                 <span class="inline-block w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
@@ -319,38 +319,38 @@ import TeamGallery from '../components/about/TeamGallery.astro';
             </div>
             
             <div class="p-8">
-              <div class="relative border-l-4 border-blue-200 pl-10 pb-10">
-                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center -translate-x-1/2">
+              <div class="relative border-l-4 border-sky-200 pl-10 pb-10">
+                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-gradient-to-br from-sky-500 to-sky-400 flex items-center justify-center -translate-x-1/2">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <circle cx="12" cy="12" r="10" stroke="white" stroke-width="0" fill="white" opacity="0" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <span class="text-base font-bold text-blue-700 mb-2 block">1992</span>
+                <span class="text-base font-bold text-sky-700 mb-2 block">1992</span>
                 <p class="text-gray-800 text-lg leading-relaxed mb-6">
-                  Nuestra Empresa fue Fundada por <span class="font-semibold text-blue-700">Dr. Sergio Godorecci</span>, especialista en Medicina Interna y Diabetología y <span class="font-semibold text-blue-700">Dra. Sheril Irene Rivera</span> especialista en Salud Pública, Psiconeuroinmunología, PNL y Terapias Complementarias.
+                  Nuestra Empresa fue Fundada por <span class="font-semibold text-sky-700">Dr. Sergio Godorecci</span>, especialista en Medicina Interna y Diabetología y <span class="font-semibold text-sky-700">Dra. Sheril Irene Rivera</span> especialista en Salud Pública, Psiconeuroinmunología, PNL y Terapias Complementarias.
                 </p>
               </div>
-              <div class="relative border-l-4 border-blue-200 pl-10 pb-10">
-                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center -translate-x-1/2">
+              <div class="relative border-l-4 border-sky-200 pl-10 pb-10">
+                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-gradient-to-br from-sky-500 to-sky-400 flex items-center justify-center -translate-x-1/2">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <circle cx="12" cy="12" r="10" stroke="white" stroke-width="0" fill="white" opacity="0" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <p class="text-gray-800 text-lg leading-relaxed mb-6">
-                  La motivación en la creación del centro, nace después de la curación del Dr. Godorecci de un <span class="font-semibold text-blue-700">cáncer terminal con 3 meses de sobrevida</span>, fuera del alcance de tratamiento con medicina convencional. El cual fue tratado con Psiconeuroinmunología y terapias complementarias.
+                  La motivación en la creación del centro, nace después de la curación del Dr. Godorecci de un <span class="font-semibold text-sky-700">cáncer terminal con 3 meses de sobrevida</span>, fuera del alcance de tratamiento con medicina convencional. El cual fue tratado con Psiconeuroinmunología y terapias complementarias.
                 </p>
               </div>
-              <div class="relative border-l-4 border-blue-200 pl-10">
-                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center -translate-x-1/2">
+              <div class="relative border-l-4 border-sky-200 pl-10">
+                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-gradient-to-br from-sky-500 to-sky-400 flex items-center justify-center -translate-x-1/2">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <circle cx="12" cy="12" r="10" stroke="white" stroke-width="0" fill="white" opacity="0" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <p class="text-gray-800 text-lg leading-relaxed">
-                  Esto genera el anhelo de <span class="font-semibold text-blue-700">contribuir a la sanación de personas con enfermedades graves</span> en que el eje del tratamiento es apoyar con terapias naturales no invasivas, en el desarrollo de las capacidades de autocuración de las personas y que se encuentra en zonas ocultas del inconsciente.
+                  Esto genera el anhelo de <span class="font-semibold text-sky-700">contribuir a la sanación de personas con enfermedades graves</span> en que el eje del tratamiento es apoyar con terapias naturales no invasivas, en el desarrollo de <span class="font-semibold text-sky-700">capacidades de auto sanación</span> de las personas y que se encuentra en zonas ocultas del inconsciente.
                 </p>
               </div>
             </div>
@@ -365,9 +365,9 @@ import TeamGallery from '../components/about/TeamGallery.astro';
       <div class="relative z-10 px-6 py-12">
         <div class="max-w-7xl mx-auto">
           <div class="text-center mb-12">
-            <span class="inline-block bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm font-medium px-5 py-1.5 rounded-full mb-4 shadow-md">NUESTRO EQUIPO</span>
-            <h2 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent mb-4">Profesionales Especialistas</h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-teal-400 mx-auto mb-6 rounded-full"></div>
+            <span class="inline-block bg-gradient-to-r from-sky-500 to-sky-400 text-white text-sm font-medium px-5 py-1.5 rounded-full mb-4 shadow-md">NUESTRO EQUIPO</span>
+            <h2 class="text-4xl font-bold bg-gradient-to-r from-sky-600 to-sky-500 bg-clip-text text-transparent mb-4">Profesionales Especialistas</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-sky-400 to-sky-300 mx-auto mb-6 rounded-full"></div>
             <p class="text-gray-600 text-lg max-w-3xl mx-auto">
               Conoce a los especialistas que conforman nuestro equipo de profesionales dedicados a mejorar tu salud y bienestar.
             </p>
@@ -378,26 +378,26 @@ import TeamGallery from '../components/about/TeamGallery.astro';
             <!-- Dr. Sergio Godorecci -->
             <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 flex flex-col max-w-xl mx-auto w-full relative">
               <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-sky-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                 <img 
                   src="/assets/images/team/Sergio_G_B.avif" 
                   alt="Dr. Sergio Godorecci" 
                   class="absolute top-0 left-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                   style="object-position: center 30%; object-fit: contain; padding: 1.75rem;"
                 />
-                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-teal-100 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-sky-100 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-sky-100 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               <div class="p-7 flex-grow">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Dr. Sergio Godorecci Baeriswyl</h3>
                 <div class="flex flex-wrap gap-2 mb-3">
-                  <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Médico Cirujano</span>
-                  <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Medicina Interna</span>
+                  <span class="inline-block bg-sky-100 text-sky-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Médico Cirujano</span>
+                  <span class="inline-block bg-sky-100 text-sky-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Medicina Interna</span>
                 </div>
                 <p class="text-gray-600 mb-4 text-sm">
                   Cofundador Centro EXCELSA Salud y Calidad de Vida. Especialista en Medicina Interna y Diabetología con 20 años de experiencia.
                 </p>
-                <a href="/sergio" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                <a href="/sergio" class="inline-flex items-center text-sky-600 hover:text-sky-800 transition-colors font-medium">
                   Ver perfil completo
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -405,34 +405,34 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                 </a>
               </div>
               <!-- Decorative corner elements -->
-              <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-blue-200 rounded-tl-lg"></div>
-              <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-blue-200 rounded-tr-lg"></div>
-              <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-blue-200 rounded-bl-lg"></div>
-              <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-blue-200 rounded-br-lg"></div>
+              <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-sky-200 rounded-tl-lg"></div>
+              <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-sky-200 rounded-tr-lg"></div>
+              <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-sky-200 rounded-bl-lg"></div>
+              <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-sky-200 rounded-br-lg"></div>
             </div>
             <!-- Dra. Sheril Irene Rivera Villarroel -->
             <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 flex flex-col max-w-xl mx-auto w-full relative">
               <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-sky-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                 <img 
                   src="/assets/images/team/Sheril.avif" 
                   alt="Dra. Sheril Irene Rivera Villarroel" 
                   class="absolute top-0 left-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                   style="object-position: center 30%; object-fit: contain; padding: 1.75rem;"
                 />
-                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-teal-100 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-sky-100 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-sky-100 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               <div class="p-7 flex-grow">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Dra. Sheril Irene Rivera Villarroel</h3>
                 <div class="flex flex-wrap gap-2 mb-3">
-                  <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Directora Médica</span>
-                  <span class="inline-block bg-teal-100 text-teal-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Salud Pública, Psiconeuroinmunología, PNL, Esencias Florales</span>
+                  <span class="inline-block bg-sky-100 text-sky-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Directora Médica</span>
+                  <span class="inline-block bg-sky-100 text-sky-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Salud Pública, Psiconeuroinmunología, PNL, Esencias Florales</span>
                 </div>
                 <p class="text-gray-600 mb-4 text-sm">
                   Médico Cirujano con 30 años de experiencia en Medicina Alternativa. Creadora de la Metodología EXCELSA que integra diversas disciplinas complementarias con 95% de eficacia en patologías crónicas, autoinmunes y cáncer.
                 </p>
-                <a href="/sheril" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                <a href="/sheril" class="inline-flex items-center text-sky-600 hover:text-sky-800 transition-colors font-medium">
                   Ver perfil completo
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -440,10 +440,10 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                 </a>
               </div>
               <!-- Decorative corner elements -->
-              <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-blue-200 rounded-tl-lg"></div>
-              <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-blue-200 rounded-tr-lg"></div>
-              <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-blue-200 rounded-bl-lg"></div>
-              <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-blue-200 rounded-br-lg"></div>
+              <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-sky-200 rounded-tl-lg"></div>
+              <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-sky-200 rounded-tr-lg"></div>
+              <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-sky-200 rounded-bl-lg"></div>
+              <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-sky-200 rounded-br-lg"></div>
             </div>
           </div>
           <!-- Segunda fila: 3 miembros adicionales -->
@@ -451,26 +451,26 @@ import TeamGallery from '../components/about/TeamGallery.astro';
             <!-- Giancarlo Godorecci Rivera -->
             <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
               <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-sky-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                 <img 
                   src="/assets/images/team/Giancarlo.avif" 
                   alt="Giancarlo Godorecci Rivera" 
                   class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
                   style="object-fit: contain; padding: 1.75rem;"
                 />
-                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-teal-100 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-sky-100 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-sky-100 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               <div class="p-6">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Giancarlo Godorecci Rivera</h3>
                 <div class="flex flex-wrap gap-2 mb-3">
-                  <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Terapeuta en Medicina Complementaria</span>
-                  <span class="inline-block bg-teal-100 text-teal-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Reiki, Digitopuntura, ETT Tapping</span>
+                  <span class="inline-block bg-sky-100 text-sky-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Terapeuta en Medicina Complementaria</span>
+                  <span class="inline-block bg-sky-100 text-sky-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Reiki, Digitopuntura, ETT Tapping</span>
                 </div>
                 <p class="text-gray-600 mb-4 text-sm">
                   Especialista en terapias energéticas y técnicas de sanación natural con enfoque integral.
                 </p>
-                <a href="/giancarlo" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                <a href="/giancarlo" class="inline-flex items-center text-sky-600 hover:text-sky-800 transition-colors font-medium">
                   Ver perfil completo
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -478,34 +478,34 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                 </a>
               </div>
               <!-- Decorative corner elements -->
-              <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-blue-200 rounded-tl-lg"></div>
-              <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-blue-200 rounded-tr-lg"></div>
-              <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-blue-200 rounded-bl-lg"></div>
-              <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-blue-200 rounded-br-lg"></div>
+              <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-sky-200 rounded-tl-lg"></div>
+              <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-sky-200 rounded-tr-lg"></div>
+              <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-sky-200 rounded-bl-lg"></div>
+              <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-sky-200 rounded-br-lg"></div>
             </div>
             <!-- Gianfranco Godorecci Rivera -->
             <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
               <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-sky-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                 <img 
                   src="/assets/images/team/Gianfranco.avif" 
                   alt="Gianfranco Godorecci Rivera" 
                   class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
                   style="object-fit: contain; padding: 1.75rem;"
                 />
-                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-teal-100 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-sky-100 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-sky-100 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               <div class="p-6">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Gianfranco Godorecci Rivera</h3>
                 <div class="flex flex-wrap gap-2 mb-3">
-                  <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Psicólogo</span>
-                  <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Área Laboral y Clínica</span>
+                  <span class="inline-block bg-sky-100 text-sky-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Psicólogo</span>
+                  <span class="inline-block bg-sky-100 text-sky-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Área Laboral y Clínica</span>
                 </div>
                 <p class="text-gray-600 mb-4 text-sm">
                   12 años de experiencia. Forma parte del equipo terapéutico de Excelsa Medicina Alternativa. Especialista en atención Psicológica de adultos en todas las edades.
                 </p>
-                <a href="/gianfranco" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                <a href="/gianfranco" class="inline-flex items-center text-sky-600 hover:text-sky-800 transition-colors font-medium">
                   Ver perfil completo
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -513,34 +513,34 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                 </a>
               </div>
               <!-- Decorative corner elements -->
-              <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-blue-200 rounded-tl-lg"></div>
-              <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-blue-200 rounded-tr-lg"></div>
-              <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-blue-200 rounded-bl-lg"></div>
-              <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-blue-200 rounded-br-lg"></div>
+              <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-sky-200 rounded-tl-lg"></div>
+              <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-sky-200 rounded-tr-lg"></div>
+              <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-sky-200 rounded-bl-lg"></div>
+              <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-sky-200 rounded-br-lg"></div>
             </div>
             <!-- Sergio Matias Godorecci Rivera -->
             <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
               <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-sky-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                 <img 
                   src="/assets/images/team/Sergio_G_R.avif" 
                   alt="Sergio Matias Godorecci Rivera" 
                   class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
                   style="object-fit: contain; padding: 1.75rem;"
                 />
-                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-blue-100 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-teal-100 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-sky-100 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-sky-100 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               <div class="p-6">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Sergio Matias Godorecci Rivera</h3>
                 <div class="flex flex-wrap gap-2 mb-3">
-                  <span class="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Terapeuta de Aromaterapia</span>
-                  <span class="inline-block bg-teal-100 text-teal-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Elaborador de Aceites Esenciales</span>
+                  <span class="inline-block bg-sky-100 text-sky-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Terapeuta de Aromaterapia</span>
+                  <span class="inline-block bg-sky-100 text-sky-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Elaborador de Aceites Esenciales</span>
                 </div>
                 <p class="text-gray-600 mb-4 text-sm">
                   Especialista en apoyo de personas con enfermedades crónicas, autoinmunes, estrés y enfermedades musculo esqueléticas.
                 </p>
-                <a href="/sergio-matias" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                <a href="/sergio-matias" class="inline-flex items-center text-sky-600 hover:text-sky-800 transition-colors font-medium">
                   Ver perfil completo
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -548,10 +548,10 @@ import TeamGallery from '../components/about/TeamGallery.astro';
                 </a>
               </div>
               <!-- Decorative corner elements -->
-              <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-blue-200 rounded-tl-lg"></div>
-              <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-blue-200 rounded-tr-lg"></div>
-              <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-blue-200 rounded-bl-lg"></div>
-              <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-blue-200 rounded-br-lg"></div>
+              <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-sky-200 rounded-tl-lg"></div>
+              <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-sky-200 rounded-tr-lg"></div>
+              <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-sky-200 rounded-bl-lg"></div>
+              <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-sky-200 rounded-br-lg"></div>
             </div>
           </div>
         </div>
