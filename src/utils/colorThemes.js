@@ -22,7 +22,10 @@ export function getThemeColors(themeName = 'brand') {
       gradientDark: 'bg-gradient-to-r from-sky-500 to-sky-600',
       badgeClass: 'bg-sky-100 text-sky-500',
       dividerClass: 'bg-gradient-to-r from-sky-400 to-sky-300',
-      cssGradient: 'linear-gradient(135deg, #38BDF8, #0EA5E9)'
+      cssGradient: 'linear-gradient(135deg, #38BDF8, #0EA5E9)',
+      dividerPrimary: 'h-1 w-24 rounded-full mx-auto mb-6',
+      ctaContainer: 'bg-gradient-to-r text-white text-center rounded-2xl p-8',
+      gradientIcon: 'w-10 h-10 rounded-full text-white flex items-center justify-center'
     },
     
     // Medicina convencional (blue)
@@ -235,4 +238,22 @@ export function getEquivalentColorName(name, fromSystem, toSystem) {
   };
   
   return mappings[fromSystem]?.[toSystem]?.[name] || name;
+}
+
+
+// ... existing code ...
+
+/**
+ * Get component classes combined with theme styles
+ * @param {string} themeName - Name of the theme
+ * @returns {Object} - Object with combined component classes
+ */
+export function getComponentClasses(themeName = 'brand') {
+  const theme = getThemeColors(themeName);
+  
+  return {
+    dividerPrimary: `h-1 w-24 rounded-full mx-auto mb-6 ${theme.gradient}`,
+    ctaContainer: `${theme.gradient} rounded-2xl p-8 text-white text-center`,
+    gradientIcon: `w-10 h-10 rounded-full ${theme.gradient} text-white flex items-center justify-center`
+  };
 }
