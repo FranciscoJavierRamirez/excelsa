@@ -356,10 +356,21 @@ body {
   /* Elementos pendientes de equipo.astro - Elemento pendiente #2 */
   /* Giancarlo */
   .miembro-border-giancarlo {
-    @apply p-1 bg-gradient-to-r from-teal-500 to-green-400;
+    padding: 0.25rem;
+    background: linear-gradient(to right, var(--color-teal), #22c55e);
   }
   .miembro-icon-badge-giancarlo {
-    @apply inline-block w-10 h-10 rounded-full bg-gradient-to-r from-teal-500 to-green-400 text-white flex items-center justify-center mr-3 flex-shrink-0;
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    background: linear-gradient(to right, var(--color-teal), #22c55e);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
   }
   .miembro-tag-giancarlo {
     @apply bg-green-50 text-green-600 px-3 py-1 rounded-full text-sm font-medium;
