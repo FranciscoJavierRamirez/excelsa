@@ -112,6 +112,23 @@ body {
     @apply bg-gradient-to-r from-sky-gradient-start to-sky-gradient-end;
   }
 
+  /* Contenedores de sección y tarjetas - Clases nuevas para páginas */
+  .section-container {
+    @apply relative bg-white rounded-2xl shadow-md overflow-hidden mb-16;
+  }
+
+  .section-bg {
+    @apply absolute inset-0 bg-gradient-to-br from-sky-50/50 to-white pointer-events-none;
+  }
+
+  .card-container {
+    @apply bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl duration-300;
+  }
+
+  .card-header {
+    @apply p-6 relative overflow-hidden;
+  }
+
   /* Clases de componentes actualizadas */
   .button-primary {
     @apply bg-sky-500 hover:bg-sky-600 text-white py-2 px-6 rounded-md transition-colors;
@@ -497,7 +514,6 @@ body {
     background: linear-gradient(135deg, #f59e0b, #fb923c) !important;
   }
 
-  /* Clases específicas para la tarjeta de psicología */
   .psicologia-card-gradient {
     background: linear-gradient(135deg, #f59e0b, #fb923c) !important;
     padding: 3px !important;
