@@ -40,6 +40,34 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
     .floating {
       animation: float 6s ease-in-out infinite;
     }
+    
+    /* Animación sofisticada para gradientes */
+    .premium-gradient {
+      background-size: 200% 200%;
+      animation: premium-gradient-animation 8s ease infinite;
+    }
+
+    @keyframes premium-gradient-animation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Hover mejorado para elementos de lista */
+    .card-container li:hover {
+      background: linear-gradient(to right, rgba(240, 249, 255, 0.5), transparent);
+      transition: all 0.3s ease;
+    }
+
+    /* Efecto sutil de profundidad para tarjetas */
+    .card-container {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-container:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.1), 0 10px 10px -5px rgba(14, 165, 233, 0.05);
+    }
   </style>
 
   <!-- Elementos de fondo decorativos -->
@@ -58,9 +86,9 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
       <div class="relative z-10 px-6 py-12">
         <div class="max-w-6xl mx-auto">
           <div class="text-center mb-12">
-            <span class="inline-block badge badge-primary mb-4 shadow-md">FUNDAMENTOS</span>
-            <h2 class="text-4xl font-bold text-gradient bg-gradient-primary mb-4">Nuestros Valores y Principios</h2>
-            <div class="divider-primary"></div>
+            <span class="inline-block px-3 py-1 rounded-full text-sm font-medium text-white mb-4 shadow-md bg-gradient-to-r from-sky-500 via-sky-400 to-teal-400 premium-gradient">FUNDAMENTOS</span>
+            <h2 class="text-4xl font-bold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-sky-500 via-cyan-500 to-emerald-500 premium-gradient mb-4">Nuestros Valores y Principios</h2>
+            <div class="h-1 w-24 rounded-full mx-auto mb-6 bg-gradient-to-r from-sky-400 via-cyan-400 to-teal-400 premium-gradient"></div>
             <p class="text-gray-600 text-lg max-w-3xl mx-auto">
               Los pilares fundamentales que guían nuestra labor y definen la metodología EXCELSA.
             </p>
@@ -68,9 +96,9 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
           
           <div class="grid md:grid-cols-2 gap-8">
             <!-- Valores card -->
-            <div class="card-container group">
+            <div class="card-container group bg-white rounded-xl shadow-lg shadow-sky-900/5">
               <div class="card-header relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-primary"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-sky-500 via-sky-400 to-teal-400 premium-gradient"></div>
                 <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20.01l20-20 1.41 1.41L1.41 21.42H0v-1.41zM20 1.41l18.59 18.59H40V21.41L20 1.41zM30 10.01l10-10V1.41L29.42 12.01 30 12.6z' /%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
                 <h2 class="text-2xl font-bold text-white relative z-10 flex items-center">
                   <span class="inline-block w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mr-4">
@@ -85,7 +113,7 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
               <div class="p-8">
                 <ul class="space-y-3">
                   <li class="flex items-center text-gray-800">
-                    <span class="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center mr-3">
+                    <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-sky-500 to-teal-400 flex items-center justify-center mr-3">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -93,7 +121,7 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                     <span class="text-lg">Excelencia</span>
                   </li>
                   <li class="flex items-center text-gray-800">
-                    <span class="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center mr-3">
+                    <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-sky-500 to-teal-400 flex items-center justify-center mr-3">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -101,7 +129,7 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                     <span class="text-lg">Acogida</span>
                   </li>
                   <li class="flex items-center text-gray-800">
-                    <span class="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center mr-3">
+                    <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-sky-500 to-teal-400 flex items-center justify-center mr-3">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -109,7 +137,7 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                     <span class="text-lg">Autovalencia</span>
                   </li>
                   <li class="flex items-center text-gray-800">
-                    <span class="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center mr-3">
+                    <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-sky-500 to-teal-400 flex items-center justify-center mr-3">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -117,7 +145,7 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                     <span class="text-lg">Innovación</span>
                   </li>
                   <li class="flex items-center text-gray-800">
-                    <span class="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center mr-3">
+                    <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-sky-500 to-teal-400 flex items-center justify-center mr-3">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -129,9 +157,9 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
             </div>
             
             <!-- Principios card -->
-            <div class="card-container group">
+            <div class="card-container group bg-white rounded-xl shadow-lg shadow-sky-900/5">
               <div class="card-header relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-primary"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-sky-500 via-cyan-500 to-emerald-500 premium-gradient"></div>
                 <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20.01l20-20 1.41 1.41L1.41 21.42H0v-1.41zM20 1.41l18.59 18.59H40V21.41L20 1.41zM30 10.01l10-10V1.41L29.42 12.01 30 12.6z' /%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
                 <h2 class="text-2xl font-bold text-white relative z-10 flex items-center">
                   <span class="inline-block w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mr-4">
@@ -146,7 +174,7 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
               <div class="p-8">
                 <ul class="space-y-2">
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -154,7 +182,7 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                     <span>Todo es posible</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -162,7 +190,7 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                     <span>Dentro de nosotros está toda la capacidad</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -170,7 +198,7 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                     <span>Todo resultado es mejorable</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -178,7 +206,7 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                     <span>El amor es vida y esencia de la existencia</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -186,7 +214,7 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                     <span>La paz es la madre de la sanación</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -194,7 +222,7 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                     <span>La alegría es el motor</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -202,7 +230,7 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                     <span>El propósito es la dirección</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -210,7 +238,7 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                     <span>El amor al prójimo nutre la existencia</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -218,7 +246,7 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                     <span>Somos consciencia eterna y parte del todo</span>
                   </li>
                   <li class="flex items-start text-gray-800">
-                    <span class="w-6 h-6 rounded-full bg-gradient-primary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -239,17 +267,17 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
       <div class="relative z-10 px-6 py-12">
         <div class="max-w-5xl mx-auto">
           <div class="text-center mb-12">
-            <span class="inline-block badge badge-primary mb-4 shadow-md">HISTORIA</span>
-            <h2 class="text-4xl font-bold text-gradient bg-gradient-primary mb-4">Nuestra Historia</h2>
-            <div class="divider-primary"></div>
+            <span class="inline-block px-3 py-1 rounded-full text-sm font-medium text-white mb-4 shadow-md bg-gradient-to-r from-sky-500 via-sky-400 to-teal-400 premium-gradient">HISTORIA</span>
+            <h2 class="text-4xl font-bold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-sky-500 via-cyan-500 to-emerald-500 premium-gradient mb-4">Nuestra Historia</h2>
+            <div class="h-1 w-24 rounded-full mx-auto mb-6 bg-gradient-to-r from-sky-400 via-cyan-400 to-teal-400 premium-gradient"></div>
             <p class="text-gray-600 text-lg max-w-3xl mx-auto">
               Descubre cómo comenzó nuestra misión de transformar vidas a través de la medicina alternativa.
             </p>
           </div>
           
-          <div class="card-container">
+          <div class="card-container bg-white rounded-xl shadow-lg shadow-sky-900/5">
             <div class="card-header relative overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-sky-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+              <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500 via-sky-500 to-teal-500 group-hover:opacity-85 transition-opacity duration-300 premium-gradient"></div>
               <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20.01l20-20 1.41 1.41L1.41 21.42H0v-1.41zM20 1.41l18.59 18.59H40V21.41L20 1.41zM30 10.01l10-10V1.41L29.42 12.01 30 12.6z' /%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
               <div class="flex items-center gap-4 px-8 py-4 relative z-10">
                 <span class="inline-block w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
@@ -262,38 +290,38 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
             </div>
             
             <div class="p-8">
-              <div class="relative border-l-4 border-primary-200 pl-10 pb-10">
-                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-gradient-primary flex items-center justify-center -translate-x-1/2">
+              <div class="relative border-l-4 border-sky-200 pl-10 pb-10">
+                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-gradient-to-r from-cyan-500 to-teal-400 flex items-center justify-center -translate-x-1/2">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <circle cx="12" cy="12" r="10" stroke="white" stroke-width="0" fill="white" opacity="0" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <span class="text-base font-bold text-primary-dark mb-2 block">1992</span>
+                <span class="text-base font-bold text-cyan-600 mb-2 block">1992</span>
                 <p class="text-gray-800 text-lg leading-relaxed mb-6">
-                  Nuestra Empresa fue Fundada por <span class="font-semibold text-primary-dark">Dr. Sergio Godorecci</span>, especialista en Medicina Interna y Diabetología y <span class="font-semibold text-primary-dark">Dra. Sheril Irene Rivera</span> especialista en Salud Pública, Psiconeuroinmunología, PNL y Terapias Complementarias.
+                  Nuestra Empresa fue Fundada por <span class="font-semibold text-cyan-600">Dr. Sergio Godorecci</span>, especialista en Medicina Interna y Diabetología y <span class="font-semibold text-cyan-600">Dra. Sheril Irene Rivera</span> especialista en Salud Pública, Psiconeuroinmunología, PNL y Terapias Complementarias.
                 </p>
               </div>
-              <div class="relative border-l-4 border-primary-200 pl-10 pb-10">
-                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-gradient-primary flex items-center justify-center -translate-x-1/2">
+              <div class="relative border-l-4 border-sky-200 pl-10 pb-10">
+                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-gradient-to-r from-cyan-500 to-teal-400 flex items-center justify-center -translate-x-1/2">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <circle cx="12" cy="12" r="10" stroke="white" stroke-width="0" fill="white" opacity="0" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <p class="text-gray-800 text-lg leading-relaxed mb-6">
-                  La motivación en la creación del centro, nace después de la curación del Dr. Godorecci de un <span class="font-semibold text-primary-dark">cáncer terminal con 3 meses de sobrevida</span>, fuera del alcance de tratamiento con medicina convencional. El cual fue tratado con Psiconeuroinmunología y terapias complementarias.
+                  La motivación en la creación del centro, nace después de la curación del Dr. Godorecci de un <span class="font-semibold text-cyan-600">cáncer terminal con 3 meses de sobrevida</span>, fuera del alcance de tratamiento con medicina convencional. El cual fue tratado con Psiconeuroinmunología y terapias complementarias.
                 </p>
               </div>
-              <div class="relative border-l-4 border-primary-200 pl-10">
-                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-gradient-primary flex items-center justify-center -translate-x-1/2">
+              <div class="relative border-l-4 border-sky-200 pl-10">
+                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-gradient-to-r from-cyan-500 to-teal-400 flex items-center justify-center -translate-x-1/2">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <circle cx="12" cy="12" r="10" stroke="white" stroke-width="0" fill="white" opacity="0" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <p class="text-gray-800 text-lg leading-relaxed">
-                  Esto genera el anhelo de <span class="font-semibold text-primary-dark">contribuir a la sanación de personas con enfermedades graves</span> en que el eje del tratamiento es apoyar con terapias naturales no invasivas, en el desarrollo de <span class="font-semibold text-primary-dark">capacidades de auto sanación</span> de las personas y que se encuentra en zonas ocultas del inconsciente.
+                  Esto genera el anhelo de <span class="font-semibold text-cyan-600">contribuir a la sanación de personas con enfermedades graves</span> en que el eje del tratamiento es apoyar con terapias naturales no invasivas, en el desarrollo de <span class="font-semibold text-cyan-600">capacidades de auto sanación</span> de las personas y que se encuentra en zonas ocultas del inconsciente.
                 </p>
               </div>
             </div>
@@ -308,9 +336,9 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
       <div class="relative z-10 px-6 py-12">
         <div class="max-w-7xl mx-auto">
           <div class="text-center mb-12">
-            <span class="inline-block badge badge-primary mb-4 shadow-md">NUESTRO EQUIPO</span>
-            <h2 class="text-4xl font-bold text-gradient bg-gradient-primary mb-4">Profesionales Especialistas</h2>
-            <div class="divider-primary"></div>
+            <span class="inline-block px-3 py-1 rounded-full text-sm font-medium text-white mb-4 shadow-md bg-gradient-to-r from-sky-500 via-sky-400 to-teal-400 premium-gradient">NUESTRO EQUIPO</span>
+            <h2 class="text-4xl font-bold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-sky-500 via-cyan-500 to-emerald-500 premium-gradient mb-4">Profesionales Especialistas</h2>
+            <div class="h-1 w-24 rounded-full mx-auto mb-6 bg-gradient-to-r from-sky-400 via-cyan-400 to-teal-400 premium-gradient"></div>
             <p class="text-gray-600 text-lg max-w-3xl mx-auto">
               Conoce a los especialistas que conforman nuestro equipo de profesionales dedicados a mejorar tu salud y bienestar.
             </p>
@@ -321,15 +349,15 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
             <!-- Dr. Sergio Godorecci -->
             <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 flex flex-col max-w-xl mx-auto w-full relative">
               <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                <div class="absolute inset-0 bg-gradient-to-tr from-primary-50 to-primary-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-cyan-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                 <img 
                   src="/assets/images/team/Sergio_G_B.avif" 
                   alt="Dr. Sergio Godorecci" 
                   class="absolute top-0 left-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                   style="object-position: center 30%; object-fit: contain; padding: 1.75rem;"
                 />
-                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary-100 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-primary-100 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-sky-200/40 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-cyan-200/40 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               <div class="p-7 flex-grow">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Dr. Sergio Godorecci Baeriswyl</h3>
@@ -357,15 +385,15 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
             <!-- Dra. Sheril Irene Rivera Villarroel -->
             <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 flex flex-col max-w-xl mx-auto w-full relative">
               <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                <div class="absolute inset-0 bg-gradient-to-tr from-primary-50 to-primary-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-cyan-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                 <img 
                   src="/assets/images/team/Sheril.avif" 
                   alt="Dra. Sheril Irene Rivera Villarroel" 
                   class="absolute top-0 left-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                   style="object-position: center 30%; object-fit: contain; padding: 1.75rem;"
                 />
-                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary-100 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-primary-100 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-sky-200/40 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-cyan-200/40 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               <div class="p-7 flex-grow">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Dra. Sheril Irene Rivera Villarroel</h3>
@@ -396,15 +424,15 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
             <!-- Giancarlo Godorecci Rivera -->
             <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
               <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                <div class="absolute inset-0 bg-gradient-to-tr from-primary-50 to-primary-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-cyan-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                 <img 
                   src="/assets/images/team/Giancarlo.avif" 
                   alt="Giancarlo Godorecci Rivera" 
                   class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
                   style="object-fit: contain; padding: 1.75rem;"
                 />
-                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-primary-100 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary-100 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-sky-200/40 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-cyan-200/40 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               <div class="p-6">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Giancarlo Godorecci Rivera</h3>
@@ -432,15 +460,15 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
             <!-- Gianfranco Godorecci Rivera -->
             <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
               <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                <div class="absolute inset-0 bg-gradient-to-tr from-primary-50 to-primary-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-cyan-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                 <img 
                   src="/assets/images/team/Gianfranco.avif" 
                   alt="Gianfranco Godorecci Rivera" 
                   class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
                   style="object-fit: contain; padding: 1.75rem;"
                 />
-                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-primary-100 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary-100 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-sky-200/40 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-cyan-200/40 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               <div class="p-6">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Gianfranco Godorecci Rivera</h3>
@@ -468,15 +496,15 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
             <!-- Sergio Matias Godorecci Rivera -->
             <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
               <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                <div class="absolute inset-0 bg-gradient-to-tr from-primary-50 to-primary-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-cyan-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                 <img 
                   src="/assets/images/team/Sergio_G_R.avif" 
                   alt="Sergio Matias Godorecci Rivera" 
                   class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
                   style="object-fit: contain; padding: 1.75rem;"
                 />
-                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-primary-100 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary-100 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-sky-200/40 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-cyan-200/40 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               <div class="p-6">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Sergio Matias Godorecci Rivera</h3>

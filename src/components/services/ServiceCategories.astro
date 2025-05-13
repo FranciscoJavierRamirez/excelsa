@@ -17,59 +17,103 @@ interface Props {
 
 const { categories = [] } = Astro.props;
 
-// Función para obtener color de gradiente según el índice
-const getCategoryGradient = (index) => {
-  const gradients = [
-    "from-primary to-secondary",
-    "from-blue-600 to-sky-400",
-    "from-teal-500 to-green-400",
-    "from-purple-500 to-indigo-500",
-    "from-rose-500 to-pink-500"
-  ];
-  return gradients[index % gradients.length];
+// Función para obtener color de gradiente según el índice o nombre de categoría
+const getCategoryStyles = (index, categoryName) => {
+  // Valores por defecto
+  let gradient = "from-blue-700 to-cyan-500";
+  let hoverTextColor = "hover:text-blue-600";
+  let borderColor = "border-blue-100";
+  let bulletColor = "text-blue-500";
+  let benefitTitleColor = "text-blue-600";
+
+  // Personalización basada en el nombre de la categoría
+  if (categoryName === "Medicina Convencional") {
+    gradient = "from-blue-700 to-cyan-500";
+    hoverTextColor = "hover:text-blue-600";
+    borderColor = "border-blue-100";
+    bulletColor = "text-blue-500";
+    benefitTitleColor = "text-blue-600";
+  } 
+  else if (categoryName === "Psicología") {
+    gradient = "from-amber-500 to-orange-400";
+    hoverTextColor = "hover:text-amber-500";
+    borderColor = "border-amber-100";
+    bulletColor = "text-amber-500";
+    benefitTitleColor = "text-amber-600";
+  } 
+  else if (categoryName === "Medicina Alternativa") {
+    gradient = "from-emerald-600 to-teal-400";
+    hoverTextColor = "hover:text-emerald-500";
+    borderColor = "border-emerald-100";
+    bulletColor = "text-emerald-500";
+    benefitTitleColor = "text-emerald-600";
+  } 
+  else if (categoryName === "Consulta Integrativa") {
+    gradient = "from-violet-600 to-purple-400";
+    hoverTextColor = "hover:text-violet-500";
+    borderColor = "border-violet-100";
+    bulletColor = "text-violet-500";
+    benefitTitleColor = "text-violet-600";
+  }
+  // Fallback para otras categorías o índice
+  else if (index !== undefined) {
+    const gradients = [
+      "from-blue-700 to-cyan-500",
+      "from-amber-500 to-orange-400",
+      "from-emerald-600 to-teal-400",
+      "from-violet-600 to-purple-400",
+      "from-rose-500 to-pink-500"
+    ];
+    gradient = gradients[index % gradients.length];
+  }
+
+  return { gradient, hoverTextColor, borderColor, bulletColor, benefitTitleColor };
 };
 ---
 
 <div class="mb-8">
   <!-- Layout para categorías par en desktop (2x2 grid) -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-    {categories.map((category, index) => (
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 transform hover:scale-[1.02] flex flex-col category-card">
-        <div class={`bg-gradient-to-r ${getCategoryGradient(index)} py-4 px-6 cursor-pointer category-header flex justify-between items-center`}>
-          <h3 class="text-xl font-bold text-white">{category.name}</h3>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white transform transition-transform category-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-        <div class="p-4 md:p-6 flex-grow category-content hidden">
-          <ul class="space-y-3">
-            {category.services.map((service) => (
-              <li class="relative p-2 rounded-lg hover:bg-blue-50 transition-colors duration-200">
-                <div class="flex items-start cursor-pointer">
-                  <span class="text-teal-500 text-lg mr-2 mt-0.5 flex-shrink-0">•</span>
-                  <div class="flex-grow">
-                    <h4 class="font-medium text-gray-800 hover:text-teal-500 transition-colors duration-200">{service.title}</h4>
-                    <div class="text-sm text-gray-600 mt-2 service-details">
-                      <p>{service.description}</p>
-                      {service.benefits && service.benefits.length > 0 && (
-                        <div class="mt-2 bg-white bg-opacity-80 p-2 rounded-md border border-teal-100">
-                          <p class="text-xs font-semibold text-teal-600 mb-1">Beneficios:</p>
-                          <ul class="list-disc list-inside space-y-1 text-xs pl-1">
-                            {service.benefits.map((benefit) => (
-                              <li>{benefit}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
+    {categories.map((category, index) => {
+      const { gradient, hoverTextColor, borderColor, bulletColor, benefitTitleColor } = getCategoryStyles(index, category.name);
+      return (
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 transform hover:scale-[1.02] flex flex-col category-card">
+          <div class={`bg-gradient-to-r ${gradient} py-4 px-6 cursor-pointer category-header flex justify-between items-center`}>
+            <h3 class="text-xl font-bold text-white">{category.name}</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white transform transition-transform category-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <div class="p-4 md:p-6 flex-grow category-content hidden">
+            <ul class="space-y-3">
+              {category.services.map((service) => (
+                <li class="relative p-2 rounded-lg hover:bg-blue-50/30 transition-colors duration-200">
+                  <div class="flex items-start cursor-pointer">
+                    <span class={`${bulletColor} text-lg mr-2 mt-0.5 flex-shrink-0`}>•</span>
+                    <div class="flex-grow">
+                      <h4 class={`font-medium text-gray-800 ${hoverTextColor} transition-colors duration-200`}>{service.title}</h4>
+                      <div class="text-sm text-gray-600 mt-2 service-details">
+                        <p>{service.description}</p>
+                        {service.benefits && service.benefits.length > 0 && (
+                          <div class={`mt-2 bg-white bg-opacity-80 p-2 rounded-md border ${borderColor}`}>
+                            <p class={`text-xs font-semibold ${benefitTitleColor} mb-1`}>Beneficios:</p>
+                            <ul class="list-disc list-inside space-y-1 text-xs pl-1">
+                              {service.benefits.map((benefit) => (
+                                <li>{benefit}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
-    ))}
+      );
+    })}
   </div>
 </div>
 
