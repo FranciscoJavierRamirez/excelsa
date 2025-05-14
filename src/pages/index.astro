@@ -1,9 +1,44 @@
 ---
 import Layout from '../layouts/MainLayout.astro';
+import { SEO } from 'astro-seo';
+import { getSEOConfig, generateSchema } from '../utils/seo';
 import ImageCarousel from '../components/home/ImageCarousel.astro';
 import ServiceCategories from '../components/services/ServiceCategories.astro';
 import TeamSection from '../components/about/TeamSection.astro';
 import ContactInfo from '../components/common/ContactInfo.astro';
+
+// Configuración de SEO
+const seoConfig = getSEOConfig({
+  title: "EXCELSA Calidad de Vida, Medicina Alternativa",
+  description: "Encontrar el camino interior a la propia salud y calidad de vida en todas las edades. Centro integral para tu bienestar con servicios médicos, psicológicos y terapias alternativas.",
+  path: "/",
+  additionalMeta: [
+    { name: "keywords", content: "medicina alternativa, psiconeuroinmunología, reiki, flores de bach, terapias holísticas, centro médico, salud integral" }
+  ]
+});
+
+// Schema.org para negocio local (mejora el SEO)
+const schemaOrgConfig = generateSchema("MedicalOrganization", {
+  name: "EXCELSA Calidad de Vida, Medicina Alternativa",
+  url: "https://vidaplena.com",
+  logo: "/assets/logo.png",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Simón Bolívar 5958",
+    addressLocality: "La Reina",
+    addressRegion: "Santiago",
+    postalCode: "7880030",
+    addressCountry: "CL"
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "-33.4513",
+    longitude: "-70.5516"
+  },
+  telephone: "+56982289832",
+  email: "excelsa1@gmail.com",
+  medicalSpecialty: ["Medicina Alternativa", "Psicología", "Medicina Convencional"]
+});
 
 const serviceCategories = [
   {
@@ -192,13 +227,17 @@ const carouselImages = [
 
 // Información de contacto para el componente ContactInfo
 const contactInfo = {
-  phone: "+56 2 2222 3333",
-  email: "contacto@excelsacalidaddevida.cl",
-  address: "Av. Principal 123, Santiago, Chile"
+  phone: "+56 9 8228 9832 / +56 9 8228 9831",
+  email: "excelsa1@gmail.com",
+  address: "Simón Bolívar 5958, La Reina, Santiago, Chile"
 };
 ---
 
-<Layout title="EXCELSA Calidad de Vida, Medicina Alternativa" contactInfo={contactInfo}>
+<Layout 
+  title="EXCELSA Calidad de Vida, Medicina Alternativa" 
+  contactInfo={contactInfo}
+  seoConfig={seoConfig}
+  schemaOrgConfig={schemaOrgConfig}>
   <!-- Control completo del fondo base mediante un div absolutamente posicionado con un degradado más atractivo -->
   <div class="fixed inset-0 z-[-8]">
     <div class="absolute inset-0 bg-gradient-to-b from-sky-100 via-white to-sky-50"></div>
@@ -519,4 +558,3 @@ const contactInfo = {
     </div>
   </section>
 </Layout>
-
