@@ -10,38 +10,119 @@ interface Props {
 }
 
 const { phone, email, address } = Astro.props;
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="w-full bg-gradient-to-b from-blue-300 to-blue-600 text-white relative z-10">
   <div class="container mx-auto px-4 py-12">
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Columna 1: Acerca de -->
       <div>
-        <h3 class="text-xl font-semibold mb-4 text-white">Excelsa</h3>
-        <p class="mb-4 text-white">Centro de Medicina Integral dedicado a mejorar la calidad de vida de nuestros pacientes a través de un enfoque holístico de la salud.</p>
-        <SocialLinks />
+        <h3 class="text-xl font-semibold mb-4">Excelsa</h3>
+        <p class="mb-6">Centro de Medicina Integral dedicado a mejorar la calidad de vida de nuestros pacientes a través de un enfoque holístico de la salud.</p>
+        
+        <h4 class="text-lg font-medium mb-3">Redes Sociales:</h4>
+        <div class="flex flex-col space-y-2">
+          <a href="https://facebook.com/grupoexcelsa" class="flex items-center hover:text-sky-100 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 320 512">
+              <path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+            </svg>
+            <span>grupoexcelsa</span>
+          </a>
+          <a href="https://instagram.com/excelsa.vida" class="flex items-center hover:text-sky-100 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+            </svg>
+            <span>@excelsa.vida</span>
+          </a>
+        </div>
       </div>
       
+      <!-- Columna 2: Enlaces Rápidos -->
       <div>
-        <h3 class="text-xl font-semibold mb-4 text-white">Enlaces Rápidos</h3>
-        <ul class="space-y-2 text-white">
-          <li><a href="/" class="text-white hover:underline hover:text-sky-100 transition-colors">Inicio</a></li>
-          <li><a href="/nosotros" class="text-white hover:underline hover:text-sky-100 transition-colors">Nosotros</a></li>
-          <li><a href="/servicios" class="text-white hover:underline hover:text-sky-100 transition-colors">Servicios</a></li>
-          <li><a href="/ubicacion" class="text-white hover:underline hover:text-sky-100 transition-colors">Ubicación</a></li>
-          <li><a href="/blog" class="text-white hover:underline hover:text-sky-100 transition-colors">Blog</a></li>
-          <li><a href="/contacto" class="text-white hover:underline hover:text-sky-100 transition-colors">Contacto</a></li>
+        <h3 class="text-xl font-semibold mb-4">Enlaces Rápidos</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="/" class="hover:underline hover:text-sky-100 transition-colors">Inicio</a>
+          </li>
+          <li>
+            <a href="/nosotros" class="hover:underline hover:text-sky-100 transition-colors">Nosotros</a>
+          </li>
+          <li>
+            <a href="/servicios" class="hover:underline hover:text-sky-100 transition-colors">Servicios</a>
+          </li>
+          <li>
+            <a href="/ubicacion" class="hover:underline hover:text-sky-100 transition-colors">Ubicación</a>
+          </li>
+          <li>
+            <a href="/blog" class="hover:underline hover:text-sky-100 transition-colors">Blog</a>
+          </li>
+          <li>
+            <a href="/contacto" class="hover:underline hover:text-sky-100 transition-colors">Contacto</a>
+          </li>
         </ul>
       </div>
       
-      <ContactInfo 
-        phone={phone}
-        email={email}
-        address={address}
-      />
+      <!-- Columna 3: Centros -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4">Centros</h3>
+        
+        <!-- Centro La Reina -->
+        <div class="mb-6">
+          <h4 class="text-lg font-medium mb-2">Centro La Reina</h4>
+          <div class="flex items-start mb-2">
+            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+            <span>Simón Bolívar 5958, La Reina, Santiago, Chile</span>
+          </div>
+          <div class="flex items-center">
+            <i class="far fa-clock mr-2"></i>
+            <span>Lunes a viernes de 8:30 a 19:00 hrs</span>
+          </div>
+        </div>
+        
+        <!-- Centro San Francisco de Chacabuco -->
+        <div>
+          <h4 class="text-lg font-medium mb-2">Centro San Francisco de Chacabuco</h4>
+          <div class="flex items-start mb-2">
+            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+            <span>Condominio San Francisco de Chacabuco parcela 84 km 37 Los Libertadores</span>
+          </div>
+          <div class="flex items-center">
+            <i class="far fa-clock mr-2"></i>
+            <span>Sábados de 10:00 a 14:00 hrs</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Columna 4: Contacto -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4">Contacto</h3>
+        
+        <div class="mb-4">
+          <h4 class="text-lg font-medium mb-2">Teléfonos:</h4>
+          <div class="flex items-center mb-2">
+            <i class="fas fa-phone mr-2"></i>
+            <span>+56 9 8228 9832</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fas fa-phone mr-2"></i>
+            <span>+56 9 8228 9831</span>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-medium mb-2">Email:</h4>
+          <div class="flex items-center">
+            <i class="fas fa-envelope mr-2"></i>
+            <a href="mailto:excelsa1@gmail.com" class="hover:underline hover:text-sky-100 transition-colors">excelsa1@gmail.com</a>
+          </div>
+        </div>
+      </div>
     </div>
     
-    <div class="border-t border-white border-opacity-20 mt-8 pt-8 text-center">
-      <p class="text-white">&copy; {new Date().getFullYear()} Excelsa. Todos los derechos reservados.</p>
+    <!-- Copyright -->
+    <div class="border-t border-white border-opacity-20 mt-8 pt-6 text-center">
+      <p>&copy; {currentYear} Excelsa. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>

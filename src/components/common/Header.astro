@@ -27,8 +27,7 @@ const mainNavItems = [
   { title: "Equipo", url: "/equipo" },
   { title: "Testimonios", url: "/testimonios" },
   { title: "Cursos", url: "/cursos" },
-  { title: "Blog", url: "/blog" },
-  { title: "Contacto", url: "/contacto" }
+  { title: "Contacto", url: "https://excelsa.site.agendapro.com/cl/sucursal/11444", external: true }
 ];
 ---
 
@@ -50,6 +49,7 @@ const mainNavItems = [
                   ? brandColors.activeClasses 
                   : `text-gray-700 ${brandColors.hoverText} ${brandColors.hoverBg}`
               }`}
+              {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             >
               {item.title}
             </a>
