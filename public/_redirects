@@ -1,0 +1,2 @@
+# Redirige todas las rutas no encontradas al index.html para manejar enrutamiento en el cliente
+/* /index.html 200 

@@ -1,0 +1,8 @@
+# Configuración de Cloudflare Pages
+name = "excelsa"
+type = "webpack"
+workers_dev = true
+compatibility_date = "2023-10-30"
+
+[site]
+bucket = "./dist" 
