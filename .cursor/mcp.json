@@ -1,5 +1,11 @@
 {
     "servers": [
-      { "id": "astro-mcp", "command": "npx astro-mcp", "transport": "stdio" }
-    ]
+      { "id": "astro-mcp", "command": "npx astro-mcp", "transport": "stdio", "args": ["--project-root", "."] }
+    ],
+    "contextSettings": {
+      "maxTokens": 4096,
+      "includeProjectStructure": true,
+      "includeDependencies": true,
+      "watchFiles": ["src/**/*.astro", "src/**/*.ts", "astro.config.mjs", "tailwind.config.cjs"]
+    }
   }

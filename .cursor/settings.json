@@ -1,0 +1,23 @@
+{
+  "astro.typescript.enabled": true,
+  "astro.typescript.allowArbitraryAttributes": true,
+  "emmet.includeLanguages": {
+    "astro": "html"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "typescript.suggest.autoImports": true,
+  "files.associations": {
+    "*.astro": "astro"
+  },
+  "cursor.cpp.disabledLanguages": ["plaintext"],
+  "cursor.general.enableMCP": true,
+  "workbench.colorTheme": "Default Dark+",
+  "editor.inlineSuggest.enabled": true,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+} 

@@ -1,0 +1,133 @@
+{
+  "folders": [
+    {
+      "name": "🚀 Astro Project",
+      "path": "."
+    },
+    {
+      "name": "📖 Documentation",
+      "path": "./INSTRUCTIONS"
+    },
+    {
+      "name": "🧪 Tests",
+      "path": "./cypress"
+    },
+    {
+      "name": "📚 Storybook",
+      "path": "./.storybook"
+    }
+  ],
+  "settings": {
+    "astro.typescript.enabled": true,
+    "astro.typescript.allowArbitraryAttributes": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "files.associations": {
+      "*.astro": "astro"
+    },
+    "emmet.includeLanguages": {
+      "astro": "html"
+    },
+    "typescript.preferences.includePackageJsonAutoImports": "auto",
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+      "*": true,
+      "astro": true,
+      "typescript": true,
+      "javascript": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "astro-build.astro-vscode",
+      "bradlc.vscode-tailwindcss",
+      "esbenp.prettier-vscode",
+      "ms-vscode.vscode-eslint",
+      "github.copilot",
+      "github.copilot-chat"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "🚀 Start Development Server",
+        "type": "npm",
+        "script": "dev",
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "🐳 Start Docker Development",
+        "type": "shell",
+        "command": "docker-compose up dev",
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "🧪 Run Tests",
+        "type": "npm",
+        "script": "test",
+        "group": "test",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "🔧 Format Code",
+        "type": "npm",
+        "script": "format",
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "📦 Build Production",
+        "type": "npm",
+        "script": "build",
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        }
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "🚀 Launch Astro Development Server",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/node_modules/.bin/astro",
+        "args": ["dev"],
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen"
+      }
+    ]
+  }
+} 

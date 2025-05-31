@@ -1,0 +1,28 @@
+{
+  "astro.typescript.enabled": true,
+  "astro.typescript.allowArbitraryAttributes": true,
+  "emmet.includeLanguages": {
+    "astro": "html"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "astro": true,
+    "typescript": true,
+    "javascript": true
+  },
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "typescript.suggest.autoImports": true,
+  "files.associations": {
+    "*.astro": "astro"
+  },
+  "editor.inlineSuggest.enabled": true,
+  "editor.suggestSelection": "first",
+  "workbench.colorTheme": "Default Dark+",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true
+} 
