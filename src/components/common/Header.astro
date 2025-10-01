@@ -23,6 +23,7 @@ const mainNavItems = [
   { title: "Inicio", url: "/" },
   { title: "Nosotros", url: "/nosotros" },
   { title: "Servicios", url: "/servicios" },
+  { title: "Imágenes", url: "/imagenes" },
   { title: "Metodología", url: "/metodologia" },
   { title: "Equipo", url: "/equipo" },
   { title: "Testimonios", url: "/testimonios" },
@@ -49,7 +50,6 @@ const mainNavItems = [
                   ? brandColors.activeClasses 
                   : `text-gray-700 ${brandColors.hoverText} ${brandColors.hoverBg}`
               }`}
-              {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             >
               {item.title}
             </a>

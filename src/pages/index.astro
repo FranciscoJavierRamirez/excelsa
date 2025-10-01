@@ -2,7 +2,6 @@
 import Layout from '../layouts/MainLayout.astro';
 import { SEO } from 'astro-seo';
 import { getSEOConfig, generateSchema } from '../utils/seo';
-import ImageCarousel from '../components/home/ImageCarousel.astro';
 import ServiceCategories from '../components/services/ServiceCategories.astro';
 import TeamSection from '../components/about/TeamSection.astro';
 import ContactInfo from '../components/common/ContactInfo.astro';
@@ -191,39 +190,11 @@ const teamMembers = [
   }
 ];
 
-// Definimos las imágenes para el carrusel
-const carouselImages = [
-  { 
-    avif: "/assets/images/carousel/slide1.avif",
-    webp: "/assets/images/carousel/slide1.webp",
-    jpg: "/assets/images/carousel/slide1.jpg", 
-    alt: "Centro de medicina integral Excelsa" 
-  },
-  { 
-    avif: "/assets/images/carousel/slide2.avif",
-    webp: "/assets/images/carousel/slide2.webp",
-    jpg: "/assets/images/carousel/slide2.jpg", 
-    alt: "Nuestros servicios de salud integral en Excelsa" 
-  },
-  { 
-    avif: "/assets/images/carousel/slide3.avif",
-    webp: "/assets/images/carousel/slide3.webp",
-    jpg: "/assets/images/carousel/slide3.jpg", 
-    alt: "Instalaciones médicas modernas de Excelsa" 
-  },
-  { 
-    avif: "/assets/images/carousel/slide4.avif",
-    webp: "/assets/images/carousel/slide4.webp",
-    jpg: "/assets/images/carousel/slide4.jpg", 
-    alt: "Equipo médico profesional de Excelsa" 
-  },
-  { 
-    avif: "/assets/images/carousel/slide5.avif",
-    webp: "/assets/images/carousel/slide5.webp",
-    jpg: "/assets/images/carousel/slide5.jpg", 
-    alt: "Terapias alternativas en Excelsa" 
-  }
-];
+// Imagen hero principal
+const heroImage = "/assets/images/hero/hero_excelsa.jpg";
+
+// Imagen de misión
+const missionImage = "/assets/images/mision/Mision.jpeg";
 
 // Información de contacto para el componente ContactInfo
 const contactInfo = {
@@ -231,13 +202,22 @@ const contactInfo = {
   email: "excelsa1@gmail.com",
   address: "Simón Bolívar 5958, La Reina, Santiago, Chile"
 };
+
+// Función para generar ID único para cada miembro (igual que en equipo.astro)
+function generateMemberId(memberName: string) {
+  return memberName
+    .toLowerCase()
+    .replace(/dr\.|dra\./g, '')
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]/g, '')
+    .replace(/^-+|-+$/g, '')
+    .trim();
+}
 ---
 
 <Layout 
   title="EXCELSA Calidad de Vida, Medicina Alternativa" 
-  contactInfo={contactInfo}
-  seoConfig={seoConfig}
-  schemaOrgConfig={schemaOrgConfig}>
+  contactInfo={contactInfo}>
   <!-- Control completo del fondo base mediante un div absolutamente posicionado con un degradado más atractivo -->
   <div class="fixed inset-0 z-[-8]">
     <div class="absolute inset-0 bg-gradient-to-b from-sky-100 via-white to-sky-50"></div>
@@ -283,36 +263,57 @@ const contactInfo = {
     }
   </style>
 
-  <!-- Hero Section con Carrusel -->
+  <!-- Hero Section con Imagen Principal -->
   <section class="relative w-full h-screen max-h-[600px] overflow-hidden rounded-3xl mb-20 shadow-xl">
-    <!-- Carrusel de imágenes de fondo -->
+    <!-- Imagen hero de fondo -->
     <div class="absolute inset-0 z-0">
-      <ImageCarousel images={carouselImages} height="600px" />
+      <img 
+        src={heroImage} 
+        alt="Centro de medicina integral Excelsa - Calidad de vida y medicina alternativa"
+        class="w-full h-full object-cover"
+      />
     </div>
     
-    <!-- Fondo con gradiente y elementos decorativos -->
-    <div class="absolute inset-0 bg-gradient-to-r from-sky-500/60 to-sky-400/60 z-10"></div>
     
-    <!-- Elementos decorativos mejorados -->
-    <div class="absolute top-1/4 left-1/5 w-64 h-64 rounded-full bg-white opacity-15 blur-xl z-10"></div>
-    <div class="absolute bottom-1/4 right-1/5 w-80 h-80 rounded-full bg-sky-100 opacity-25 blur-xl z-10"></div>
-    
-    <!-- Contenido hero -->
-    <div class="relative h-full container mx-auto px-4 flex flex-col justify-center items-start z-20">
-      <div class="max-w-2xl bg-white/15 backdrop-blur-md p-8 rounded-xl border border-white/40 shadow-2xl">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
-          EXCELSA Calidad de Vida, Medicina Alternativa
+    <!-- Contenido hero - Posicionado en el lado derecho para complementar la composición -->
+    <div class="relative h-full container mx-auto px-4 flex flex-col justify-center items-end z-20">
+      <div class="max-w-lg bg-gradient-to-br from-amber-50/95 via-orange-50/90 to-rose-50/85 backdrop-blur-sm p-8 rounded-2xl border border-amber-200/50 shadow-lg">
+        <!-- Elemento decorativo sutil que evoca el sol -->
+        <div class="flex items-center mb-6">
+          <div class="w-3 h-3 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full mr-3 animate-pulse"></div>
+          <span class="text-amber-700 text-sm font-medium tracking-wide uppercase">Encuentra tu equilibrio interior</span>
+        </div>
+        
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-light mb-4 text-amber-900 leading-tight">
+          EXCELSA
+          <span class="block text-2xl md:text-3xl lg:text-4xl font-normal text-amber-800 mt-1">
+            Calidad de Vida
+          </span>
+          <span class="block text-xl md:text-2xl lg:text-3xl font-light text-amber-700 mt-1">
+            Medicina Alternativa
+          </span>
         </h1>
-        <p class="text-xl md:text-2xl mb-8 text-white/90">
-          Encontrar el camino interior a la propia salud y calidad de vida en todas las edades
+        
+        <p class="text-lg md:text-xl mb-8 text-amber-800/90 leading-relaxed font-light italic">
+          "Descubre el camino hacia tu bienestar integral y abraza una vida plena en armonía"
         </p>
-        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-          <a href="/contacto" class="bg-white text-sky-600 hover:bg-sky-50 py-3 px-6 rounded-md font-medium transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 text-center">
-            Reserva tu Cita
+        
+        <div class="flex flex-col space-y-3">
+          <a href="/contacto" class="bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600 py-4 px-8 rounded-full font-medium transition-all duration-300 shadow-md hover:shadow-xl transform hover:scale-105 text-center text-lg">
+            ✨ Inicia tu Transformación
           </a>
-          <a href="/servicios" class="border-2 border-white text-white hover:bg-white/20 py-3 px-6 rounded-md font-medium transition-all duration-300 text-center">
-            Nuestros Servicios
+          <a href="/servicios" class="border-2 border-amber-500/70 text-amber-700 hover:bg-amber-500/10 py-3 px-8 rounded-full font-medium transition-all duration-300 text-center backdrop-blur-sm">
+            Conoce nuestras Terapias
           </a>
+        </div>
+        
+        <!-- Elemento decorativo inferior que evoca serenidad -->
+        <div class="flex items-center justify-center mt-6 pt-4 border-t border-amber-200/50">
+          <div class="flex space-x-1">
+            <div class="w-2 h-2 bg-amber-300 rounded-full opacity-60"></div>
+            <div class="w-2 h-2 bg-orange-300 rounded-full opacity-70"></div>
+            <div class="w-2 h-2 bg-rose-300 rounded-full opacity-60"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -325,20 +326,30 @@ const contactInfo = {
         <!-- Mission Card -->
         <div class="mb-16 bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 duration-300">
           <div class="flex flex-col md:flex-row">
-            <div class="w-full md:w-1/3 bg-gradient-to-br from-sky-500 to-sky-400 p-8 flex items-center justify-center">
-              <div class="text-center">
-                <div class="w-24 h-24 mx-auto bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
+            <div class="w-full md:w-1/3 relative overflow-hidden">
+              <img 
+                src={missionImage} 
+                alt="Personas en sesión de terapia grupal - Misión del centro de salud EXCELSA"
+                class="w-full h-full object-cover min-h-[300px] md:min-h-[250px]"
+              />
+              <!-- Overlay con gradiente sutil desde abajo para legibilidad -->
+              <div class="absolute inset-0 bg-gradient-to-t from-sky-900/80 via-sky-800/40 to-transparent flex items-end justify-center">
+                <div class="text-center pb-8 px-4">
+                  <h3 class="text-2xl font-bold text-white drop-shadow-2xl tracking-wide">Nuestra Misión</h3>
+                  <div class="w-16 h-0.5 bg-white/80 mx-auto mt-2 rounded-full"></div>
                 </div>
-                <h3 class="text-2xl font-bold text-white mb-2">Nuestra Misión</h3>
               </div>
             </div>
-            <div class="w-full md:w-2/3 p-8">
-              <p class="text-lg text-gray-700 leading-relaxed italic">
-                "Contribuir al <span class="font-semibold text-sky-600">mejoramiento de la Salud y Calidad de Vida</span> de las Personas, ayudando a desarrollar <span class="font-semibold text-sky-600">capacidades auto sanadoras</span> a través de prácticas integrativas de medicina alternativa, a nivel de terapias y actividades educativas"
-              </p>
+            <div class="w-full md:w-2/3 p-8 flex items-center">
+              <div>
+                <div class="flex items-center mb-4">
+                  <div class="w-1 h-12 bg-gradient-to-b from-sky-400 to-sky-600 rounded-full mr-4"></div>
+                  <div class="w-3 h-3 bg-sky-400 rounded-full animate-pulse"></div>
+                </div>
+                <p class="text-lg text-gray-700 leading-relaxed italic">
+                  "Contribuir al <span class="font-semibold text-sky-600">mejoramiento de la Salud y Calidad de Vida</span> de las Personas, ayudando a desarrollar <span class="font-semibold text-sky-600">capacidades auto sanadoras</span> a través de prácticas integrativas de medicina alternativa, a nivel de terapias y actividades educativas"
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -346,20 +357,30 @@ const contactInfo = {
         <!-- Vision Card -->
         <div class="mb-16 bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 duration-300">
           <div class="flex flex-col md:flex-row-reverse">
-            <div class="w-full md:w-1/3 bg-gradient-to-br from-purple-500 to-pink-400 p-8 flex items-center justify-center">
-              <div class="text-center">
-                <div class="w-24 h-24 mx-auto bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
+            <div class="w-full md:w-1/3 relative overflow-hidden">
+              <img 
+                src={missionImage} 
+                alt="Personas en sesión de terapia grupal - Visión del centro de salud EXCELSA"
+                class="w-full h-full object-cover min-h-[300px] md:min-h-[250px]"
+              />
+              <!-- Overlay con gradiente sutil desde abajo para legibilidad -->
+              <div class="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-purple-800/40 to-transparent flex items-end justify-center">
+                <div class="text-center pb-8 px-4">
+                  <h3 class="text-2xl font-bold text-white drop-shadow-2xl tracking-wide">Nuestra Visión</h3>
+                  <div class="w-16 h-0.5 bg-white/80 mx-auto mt-2 rounded-full"></div>
                 </div>
-                <h3 class="text-2xl font-bold text-white mb-2">Nuestra Visión</h3>
               </div>
             </div>
-            <div class="w-full md:w-2/3 p-8">
-              <p class="text-lg text-gray-700 leading-relaxed italic">
-                "Ser <span class="font-semibold text-purple-600">líder en servicios de Salud y Calidad de Vida</span>, con medicina Integrativa alternativa de excelencia, tanto en terapia como a nivel de capacitación, para el desarrollo de <span class="font-semibold text-purple-600">capacidades de auto sanación</span> en personas con enfermedades graves y a nivel preventivo, con reconocimiento en su aporte a la vida."
-              </p>
+            <div class="w-full md:w-2/3 p-8 flex items-center">
+              <div>
+                <div class="flex items-center mb-4">
+                  <div class="w-1 h-12 bg-gradient-to-b from-purple-400 to-purple-600 rounded-full mr-4"></div>
+                  <div class="w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
+                </div>
+                <p class="text-lg text-gray-700 leading-relaxed italic">
+                  "Ser <span class="font-semibold text-purple-600">líder en servicios de Salud y Calidad de Vida</span>, con medicina Integrativa alternativa de excelencia, tanto en terapia como a nivel de capacitación, para el desarrollo de <span class="font-semibold text-purple-600">capacidades de auto sanación</span> en personas con enfermedades graves y a nivel preventivo, con reconocimiento en su aporte a la vida."
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -428,26 +449,26 @@ const contactInfo = {
           <!-- Dr. Sergio Godorecci -->
           <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 flex flex-col max-w-xl mx-auto w-full relative">
             <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-              <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-cyan-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+              <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
               <img 
                 src={teamMembers[1].image} 
                 alt={teamMembers[1].name} 
                 class="absolute top-0 left-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                 style="object-position: center 30%; object-fit: contain; padding: 1.75rem;"
               />
-              <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-sky-200/40 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-              <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-cyan-200/40 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+              <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-200/40 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+              <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-teal-200/40 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
             </div>
             <div class="p-7 flex-grow">
               <h3 class="text-xl font-bold text-gray-800 mb-2">{teamMembers[1].name}</h3>
               <div class="flex flex-wrap gap-2 mb-3">
-                <span class="inline-block bg-gradient-to-r from-blue-50 to-teal-50 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{teamMembers[1].position}</span>
-                <span class="inline-block bg-gradient-to-r from-blue-50 to-teal-50 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{teamMembers[1].specialty}</span>
+                <span class="inline-block bg-blue-50 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{teamMembers[1].position}</span>
+                <span class="inline-block bg-blue-50 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{teamMembers[1].specialty}</span>
               </div>
               <p class="text-gray-600 mb-4 text-sm">
                 {teamMembers[1].bio}
               </p>
-              <a href={`/equipo/${teamMembers[1].name.toLowerCase().replace(/\s+/g, '-')}`} class="inline-flex items-center text-blue-600 hover:text-teal-500 transition-colors font-medium">
+              <a href={`/equipo#${generateMemberId(teamMembers[1].name)}`} class="inline-flex items-center text-blue-600 hover:text-teal-500 transition-colors font-medium">
                 Ver perfil completo
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -455,35 +476,35 @@ const contactInfo = {
               </a>
             </div>
             <!-- Decorative corner elements -->
-            <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-sky-200 rounded-tl-lg"></div>
-            <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-sky-200 rounded-tr-lg"></div>
-            <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-sky-200 rounded-bl-lg"></div>
-            <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-sky-200 rounded-br-lg"></div>
+            <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-blue-200 rounded-tl-lg"></div>
+            <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-blue-200 rounded-tr-lg"></div>
+            <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-blue-200 rounded-bl-lg"></div>
+            <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-blue-200 rounded-br-lg"></div>
           </div>
           
           <!-- Dra. Sheril Irene Rivera Villarroel -->
           <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 flex flex-col max-w-xl mx-auto w-full relative">
             <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-              <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-cyan-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+              <div class="absolute inset-0 bg-gradient-to-tr from-purple-50 to-pink-50 group-hover:opacity-80 transition-opacity duration-300"></div>
               <img 
                 src={teamMembers[0].image} 
                 alt={teamMembers[0].name} 
                 class="absolute top-0 left-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                 style="object-position: center 30%; object-fit: contain; padding: 1.75rem;"
               />
-              <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-sky-200/40 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-              <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-cyan-200/40 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+              <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-purple-200/40 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+              <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-pink-200/40 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
             </div>
             <div class="p-7 flex-grow">
               <h3 class="text-xl font-bold text-gray-800 mb-2">{teamMembers[0].name}</h3>
               <div class="flex flex-wrap gap-2 mb-3">
-                <span class="inline-block bg-gradient-to-r from-purple-50 to-pink-50 text-pink-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{teamMembers[0].position}</span>
-                <span class="inline-block bg-gradient-to-r from-purple-50 to-pink-50 text-pink-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{teamMembers[0].specialty}</span>
+                <span class="inline-block bg-purple-50 text-purple-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{teamMembers[0].position}</span>
+                <span class="inline-block bg-purple-50 text-purple-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{teamMembers[0].specialty}</span>
               </div>
               <p class="text-gray-600 mb-4 text-sm">
                 {teamMembers[0].bio}
               </p>
-              <a href={`/equipo/${teamMembers[0].name.toLowerCase().replace(/\s+/g, '-')}`} class="inline-flex items-center text-pink-600 hover:text-purple-600 transition-colors font-medium">
+              <a href={`/equipo#${generateMemberId(teamMembers[0].name)}`} class="inline-flex items-center text-purple-600 hover:text-pink-600 transition-colors font-medium">
                 Ver perfil completo
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -491,65 +512,139 @@ const contactInfo = {
               </a>
             </div>
             <!-- Decorative corner elements -->
-            <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-sky-200 rounded-tl-lg"></div>
-            <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-sky-200 rounded-tr-lg"></div>
-            <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-sky-200 rounded-bl-lg"></div>
-            <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-sky-200 rounded-br-lg"></div>
+            <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-purple-200 rounded-tl-lg"></div>
+            <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-purple-200 rounded-tr-lg"></div>
+            <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-purple-200 rounded-bl-lg"></div>
+            <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-purple-200 rounded-br-lg"></div>
           </div>
         </div>
         
         <!-- Segunda fila: 3 miembros adicionales con estilo estandarizado -->
         <div class="grid md:grid-cols-3 gap-8">
           {teamMembers.slice(2).map((member, index) => {
-            // Personalización de colores según el profesional
-            let tagClasses = "";
-            let linkClasses = "";
-            
-            if (index === 0) { // Giancarlo Godorecci Rivera
-              tagClasses = "bg-gradient-to-r from-teal-50 to-green-50 text-green-600";
-              linkClasses = "text-green-600 hover:text-teal-600";
-            } else if (index === 1) { // Gianfranco Godorecci Rivera
-              tagClasses = "bg-gradient-to-r from-amber-50 to-orange-50 text-orange-600";
-              linkClasses = "text-orange-600 hover:text-amber-600";
-            } else if (index === 2) { // Sergio Matias Godorecci Rivera
-              tagClasses = "bg-gradient-to-r from-indigo-50 to-blue-50 text-indigo-600";
-              linkClasses = "text-indigo-600 hover:text-blue-600";
-            }
-            
             return (
               <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
                 <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                  <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-cyan-50 group-hover:opacity-80 transition-opacity duration-300"></div>
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
-                    style="object-fit: contain; padding: 1.75rem;"
-                  />
-                  <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-sky-200/40 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                  <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-cyan-200/40 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                  {/* Giancarlo Godorecci Rivera - Verde */}
+                  {index === 0 && (
+                    <>
+                      <div class="absolute inset-0 bg-gradient-to-tr from-green-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                      <img 
+                        src={member.image} 
+                        alt={member.name} 
+                        class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
+                        style="object-fit: contain; padding: 1.75rem;"
+                      />
+                      <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-green-200/40 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                      <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-green-200/40 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                    </>
+                  )}
+                  {/* Gianfranco Godorecci Rivera - Ámbar/Naranja */}
+                  {index === 1 && (
+                    <>
+                      <div class="absolute inset-0 bg-gradient-to-tr from-amber-50 to-orange-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                      <img 
+                        src={member.image} 
+                        alt={member.name} 
+                        class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
+                        style="object-fit: contain; padding: 1.75rem;"
+                      />
+                      <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-amber-200/40 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                      <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-amber-200/40 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                    </>
+                  )}
+                  {/* Sergio Matias Godorecci Rivera - Índigo */}
+                  {index === 2 && (
+                    <>
+                      <div class="absolute inset-0 bg-gradient-to-tr from-indigo-50 to-blue-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                      <img 
+                        src={member.image} 
+                        alt={member.name} 
+                        class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
+                        style="object-fit: contain; padding: 1.75rem;"
+                      />
+                      <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-indigo-200/40 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                      <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-indigo-200/40 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                    </>
+                  )}
                 </div>
                 <div class="p-6">
                   <h3 class="text-xl font-bold text-gray-800 mb-2">{member.name}</h3>
                   <div class="flex flex-wrap gap-2 mb-3">
-                    <span class={`inline-block ${tagClasses} text-xs font-medium px-2.5 py-0.5 rounded-full`}>{member.position}</span>
-                    <span class={`inline-block ${tagClasses} text-xs font-medium px-2.5 py-0.5 rounded-full`}>{member.specialty}</span>
+                    {/* Tags con colores específicos por miembro */}
+                    {index === 0 && (
+                      <>
+                        <span class="inline-block bg-green-50 text-green-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{member.position}</span>
+                        <span class="inline-block bg-green-50 text-green-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{member.specialty}</span>
+                      </>
+                    )}
+                    {index === 1 && (
+                      <>
+                        <span class="inline-block bg-amber-50 text-amber-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{member.position}</span>
+                        <span class="inline-block bg-amber-50 text-amber-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{member.specialty}</span>
+                      </>
+                    )}
+                    {index === 2 && (
+                      <>
+                        <span class="inline-block bg-indigo-50 text-indigo-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{member.position}</span>
+                        <span class="inline-block bg-indigo-50 text-indigo-600 text-xs font-medium px-2.5 py-0.5 rounded-full">{member.specialty}</span>
+                      </>
+                    )}
                   </div>
                   <p class="text-gray-600 mb-4 text-sm">
                     {member.bio}
                   </p>
-                  <a href={`/equipo/${member.name.toLowerCase().replace(/\s+/g, '-')}`} class={`inline-flex items-center ${linkClasses} transition-colors font-medium`}>
-                    Ver perfil completo
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </a>
+                  {/* Enlaces con colores específicos por miembro */}
+                  {index === 0 && (
+                    <a href={`/equipo#${generateMemberId(member.name)}`} class="inline-flex items-center text-green-600 hover:text-teal-600 transition-colors font-medium">
+                      Ver perfil completo
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  )}
+                  {index === 1 && (
+                    <a href={`/equipo#${generateMemberId(member.name)}`} class="inline-flex items-center text-amber-600 hover:text-orange-600 transition-colors font-medium">
+                      Ver perfil completo
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  )}
+                  {index === 2 && (
+                    <a href={`/equipo#${generateMemberId(member.name)}`} class="inline-flex items-center text-indigo-600 hover:text-blue-600 transition-colors font-medium">
+                      Ver perfil completo
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  )}
                 </div>
                 <!-- Decorative corner elements -->
-                <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-sky-200 rounded-tl-lg"></div>
-                <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-sky-200 rounded-tr-lg"></div>
-                <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-sky-200 rounded-bl-lg"></div>
-                <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-sky-200 rounded-br-lg"></div>
+                {index === 0 && (
+                  <>
+                    <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-green-200 rounded-tl-lg"></div>
+                    <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-green-200 rounded-tr-lg"></div>
+                    <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-green-200 rounded-bl-lg"></div>
+                    <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-green-200 rounded-br-lg"></div>
+                  </>
+                )}
+                {index === 1 && (
+                  <>
+                    <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-amber-200 rounded-tl-lg"></div>
+                    <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-amber-200 rounded-tr-lg"></div>
+                    <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-amber-200 rounded-bl-lg"></div>
+                    <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-amber-200 rounded-br-lg"></div>
+                  </>
+                )}
+                {index === 2 && (
+                  <>
+                    <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-indigo-200 rounded-tl-lg"></div>
+                    <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-indigo-200 rounded-tr-lg"></div>
+                    <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-indigo-200 rounded-bl-lg"></div>
+                    <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-indigo-200 rounded-br-lg"></div>
+                  </>
+                )}
               </div>
             );
           })}

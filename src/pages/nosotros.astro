@@ -15,6 +15,17 @@ const sherilGradient = getTeamMemberGradient('sheril');
 const giancarloGradient = getTeamMemberGradient('giancarlo');
 const gianfrancoGradient = getTeamMemberGradient('gianfranco');
 const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
+
+// Función para generar ID único para cada miembro (igual que en equipo.astro)
+function generateMemberId(memberName: string) {
+  return memberName
+    .toLowerCase()
+    .replace(/dr\.|dra\./g, '')
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]/g, '')
+    .replace(/^-+|-+$/g, '')
+    .trim();
+}
 ---
 
 <Layout title="Nosotros | EXCELSA Calidad de Vida">
@@ -349,26 +360,26 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
             <!-- Dr. Sergio Godorecci -->
             <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 flex flex-col max-w-xl mx-auto w-full relative">
               <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-cyan-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                 <img 
                   src="/assets/images/team/Sergio_G_B.avif" 
                   alt="Dr. Sergio Godorecci" 
                   class="absolute top-0 left-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                   style="object-position: center 30%; object-fit: contain; padding: 1.75rem;"
                 />
-                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-sky-200/40 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-cyan-200/40 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-200/40 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-teal-200/40 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               <div class="p-7 flex-grow">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Dr. Sergio Godorecci Baeriswyl</h3>
                 <div class="flex flex-wrap gap-2 mb-3">
-                  <span class={`inline-block ${sergioGradient.tagClass}`}>Médico Cirujano</span>
-                  <span class={`inline-block ${sergioGradient.tagClass}`}>Medicina Interna</span>
+                  <span class="inline-block bg-blue-50 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Médico Cirujano</span>
+                  <span class="inline-block bg-blue-50 text-blue-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Medicina Interna</span>
                 </div>
                 <p class="text-gray-600 mb-4 text-sm">
                   Cofundador Centro EXCELSA Salud y Calidad de Vida. Especialista en Medicina Interna y Diabetología con 20 años de experiencia.
                 </p>
-                <a href="/sergio" class={`inline-flex items-center ${sergioGradient.textColor} hover:${sergioGradient.highlightClass} transition-colors font-medium`}>
+                <a href={`/equipo#${generateMemberId('Dr. Sergio Godorecci Baeriswyl')}`} class="inline-flex items-center text-blue-600 hover:text-teal-500 transition-colors font-medium">
                   Ver perfil completo
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -376,35 +387,35 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                 </a>
               </div>
               <!-- Decorative corner elements -->
-              <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-sky-200 rounded-tl-lg"></div>
-              <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-sky-200 rounded-tr-lg"></div>
-              <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-sky-200 rounded-bl-lg"></div>
-              <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-sky-200 rounded-br-lg"></div>
+              <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-blue-200 rounded-tl-lg"></div>
+              <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-blue-200 rounded-tr-lg"></div>
+              <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-blue-200 rounded-bl-lg"></div>
+              <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-blue-200 rounded-br-lg"></div>
             </div>
             
             <!-- Dra. Sheril Irene Rivera Villarroel -->
             <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 flex flex-col max-w-xl mx-auto w-full relative">
               <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-cyan-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-purple-50 to-pink-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                 <img 
                   src="/assets/images/team/Sheril.avif" 
                   alt="Dra. Sheril Irene Rivera Villarroel" 
                   class="absolute top-0 left-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                   style="object-position: center 30%; object-fit: contain; padding: 1.75rem;"
                 />
-                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-sky-200/40 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-cyan-200/40 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-purple-200/40 to-white/0 rounded-full -mr-12 -mt-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-pink-200/40 to-white/0 rounded-full -ml-16 -mb-16 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               <div class="p-7 flex-grow">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Dra. Sheril Irene Rivera Villarroel</h3>
                 <div class="flex flex-wrap gap-2 mb-3">
-                  <span class={`inline-block ${sherilGradient.tagClass}`}>Directora Médica</span>
-                  <span class={`inline-block ${sherilGradient.tagClass}`}>Salud Pública, Psiconeuroinmunología, PNL, Esencias Florales</span>
+                  <span class="inline-block bg-purple-50 text-purple-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Directora Médica</span>
+                  <span class="inline-block bg-purple-50 text-purple-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Salud Pública, Psiconeuroinmunología, PNL, Esencias Florales</span>
                 </div>
                 <p class="text-gray-600 mb-4 text-sm">
                   Médico Cirujano con 30 años de experiencia en Medicina Alternativa. Creadora de la Metodología EXCELSA que integra diversas disciplinas complementarias con 95% de eficacia en patologías crónicas, autoinmunes y cáncer.
                 </p>
-                <a href="/sheril" class={`inline-flex items-center ${sherilGradient.textColor} hover:${sherilGradient.highlightClass} transition-colors font-medium`}>
+                <a href={`/equipo#${generateMemberId('Dra. Sheril Irene Rivera Villarroel')}`} class="inline-flex items-center text-purple-600 hover:text-pink-600 transition-colors font-medium">
                   Ver perfil completo
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -412,10 +423,10 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                 </a>
               </div>
               <!-- Decorative corner elements -->
-              <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-sky-200 rounded-tl-lg"></div>
-              <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-sky-200 rounded-tr-lg"></div>
-              <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-sky-200 rounded-bl-lg"></div>
-              <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-sky-200 rounded-br-lg"></div>
+              <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-purple-200 rounded-tl-lg"></div>
+              <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-purple-200 rounded-tr-lg"></div>
+              <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-purple-200 rounded-bl-lg"></div>
+              <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-purple-200 rounded-br-lg"></div>
             </div>
           </div>
           
@@ -424,26 +435,26 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
             <!-- Giancarlo Godorecci Rivera -->
             <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
               <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-cyan-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-green-50 to-teal-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                 <img 
                   src="/assets/images/team/Giancarlo.avif" 
                   alt="Giancarlo Godorecci Rivera" 
                   class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
                   style="object-fit: contain; padding: 1.75rem;"
                 />
-                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-sky-200/40 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-cyan-200/40 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-green-200/40 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-green-200/40 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               <div class="p-6">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Giancarlo Godorecci Rivera</h3>
                 <div class="flex flex-wrap gap-2 mb-3">
-                  <span class={`inline-block ${giancarloGradient.tagClass}`}>Terapeuta en Medicina Complementaria</span>
-                  <span class={`inline-block ${giancarloGradient.tagClass}`}>Reiki, Digitopuntura, ETT Tapping</span>
+                  <span class="inline-block bg-green-50 text-green-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Terapeuta en Medicina Complementaria</span>
+                  <span class="inline-block bg-green-50 text-green-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Reiki, Digitopuntura, ETT Tapping</span>
                 </div>
                 <p class="text-gray-600 mb-4 text-sm">
                   Especialista en terapias energéticas y técnicas de sanación natural con enfoque integral.
                 </p>
-                <a href="/giancarlo" class={`inline-flex items-center ${giancarloGradient.textColor} hover:${giancarloGradient.highlightClass} transition-colors font-medium`}>
+                <a href={`/equipo#${generateMemberId('Giancarlo Godorecci Rivera')}`} class="inline-flex items-center text-green-600 hover:text-teal-600 transition-colors font-medium">
                   Ver perfil completo
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -451,35 +462,35 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                 </a>
               </div>
               <!-- Decorative corner elements -->
-              <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-sky-200 rounded-tl-lg"></div>
-              <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-sky-200 rounded-tr-lg"></div>
-              <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-sky-200 rounded-bl-lg"></div>
-              <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-sky-200 rounded-br-lg"></div>
+              <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-green-200 rounded-tl-lg"></div>
+              <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-green-200 rounded-tr-lg"></div>
+              <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-green-200 rounded-bl-lg"></div>
+              <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-green-200 rounded-br-lg"></div>
             </div>
             
             <!-- Gianfranco Godorecci Rivera -->
             <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
               <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-cyan-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-amber-50 to-orange-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                 <img 
                   src="/assets/images/team/Gianfranco.avif" 
                   alt="Gianfranco Godorecci Rivera" 
                   class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
                   style="object-fit: contain; padding: 1.75rem;"
                 />
-                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-sky-200/40 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-cyan-200/40 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-amber-200/40 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-amber-200/40 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               <div class="p-6">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Gianfranco Godorecci Rivera</h3>
                 <div class="flex flex-wrap gap-2 mb-3">
-                  <span class={`inline-block ${gianfrancoGradient.tagClass}`}>Psicólogo</span>
-                  <span class={`inline-block ${gianfrancoGradient.tagClass}`}>Área Laboral y Clínica</span>
+                  <span class="inline-block bg-amber-50 text-amber-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Psicólogo</span>
+                  <span class="inline-block bg-amber-50 text-amber-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Área Laboral y Clínica</span>
                 </div>
                 <p class="text-gray-600 mb-4 text-sm">
                   12 años de experiencia. Forma parte del equipo terapéutico de Excelsa Medicina Alternativa. Especialista en atención Psicológica de adultos en todas las edades.
                 </p>
-                <a href="/gianfranco" class={`inline-flex items-center ${gianfrancoGradient.textColor} hover:${gianfrancoGradient.highlightClass} transition-colors font-medium`}>
+                <a href={`/equipo#${generateMemberId('Gianfranco Godorecci Rivera')}`} class="inline-flex items-center text-amber-600 hover:text-orange-600 transition-colors font-medium">
                   Ver perfil completo
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -487,35 +498,35 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                 </a>
               </div>
               <!-- Decorative corner elements -->
-              <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-sky-200 rounded-tl-lg"></div>
-              <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-sky-200 rounded-tr-lg"></div>
-              <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-sky-200 rounded-bl-lg"></div>
-              <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-sky-200 rounded-br-lg"></div>
+              <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-amber-200 rounded-tl-lg"></div>
+              <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-amber-200 rounded-tr-lg"></div>
+              <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-amber-200 rounded-bl-lg"></div>
+              <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-amber-200 rounded-br-lg"></div>
             </div>
             
             <!-- Sergio Matias Godorecci Rivera -->
             <div class="bg-white rounded-xl shadow-xl group overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-2 duration-300 max-w-sm mx-auto w-full relative">
               <div class="relative pt-[100%] overflow-hidden border-b border-gray-100">
-                <div class="absolute inset-0 bg-gradient-to-tr from-sky-50 to-cyan-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-indigo-50 to-blue-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                 <img 
                   src="/assets/images/team/Sergio_G_R.avif" 
                   alt="Sergio Matias Godorecci Rivera" 
                   class="absolute top-0 left-0 w-full h-full transform transition-transform duration-700 group-hover:scale-110"
                   style="object-fit: contain; padding: 1.75rem;"
                 />
-                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-sky-200/40 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-cyan-200/40 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-indigo-200/40 to-white/0 rounded-full -mr-8 -mt-8 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-indigo-200/40 to-white/0 rounded-full -ml-12 -mb-12 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               <div class="p-6">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Sergio Matias Godorecci Rivera</h3>
                 <div class="flex flex-wrap gap-2 mb-3">
-                  <span class={`inline-block ${sergioMatiasGradient.tagClass}`}>Terapeuta de Aromaterapia</span>
-                  <span class={`inline-block ${sergioMatiasGradient.tagClass}`}>Elaborador de Aceites Esenciales</span>
+                  <span class="inline-block bg-indigo-50 text-indigo-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Terapeuta de Aromaterapia</span>
+                  <span class="inline-block bg-indigo-50 text-indigo-600 text-xs font-medium px-2.5 py-0.5 rounded-full">Elaborador de Aceites Esenciales</span>
                 </div>
                 <p class="text-gray-600 mb-4 text-sm">
                   Especialista en apoyo de personas con enfermedades crónicas, autoinmunes, estrés y enfermedades musculo esqueléticas.
                 </p>
-                <a href="/sergio-matias" class={`inline-flex items-center ${sergioMatiasGradient.textColor} hover:${sergioMatiasGradient.highlightClass} transition-colors font-medium`}>
+                <a href={`/equipo#${generateMemberId('Sergio Matias Godorecci Rivera')}`} class="inline-flex items-center text-indigo-600 hover:text-blue-600 transition-colors font-medium">
                   Ver perfil completo
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -523,10 +534,10 @@ const sergioMatiasGradient = getTeamMemberGradient('sergiomatias');
                 </a>
               </div>
               <!-- Decorative corner elements -->
-              <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-sky-200 rounded-tl-lg"></div>
-              <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-sky-200 rounded-tr-lg"></div>
-              <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-sky-200 rounded-bl-lg"></div>
-              <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-sky-200 rounded-br-lg"></div>
+              <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-indigo-200 rounded-tl-lg"></div>
+              <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-indigo-200 rounded-tr-lg"></div>
+              <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-indigo-200 rounded-bl-lg"></div>
+              <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-indigo-200 rounded-br-lg"></div>
             </div>
           </div>
         </div>

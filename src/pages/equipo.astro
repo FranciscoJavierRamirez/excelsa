@@ -1,9 +1,144 @@
 ---
 // src/pages/equipo.astro
 import Layout from '../layouts/MainLayout.astro';
+
+// Importar archivos markdown del equipo
+const teamMembers = await Promise.all([
+  import('../data/team/sergio-godorecci.md'),
+  import('../data/team/sheril-rivera.md'),
+  import('../data/team/giancarlo-godorecci.md'),
+  import('../data/team/gianfranco-godorecci.md'),
+  import('../data/team/sergio-matias-godorecci.md'),
+]);
+
+// Función para obtener el color de tag apropiado
+function getTagColorClasses(color: string) {
+  const colorMap = {
+    blue: 'bg-blue-50 text-blue-600',
+    purple: 'bg-purple-50 text-purple-600',
+    green: 'bg-green-50 text-green-600',
+    orange: 'bg-orange-50 text-orange-600',
+    indigo: 'bg-indigo-50 text-indigo-600',
+  };
+  return colorMap[color] || 'bg-gray-50 text-gray-600';
+}
+
+// Función para obtener el color de texto para títulos
+function getTitleColor(color: string) {
+  const colorMap = {
+    blue: 'text-blue-600',
+    purple: 'text-purple-600',
+    green: 'text-green-600',
+    orange: 'text-orange-600',
+    indigo: 'text-indigo-600',
+  };
+  return colorMap[color] || 'text-gray-600';
+}
+
+// Función para obtener el gradiente según la especialidad (consistente con servicios.astro)
+function getSpecialtyGradient(memberName: string) {
+  if (memberName.includes('Dr. Sergio Godorecci')) {
+    // Medicina Convencional
+    return 'linear-gradient(135deg, #3b82f6, #2dd4bf)';
+  } else if (memberName.includes('Gianfranco Godorecci')) {
+    // Psicología
+    return 'linear-gradient(135deg, #f59e0b, #fb923c)';
+  } else if (memberName.includes('Giancarlo Godorecci') || memberName.includes('Sergio Matias Godorecci')) {
+    // Medicina Alternativa
+    return 'linear-gradient(135deg, #22c55e, #2dd4bf)';
+  } else if (memberName.includes('Dra. Sheril')) {
+    // Consultas Integrativas (Fundadora)
+    return 'linear-gradient(135deg, #9333ea, #ec4899)';
+  }
+  // Fallback
+  return 'linear-gradient(135deg, #6b7280, #9ca3af)';
+}
+
+// Función para generar ID único para cada miembro
+function generateMemberId(memberName: string) {
+  return memberName
+    .toLowerCase()
+    .replace(/dr\.|dra\./g, '')
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]/g, '')
+    .replace(/^-+|-+$/g, '')
+    .trim();
+}
 ---
 
 <Layout title="Nuestro Equipo | EXCELSA Calidad de Vida">
+  <style>
+    /* Estilos para el contenido expandible */
+    .member-content {
+      position: relative;
+    }
+    
+    .content-preview {
+      max-height: 200px;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out;
+      position: relative;
+    }
+    
+    .content-preview.expanded {
+      max-height: 1000px;
+    }
+    
+    .content-preview:not(.expanded)::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent 0%, white 70%, white 100%);
+      pointer-events: none;
+    }
+    
+    .expand-icon.rotated {
+      transform: rotate(180deg);
+    }
+    
+    /* Mejoras visuales para el contenido */
+    .member-content p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
+    .member-content p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .member-content strong {
+      color: #1f2937;
+      font-weight: 600;
+    }
+    
+    .member-content ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .member-content li {
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+    
+    /* Asegurar que el contenido sea visible */
+    .member-content * {
+      color: #374151 !important;
+    }
+    
+    .member-content h1,
+    .member-content h2,
+    .member-content h3,
+    .member-content h4 {
+      color: #1f2937 !important;
+      font-weight: 600;
+      margin: 1rem 0 0.5rem 0;
+    }
+  </style>
+
   <div class="container mx-auto px-4 py-16">
     <!-- Team section with improved design -->
     <section class="mb-16">
@@ -17,236 +152,127 @@ import Layout from '../layouts/MainLayout.astro';
       </div>
 
       <div class="grid gap-8 max-w-6xl mx-auto">
-        <!-- Dr. Sergio Godorecci -->
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl">
-          <div class="p-1 bg-gradient-to-r from-blue-500 to-teal-400">
-            <div class="bg-white p-0">
-              <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/3">
-                  <div class="relative pb-[100%] md:pb-0 md:h-full bg-gray-100">
-                    <img 
-                      src="/assets/images/team/Sergio_G_B.avif" 
-                      alt="Dr. Sergio Godorecci Baeriswyl" 
-                      class="absolute inset-0 w-full h-full object-cover md:relative"
-                    />
-                  </div>
-                </div>
-                <div class="md:w-2/3 p-6 md:p-8">
-                  <div class="flex items-center mb-4">
-                    <span class="inline-block w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-teal-400 text-white flex items-center justify-center mr-3 flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </span>
-                    <h3 class="text-2xl font-bold text-gray-800">Dr. Sergio Godorecci Baeriswyl</h3>
+        {teamMembers.map((member) => (
+          <div id={generateMemberId(member.frontmatter.name)} class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.02] scroll-mt-24">
+            <div class="p-[3px] rounded-2xl" style={`background: ${getSpecialtyGradient(member.frontmatter.name)}`}>
+              <div class="bg-white rounded-xl overflow-hidden">
+                <div class="flex flex-col md:flex-row min-h-[400px]">
+                  <!-- Imagen más grande y mejor posicionada -->
+                  <div class="md:w-2/5 flex-shrink-0">
+                    <div class="h-80 md:h-full bg-gray-100 relative overflow-hidden rounded-t-xl md:rounded-t-none md:rounded-l-xl">
+                      <img 
+                        src={member.frontmatter.image}
+                        alt={member.frontmatter.alt}
+                        class="w-full h-full object-cover object-center transform transition-transform duration-300 hover:scale-105"
+                      />
+                      <!-- Overlay sutil solo en hover -->
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
                   </div>
                   
-                  <div class="flex flex-wrap items-center mb-4">
-                    <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mr-2 mb-2">Médico Cirujano</span>
-                    <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mr-2 mb-2">Medicina Interna</span>
-                    <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-2">Diabetología</span>
-                  </div>
-                  
-                  <div class="space-y-3 text-gray-700">
-                    <p>
-                      <strong class="text-blue-600">Formación Académica:</strong> Universidad de Chile, Hospital del Salvador.
-                    </p>
-                    <p>
-                      <strong class="text-blue-600">Experiencia:</strong> 20 años de experiencia en Diabetología con especial enfoque en adultos y adultos mayores.
-                    </p>
-                    <p>
-                      Cofundador del Centro EXCELSA Salud y Calidad de Vida Medicina Alternativa Integrativa. Su enfoque médico integral apoya a las personas abordándolas de manera personalizada, dedicándoles el tiempo necesario y brindando una acogida cálida y cercana.
-                    </p>
-                    <p>
-                      Su experticia en medicina interna, medicina de urgencia, unidad de cuidados intensivos y diabetología le otorga una valiosa experiencia como médico de cabecera para adultos y adultos mayores.
-                    </p>
-                    <p>
-                      Se mantiene constantemente actualizado en congresos nacionales e internacionales, con apertura a disciplinas innovadoras para mejorar la calidad de vida y prevenir enfermedades.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Dra. Sheril Irene Rivera -->
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl">
-          <div class="p-1 bg-gradient-to-r from-purple-500 to-pink-400">
-            <div class="bg-white p-0">
-              <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/3">
-                  <div class="relative pb-[100%] md:pb-0 md:h-full bg-gray-100">
-                    <img 
-                      src="/assets/images/team/Sheril.avif" 
-                      alt="Dra. Sheril Irene Rivera Villarroel" 
-                      class="absolute inset-0 w-full h-full object-cover md:relative"
-                    />
-                  </div>
-                </div>
-                <div class="md:w-2/3 p-6 md:p-8">
-                  <div class="flex items-center mb-4">
-                    <span class="inline-block w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-400 text-white flex items-center justify-center mr-3 flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </span>
-                    <h3 class="text-2xl font-bold text-gray-800">Dra. Sheril Irene Rivera Villarroel</h3>
-                  </div>
-                  
-                  <div class="flex flex-wrap items-center mb-4">
-                    <span class="bg-purple-50 text-purple-600 px-3 py-1 rounded-full text-sm font-medium mr-2 mb-2">Médico Cirujano</span>
-                    <span class="bg-purple-50 text-purple-600 px-3 py-1 rounded-full text-sm font-medium mr-2 mb-2">Psiconeuroinmunología</span>
-                    <span class="bg-purple-50 text-purple-600 px-3 py-1 rounded-full text-sm font-medium mb-2">PNL</span>
-                  </div>
-                  
-                  <div class="space-y-3 text-gray-700">
-                    <p>
-                      <strong class="text-purple-600">Especialidades:</strong> Salud Pública, Promoción de Salud, Psiconeuroinmunología, PNL, Maestra en Esencias Florales, Meditación en Movimiento.
-                    </p>
-                    <p>
-                      30 años de experiencia en áreas de Atención de Salud y Capacitación en Calidad de Vida, a nivel curativo y preventivo, individual y grupal.
-                    </p>
-                    <p>
-                      Creadora de la Terapia Metodología EXCELSA, donde integra disciplinas médicas complementarias para contribuir a la mejoría de las personas en pocas sesiones.
-                    </p>
+                  <!-- Contenido principal -->
+                  <div class="md:w-3/5 p-6 md:p-8 flex flex-col">
+                    <!-- Header con nombre y especialidad -->
+                    <div class="mb-4">
+                      <div class="flex items-start mb-4">
+                        <span class="w-12 h-12 rounded-full text-white flex items-center justify-center mr-4 flex-shrink-0 shadow-lg" style={`background: ${getSpecialtyGradient(member.frontmatter.name)}`}>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                          </svg>
+                        </span>
+                        <div class="flex-grow">
+                          <h3 class="text-xl md:text-2xl font-bold text-gray-800 leading-tight mb-3">{member.frontmatter.name}</h3>
+                          <div class="flex flex-wrap gap-2">
+                            {member.frontmatter.tags.map((tag) => (
+                              <span class={`${getTagColorClasses(member.frontmatter.tagColor)} px-3 py-1 rounded-full text-xs font-medium`}>
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Contenido principal -->
+                    <div class="flex-grow">
+                      <div class="member-content text-gray-700 leading-relaxed">
+                        <div class="content-preview" data-member={member.frontmatter.name}>
+                          <member.Content />
+                        </div>
+                      </div>
+                      
+                      <!-- Botón para expandir/contraer -->
+                      <div class="mt-6 pt-4 border-t border-gray-100">
+                        <button class="expand-content-btn flex items-center text-sm font-medium transition-all duration-200 hover:translate-x-1" style={`color: ${
+                          member.frontmatter.name.includes('Dr. Sergio Godorecci') ? '#3b82f6' :
+                          member.frontmatter.name.includes('Gianfranco Godorecci') ? '#f59e0b' :
+                          member.frontmatter.name.includes('Giancarlo Godorecci') || member.frontmatter.name.includes('Sergio Matias Godorecci') ? '#22c55e' :
+                          member.frontmatter.name.includes('Dra. Sheril') ? '#9333ea' : '#6b7280'
+                        }`}>
+                          <svg class="expand-icon w-4 h-4 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                          </svg>
+                          <span class="expand-text">Ver más información</span>
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Giancarlo Godorecci Rivera -->
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl">
-          <div class="p-1 bg-gradient-to-r from-teal-500 to-green-400">
-            <div class="bg-white p-0">
-              <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/3">
-                  <div class="relative pb-[100%] md:pb-0 md:h-full bg-gray-100">
-                    <img 
-                      src="/assets/images/team/Giancarlo.avif" 
-                      alt="Giancarlo Godorecci Rivera" 
-                      class="absolute inset-0 w-full h-full object-cover md:relative"
-                    />
-                  </div>
-                </div>
-                <div class="md:w-2/3 p-6 md:p-8">
-                  <div class="flex items-center mb-4">
-                    <span class="inline-block w-10 h-10 rounded-full bg-gradient-to-r from-teal-500 to-green-400 text-white flex items-center justify-center mr-3 flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </span>
-                    <h3 class="text-2xl font-bold text-gray-800">Giancarlo Godorecci Rivera</h3>
-                  </div>
-                  
-                  <div class="flex flex-wrap items-center mb-4">
-                    <span class="bg-green-50 text-green-600 px-3 py-1 rounded-full text-sm font-medium mr-2 mb-2">Terapeuta</span>
-                    <span class="bg-green-50 text-green-600 px-3 py-1 rounded-full text-sm font-medium mr-2 mb-2">Medicina Complementaria</span>
-                  </div>
-                  
-                  <div class="space-y-3 text-gray-700">
-                    <p>
-                      <strong class="text-green-600">Especialidades:</strong> Reiki, Digitopuntura, ETT Tapping, Programación Neurolingüística.
-                    </p>
-                    <p>
-                      6 años de experiencia como parte del equipo terapéutico de Excelsa Medicina Alternativa. 
-                    </p>
-                    <p>
-                      Experiencia en el tratamiento de enfermedades físicas y emocionales que cursan con dolores crónicos y trastornos de ansiedad.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Gianfranco Godorecci Rivera -->
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl">
-          <div class="p-1 bg-gradient-to-r from-amber-500 to-orange-400">
-            <div class="bg-white p-0">
-              <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/3">
-                  <div class="relative pb-[100%] md:pb-0 md:h-full bg-gray-100">
-                    <img 
-                      src="/assets/images/team/Gianfranco.avif" 
-                      alt="Gianfranco Godorecci Rivera" 
-                      class="absolute inset-0 w-full h-full object-cover md:relative"
-                    />
-                  </div>
-                </div>
-                <div class="md:w-2/3 p-6 md:p-8">
-                  <div class="flex items-center mb-4">
-                    <span class="inline-block w-10 h-10 rounded-full bg-gradient-to-r from-amber-500 to-orange-400 text-white flex items-center justify-center mr-3 flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </span>
-                    <h3 class="text-2xl font-bold text-gray-800">Gianfranco Godorecci Rivera</h3>
-                  </div>
-                  
-                  <div class="flex flex-wrap items-center mb-4">
-                    <span class="bg-orange-50 text-orange-600 px-3 py-1 rounded-full text-sm font-medium mr-2 mb-2">Psicólogo</span>
-                    <span class="bg-orange-50 text-orange-600 px-3 py-1 rounded-full text-sm font-medium mr-2 mb-2">Área Laboral</span>
-                    <span class="bg-orange-50 text-orange-600 px-3 py-1 rounded-full text-sm font-medium mb-2">Área Clínica</span>
-                  </div>
-                  
-                  <div class="space-y-3 text-gray-700">
-                    <p>
-                      12 años de experiencia como parte del equipo terapéutico de Excelsa Medicina Alternativa.
-                    </p>
-                    <p>
-                      Especialista en atención psicológica de adultos en todas las edades.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sergio Matias Godorecci Rivera -->
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl">
-          <div class="p-1 bg-gradient-to-r from-indigo-500 to-blue-400">
-            <div class="bg-white p-0">
-              <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/3">
-                  <div class="relative pb-[100%] md:pb-0 md:h-full bg-gray-100">
-                    <img 
-                      src="/assets/images/team/Sergio_G_R.avif" 
-                      alt="Sergio Matias Godorecci Rivera" 
-                      class="absolute inset-0 w-full h-full object-cover md:relative"
-                    />
-                  </div>
-                </div>
-                <div class="md:w-2/3 p-6 md:p-8">
-                  <div class="flex items-center mb-4">
-                    <span class="inline-block w-10 h-10 rounded-full bg-gradient-to-r from-indigo-500 to-blue-400 text-white flex items-center justify-center mr-3 flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </span>
-                    <h3 class="text-2xl font-bold text-gray-800">Sergio Matias Godorecci Rivera</h3>
-                  </div>
-                  
-                  <div class="flex flex-wrap items-center mb-4">
-                    <span class="bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full text-sm font-medium mr-2 mb-2">Terapeuta de Aromaterapia</span>
-                    <span class="bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full text-sm font-medium mb-2">Elaborador de Aceites Esenciales</span>
-                  </div>
-                  
-                  <div class="space-y-3 text-gray-700">
-                    <p>
-                      Especialista en apoyo de personas de todas las edades con enfermedades crónicas y autoinmunes, estrés, enfermedades músculo-esqueléticas y articulares, Parkinson, cáncer, y enfermedades emocionales refractarias a tratamiento convencional.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Funcionalidad para expandir/contraer contenido
+      const expandButtons = document.querySelectorAll('.expand-content-btn');
+      
+      expandButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Encontrar el contenido relacionado
+          const memberContent = this.closest('.flex-grow');
+          const contentPreview = memberContent.querySelector('.content-preview');
+          const expandIcon = this.querySelector('.expand-icon');
+          const expandText = this.querySelector('.expand-text');
+          
+          if (contentPreview.classList.contains('expanded')) {
+            // Contraer
+            contentPreview.classList.remove('expanded');
+            expandIcon.classList.remove('rotated');
+            expandText.textContent = 'Ver más información';
+          } else {
+            // Expandir
+            contentPreview.classList.add('expanded');
+            expandIcon.classList.add('rotated');
+            expandText.textContent = 'Ver menos información';
+          }
+        });
+      });
+      
+      // Inicializar el estado de los botones basado en la altura del contenido
+      setTimeout(() => {
+        const memberContents = document.querySelectorAll('.content-preview');
+        memberContents.forEach(content => {
+          const flexGrowParent = content.closest('.flex-grow');
+          const button = flexGrowParent?.querySelector('.expand-content-btn') as HTMLElement;
+          
+          // Si el contenido es menor a 200px, ocultar el botón
+          if (content.scrollHeight <= 200) {
+            if (button) {
+              button.style.display = 'none';
+            }
+            (content as HTMLElement).style.maxHeight = 'none';
+            // Remover el gradiente de fade
+            (content as HTMLElement).style.position = 'static';
+          }
+        });
+      }, 100);
+    });
+  </script>
 </Layout> 

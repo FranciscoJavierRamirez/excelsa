@@ -1,0 +1,563 @@
+---
+// src/pages/imagenes.astro
+import Layout from '../layouts/MainLayout.astro';
+import { getThemeColors } from '../utils/colorThemes';
+
+// Obtener colores de tema
+const brandColors = getThemeColors('brand');
+
+// Definir las imágenes de servicios con sus nombres descriptivos
+const serviceImages = [
+  {
+    id: 'medicina-interna',
+    title: 'Medicina Interna',
+    description: 'Especialidad médica dedicada al diagnóstico y tratamiento integral de enfermedades internas del adulto.',
+    image: '/assets/images/servicios/Medicina_interna.jpeg',
+    category: 'Medicina Convencional',
+    categoryColor: '#3b82f6'
+  },
+  {
+    id: 'diabetes',
+    title: 'Diabetología',
+    description: 'Atención especializada en el diagnóstico, tratamiento y control de la Diabetes Mellitus.',
+    image: '/assets/images/servicios/Diabetes.jpeg',
+    category: 'Medicina Convencional',
+    categoryColor: '#3b82f6'
+  },
+  {
+    id: 'flores-bach',
+    title: 'Terapia con Flores de Bach',
+    description: 'Sistema terapéutico natural que utiliza esencias florales para tratar desequilibrios emocionales.',
+    image: '/assets/images/servicios/Flores_de_Bach.jpeg',
+    category: 'Medicina Alternativa',
+    categoryColor: '#22c55e'
+  },
+  {
+    id: 'psiconeuroinmunologia',
+    title: 'Psiconeuroinmunología',
+    description: 'Enfoque integrado que estudia la relación entre el sistema nervioso, inmunológico y endocrino.',
+    image: '/assets/images/servicios/Psiconeuroinmunologia.jpeg',
+    category: 'Medicina Alternativa',
+    categoryColor: '#22c55e'
+  },
+  {
+    id: 'reiki',
+    title: 'Terapia Reiki y Alineación de Chakras',
+    description: 'Terapia natural enfocada en la armonización energética y el bienestar integral.',
+    image: '/assets/images/servicios/Reiki.jpeg',
+    category: 'Medicina Alternativa',
+    categoryColor: '#22c55e'
+  },
+  {
+    id: 'tapping',
+    title: 'Terapia EFT Tapping',
+    description: 'Técnica que combina digitopuntura y PNL para liberar emociones reprimidas y bloqueos energéticos.',
+    image: '/assets/images/servicios/Tapping.jpeg',
+    category: 'Medicina Alternativa',
+    categoryColor: '#22c55e'
+  }
+];
+
+// Agrupar imágenes por categoría
+const imagesByCategory = serviceImages.reduce((acc, image) => {
+  if (!acc[image.category]) {
+    acc[image.category] = [];
+  }
+  acc[image.category].push(image);
+  return acc;
+}, {});
+---
+
+<Layout title="Galería de Servicios | EXCELSA Calidad de Vida">
+  <!-- Fondo base con degradado -->
+  <div class="fixed inset-0 z-[-8]">
+    <div class="absolute inset-0 bg-gradient-to-b from-sky-100 via-white to-sky-50"></div>
+    <!-- Patrón sutil para añadir textura -->
+    <div class="absolute inset-0 opacity-3" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%2338bdf8\' fill-opacity=\'0.5\' fill-rule=\'evenodd\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/svg%3E');"></div>
+  </div>
+
+  <!-- Elementos decorativos flotantes -->
+  <div class="fixed inset-0 z-[-7] overflow-hidden pointer-events-none">
+    <div class="absolute top-20 right-[10%] w-[600px] h-[600px] bg-gradient-to-bl from-sky-100/15 to-transparent rounded-full blur-3xl floating"></div>
+    <div class="absolute bottom-40 left-[5%] w-[700px] h-[700px] bg-gradient-to-tr from-sky-100/15 to-transparent rounded-full blur-3xl floating" style="animation-delay: -2s;"></div>
+    <div class="absolute top-[40%] left-[30%] w-[400px] h-[400px] bg-gradient-to-tr from-sky-100/15 to-sky-50/15 rounded-full blur-3xl floating" style="animation-delay: -4s;"></div>
+  </div>
+
+  <style>
+    /* Animación para los elementos flotantes */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* Animaciones para la galería */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    /* Efecto hover para las imágenes */
+    .image-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center;
+    }
+
+    .image-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .image-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.1) 40%,
+        rgba(0, 0, 0, 0.7) 100%
+      );
+    }
+
+    /* Modal styles */
+    .modal {
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      animation: modalSlideIn 0.3s ease-out;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    /* Filtros de categoría */
+    .filter-btn {
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn.active {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+    }
+  </style>
+
+  <div class="container mx-auto px-4 py-16">
+    <!-- Encabezado principal -->
+    <section class="mb-16 text-center">
+      <div class="fade-in-up">
+        <span class="inline-block bg-gradient-primary text-white text-sm font-medium px-4 py-1 rounded-full mb-4">GALERÍA DE SERVICIOS</span>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Imágenes de Nuestros Servicios</h1>
+        <div class="divider-primary"></div>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          Explora visualmente los servicios que ofrecemos en EXCELSA. Cada imagen representa nuestro compromiso 
+          con la medicina integral y el bienestar de nuestros pacientes.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filtros de categoría -->
+    <section class="mb-12">
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <button 
+          class="filter-btn active px-6 py-3 bg-gradient-primary text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all"
+          data-filter="all"
+        >
+          Todos los Servicios
+        </button>
+        {Object.keys(imagesByCategory).map((category) => (
+          <button 
+            class="filter-btn px-6 py-3 bg-white text-gray-700 rounded-full font-medium shadow-lg hover:shadow-xl border border-gray-200 hover:border-blue-300 transition-all"
+            data-filter={category.toLowerCase().replace(/\s+/g, '-')}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+    </section>
+
+    <!-- Galería de imágenes -->
+    <section class="mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery">
+        {serviceImages.map((image, index) => (
+          <div 
+            class={`image-card bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer fade-in-up`}
+            data-category={image.category.toLowerCase().replace(/\s+/g, '-')}
+            data-image-id={image.id}
+            style={`animation-delay: ${index * 0.1}s`}
+          >
+            <div class="relative group">
+              <img 
+                src={image.image} 
+                alt={image.title}
+                class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="image-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              <!-- Badge de categoría -->
+              <div class="absolute top-4 left-4">
+                <span 
+                  class="px-3 py-1 text-xs font-medium text-white rounded-full shadow-lg"
+                  style={`background-color: ${image.categoryColor}`}
+                >
+                  {image.category}
+                </span>
+              </div>
+
+              <!-- Icono de zoom -->
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="bg-white/90 rounded-full p-3 shadow-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">{image.title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{image.description}</p>
+              
+              <div class="mt-4 flex items-center justify-between">
+                <button 
+                  class="text-blue-600 hover:text-blue-800 font-medium text-sm flex items-center transition-colors"
+                  onclick={`openModal('${image.id}')`}
+                >
+                  Ver detalles
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Sección de llamada a la acción -->
+    <section class="text-center bg-white rounded-2xl shadow-xl p-8 md:p-12">
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">¿Interesado en Nuestros Servicios?</h2>
+      <p class="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+        Descubre cómo nuestros servicios pueden mejorar tu calidad de vida. 
+        Agenda una consulta y comienza tu camino hacia el bienestar integral.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/servicios" 
+          class="bg-gradient-primary text-white px-8 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all hover:scale-105"
+        >
+          Ver Todos los Servicios
+        </a>
+        <a 
+          href="/contacto" 
+          class="bg-white text-blue-600 border-2 border-blue-600 px-8 py-3 rounded-full font-medium shadow-lg hover:shadow-xl hover:bg-blue-50 transition-all"
+        >
+          Contactar Ahora
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal para vista ampliada -->
+  <div id="imageModal" class="modal fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="modal-content bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+      <div class="relative">
+        <button 
+          onclick="closeModal()" 
+          class="absolute top-4 right-4 z-10 bg-white/90 rounded-full p-2 shadow-lg hover:bg-white transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        
+        <div id="modalContent" class="flex flex-col md:flex-row">
+          <!-- Contenido del modal se llenará dinámicamente -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    // Datos de las imágenes para el modal
+    const imageData = {
+      'medicina-interna': {
+        title: 'Medicina Interna',
+        description: 'Especialidad médica dedicada al diagnóstico y tratamiento no quirúrgico de enfermedades que afectan los órganos y sistemas internos del adulto, con enfoque integral de la salud.',
+        image: '/assets/images/servicios/Medicina_interna.jpeg',
+        category: 'Medicina Convencional',
+        categoryColor: '#3b82f6',
+        details: [
+          'Evaluación clínica completa',
+          'Interpretación de estudios de laboratorio',
+          'Control y seguimiento de enfermedades crónicas',
+          'Medicina preventiva'
+        ],
+        conditions: [
+          'Hipertensión arterial',
+          'Enfermedades respiratorias',
+          'Trastornos digestivos',
+          'Problemas endocrinos'
+        ]
+      },
+      'diabetes': {
+        title: 'Diabetología',
+        description: 'Atención médica enfocada en el diagnóstico, tratamiento y control de personas con Diabetes Mellitus e Insulinodependiente y sus complicaciones en pacientes adultos.',
+        image: '/assets/images/servicios/Diabetes.jpeg',
+        category: 'Medicina Convencional',
+        categoryColor: '#3b82f6',
+        details: [
+          'Evaluación clínica completa',
+          'Interpretación de laboratorio',
+          'Tratamiento y seguimiento',
+          'Prevención de complicaciones'
+        ],
+        conditions: [
+          'Diabetes Mellitus tipo 1 y 2',
+          'Hipertensión asociada',
+          'Enfermedades cardiovasculares',
+          'Complicaciones renales'
+        ]
+      },
+      'flores-bach': {
+        title: 'Terapia con Flores de Bach',
+        description: 'Sistema terapéutico que utiliza esencias florales para tratar desequilibrios emocionales asociados a malestar físico, complementando tratamientos de patologías graves y crónicas.',
+        image: '/assets/images/servicios/Flores_de_Bach.jpeg',
+        category: 'Medicina Alternativa',
+        categoryColor: '#22c55e',
+        details: [
+          'Evaluación de emociones asociadas',
+          'Selección personalizada de esencias',
+          'Preparación de fórmulas',
+          'Seguimiento personalizado'
+        ],
+        conditions: [
+          'Estrés y ansiedad',
+          'Insomnio',
+          'Depresión',
+          'Irritabilidad'
+        ]
+      },
+      'psiconeuroinmunologia': {
+        title: 'Psiconeuroinmunología',
+        description: 'Enfoque integrado para equilibrio emocional y biológico que estudia la relación entre el sistema nervioso, inmunológico y endocrino.',
+        image: '/assets/images/servicios/Psiconeuroinmunologia.jpeg',
+        category: 'Medicina Alternativa',
+        categoryColor: '#22c55e',
+        details: [
+          'Evaluación integral de sistemas',
+          'Análisis de patrones emocionales',
+          'Tratamiento personalizado',
+          'Seguimiento multidisciplinario'
+        ],
+        conditions: [
+          'Enfermedades autoinmunes',
+          'Estrés crónico',
+          'Trastornos del sueño',
+          'Problemas de concentración'
+        ]
+      },
+      'reiki': {
+        title: 'Terapia Reiki y Alineación de Chakras',
+        description: 'Terapia natural enfocada en la detección y desbloqueo del funcionamiento electromagnético de centros neurológicos afectados por patologías y descompensación emocional.',
+        image: '/assets/images/servicios/Reiki.jpeg',
+        category: 'Medicina Alternativa',
+        categoryColor: '#22c55e',
+        details: [
+          'Evaluación electromagnética',
+          'Desbloqueo de centros neurológicos',
+          'Potenciación del flujo natural',
+          'Armonización energética'
+        ],
+        conditions: [
+          'Dolores crónicos',
+          'Enfermedades autoinmunes',
+          'Artrosis y artritis',
+          'Estrés y angustia'
+        ]
+      },
+      'tapping': {
+        title: 'Terapia EFT Tapping',
+        description: 'Terapia natural que combina digitopuntura y PNL para liberar emociones reprimidas en centros electromagnéticos específicos que agravan patologías.',
+        image: '/assets/images/servicios/Tapping.jpeg',
+        category: 'Medicina Alternativa',
+        categoryColor: '#22c55e',
+        details: [
+          'Digitopuntura con repetición de frases sanadoras',
+          'Liberación de bloqueos emocionales',
+          'Enseñanza de autoaplicar la técnica',
+          'Reducción de trauma emocional'
+        ],
+        conditions: [
+          'Trauma emocional',
+          'Fobias y miedos',
+          'Estrés postraumático',
+          'Bloqueos energéticos'
+        ]
+      }
+    };
+
+    // Función para filtrar imágenes
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const imageCards = document.querySelectorAll('.image-card');
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const filter = button.getAttribute('data-filter');
+          
+          // Actualizar botones activos
+          filterButtons.forEach(btn => {
+            btn.classList.remove('active');
+            btn.classList.remove('bg-gradient-primary', 'text-white');
+            btn.classList.add('bg-white', 'text-gray-700');
+          });
+          
+          button.classList.add('active');
+          button.classList.remove('bg-white', 'text-gray-700');
+          button.classList.add('bg-gradient-primary', 'text-white');
+          
+          // Filtrar imágenes
+          imageCards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            
+            if (filter === 'all' || cardCategory === filter) {
+              card.style.display = 'block';
+              card.classList.add('fade-in-up');
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Agregar evento click a las tarjetas de imagen
+      imageCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const imageId = card.getAttribute('data-image-id');
+          openModal(imageId);
+        });
+      });
+    });
+
+    // Función para abrir modal
+    function openModal(imageId) {
+      const modal = document.getElementById('imageModal');
+      const modalContent = document.getElementById('modalContent');
+      const data = imageData[imageId];
+      
+      if (!data) return;
+      
+      modalContent.innerHTML = `
+        <div class="md:w-1/2">
+          <img 
+            src="${data.image}" 
+            alt="${data.title}"
+            class="w-full h-64 md:h-full object-cover"
+          />
+        </div>
+        <div class="md:w-1/2 p-6 md:p-8">
+          <div class="mb-4">
+            <span 
+              class="px-3 py-1 text-xs font-medium text-white rounded-full"
+              style="background-color: ${data.categoryColor}"
+            >
+              ${data.category}
+            </span>
+          </div>
+          
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">${data.title}</h2>
+          <p class="text-gray-600 mb-6 leading-relaxed">${data.description}</p>
+          
+          <div class="mb-6">
+            <h3 class="text-lg font-semibold text-gray-800 mb-3">Procedimientos:</h3>
+            <ul class="space-y-2">
+              ${data.details.map(detail => `
+                <li class="flex items-start">
+                  <span class="text-green-500 mr-2">✓</span>
+                  <span class="text-gray-700">${detail}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+          
+          <div class="mb-6">
+            <h3 class="text-lg font-semibold text-gray-800 mb-3">Condiciones tratadas:</h3>
+            <ul class="space-y-2">
+              ${data.conditions.map(condition => `
+                <li class="flex items-start">
+                  <span class="text-blue-500 mr-2">•</span>
+                  <span class="text-gray-700">${condition}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+          
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a 
+              href="/servicios" 
+              class="bg-gradient-primary text-white px-6 py-2 rounded-full font-medium text-center hover:shadow-lg transition-all"
+            >
+              Ver Servicios
+            </a>
+            <a 
+              href="/contacto" 
+              class="bg-white text-blue-600 border border-blue-600 px-6 py-2 rounded-full font-medium text-center hover:bg-blue-50 transition-all"
+            >
+              Contactar
+            </a>
+          </div>
+        </div>
+      `;
+      
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Función para cerrar modal
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Cerrar modal al hacer clic fuera del contenido
+    document.getElementById('imageModal').addEventListener('click', (e) => {
+      if (e.target.id === 'imageModal') {
+        closeModal();
+      }
+    });
+
+    // Cerrar modal con tecla Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+</Layout>
