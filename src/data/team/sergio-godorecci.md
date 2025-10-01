@@ -10,12 +10,24 @@ tags:
 tagColor: 'blue'
 ---
 
-**Formación Académica:** Universidad de Chile, Hospital del Salvador.
+**Formación Académica:**
 
-**Experiencia:** 20 años de experiencia en Diabetología con especial enfoque en adultos y adultos mayores.
+- Universidad de Chile
+- Hospital del Salvador
+
+**Experiencia:**
+
+- 20 años de experiencia en Diabetología con especial enfoque en adultos y adultos mayores.
 
 Cofundador del Centro EXCELSA Salud y Calidad de Vida Medicina Alternativa Integrativa. Su enfoque médico integral apoya a las personas abordándolas de manera personalizada, dedicándoles el tiempo necesario y brindando una acogida cálida y cercana.
 
-Su experticia en medicina interna, medicina de urgencia, unidad de cuidados intensivos y diabetología le otorga una valiosa experiencia como médico de cabecera para adultos y adultos mayores.
+**Áreas de experticia:**
 
-Se mantiene constantemente actualizado en congresos nacionales e internacionales, con apertura a disciplinas innovadoras para mejorar la calidad de vida y prevenir enfermedades.
+- Medicina interna
+- Medicina de urgencia
+- Unidad de cuidados intensivos
+- Diabetología
+
+**Actualización continua:**
+
+- Se mantiene constantemente actualizado en congresos nacionales e internacionales, con apertura a disciplinas innovadoras para mejorar la calidad de vida y prevenir enfermedades.

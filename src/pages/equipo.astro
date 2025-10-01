@@ -17,7 +17,8 @@ function getTagColorClasses(color: string) {
     blue: 'bg-blue-50 text-blue-600',
     purple: 'bg-purple-50 text-purple-600',
     green: 'bg-green-50 text-green-600',
-    orange: 'bg-orange-50 text-orange-600',
+    // Usar amber para Gianfranco (Psicología)
+    orange: 'bg-amber-50 text-amber-600',
     indigo: 'bg-indigo-50 text-indigo-600',
   };
   return colorMap[color] || 'bg-gray-50 text-gray-600';
@@ -54,6 +55,50 @@ function getSpecialtyGradient(memberName: string) {
   return 'linear-gradient(135deg, #6b7280, #9ca3af)';
 }
 
+// Color de acento por especialidad para tipografía
+function getSpecialtyAccentColor(memberName: string) {
+  if (memberName.includes('Dr. Sergio Godorecci')) {
+    return '#3b82f6';
+  } else if (memberName.includes('Gianfranco Godorecci')) {
+    return '#f59e0b';
+  } else if (memberName.includes('Giancarlo Godorecci') || memberName.includes('Sergio Matias Godorecci')) {
+    return '#22c55e';
+  } else if (memberName.includes('Dra. Sheril')) {
+    return '#9333ea';
+  }
+  return '#6b7280';
+}
+
+// Texto de confianza (pill) por miembro
+function getTrustPill(memberName: string) {
+  if (memberName.includes('Dr. Sergio Godorecci')) {
+    return '+20 años de experiencia';
+  } else if (memberName.includes('Dra. Sheril')) {
+    return 'Fundadora EXCELSA';
+  } else if (memberName.includes('Gianfranco Godorecci')) {
+    return '12 años de experiencia';
+  } else if (memberName.includes('Giancarlo Godorecci')) {
+    return '6 años de experiencia';
+  } else if (memberName.includes('Sergio Matias Godorecci')) {
+    return 'Aromaterapia y PNL';
+  }
+  return '';
+}
+
+// Fondo pastel por especialidad para el contenedor de imagen
+function getSpecialtyPastelBg(memberName: string) {
+  if (memberName.includes('Dr. Sergio Godorecci')) {
+    return '#eff6ff'; // blue-50
+  } else if (memberName.includes('Gianfranco Godorecci')) {
+    return '#fffbeb'; // amber-50
+  } else if (memberName.includes('Giancarlo Godorecci') || memberName.includes('Sergio Matias Godorecci')) {
+    return '#ecfdf5'; // emerald-50
+  } else if (memberName.includes('Dra. Sheril')) {
+    return '#f5f3ff'; // purple-50
+  }
+  return '#f8fafc'; // slate-50 fallback
+}
+
 // Función para generar ID único para cada miembro
 function generateMemberId(memberName: string) {
   return memberName
@@ -74,14 +119,42 @@ function generateMemberId(memberName: string) {
     }
     
     .content-preview {
-      max-height: 200px;
+      max-height: 280px;
       overflow: hidden;
       transition: max-height 0.4s ease-in-out;
       position: relative;
+      min-height: 120px;
     }
     
     .content-preview.expanded {
       max-height: 1000px;
+    }
+
+    /* Auto-expand on hover for larger screens */
+    @media (hover: hover) and (pointer: fine) {
+      .card-hover-area:hover .content-preview:not(.expanded) {
+        max-height: 1000px;
+      }
+      .card-hover-area:hover .expand-icon {
+        transform: rotate(180deg);
+      }
+      .card-hover-area:hover .expand-text::after {
+        content: ' (auto)';
+        color: #9ca3af;
+        font-weight: 400;
+      }
+    }
+
+    /* Responsive max heights */
+    @media (max-width: 640px) {
+      .content-preview {
+        max-height: 160px;
+      }
+    }
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .content-preview {
+        max-height: 200px;
+      }
     }
     
     .content-preview:not(.expanded)::after {
@@ -110,13 +183,23 @@ function generateMemberId(memberName: string) {
     }
     
     .member-content strong {
-      color: #1f2937;
-      font-weight: 600;
+      color: var(--accent-color) !important;
+      font-weight: 700;
     }
     
+    /* Listas con viñetas y numeración visibles */
     .member-content ul {
+      list-style: disc;
       margin: 1rem 0;
       padding-left: 1.5rem;
+    }
+    .member-content ol {
+      list-style: decimal;
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    .member-content li::marker {
+      color: #9ca3af;
     }
     
     .member-content li {
@@ -124,18 +207,71 @@ function generateMemberId(memberName: string) {
       line-height: 1.5;
     }
     
+    /* Secciones: enfatizar labels al inicio del párrafo */
+    .member-content p > strong:first-child {
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+    
+    /* Énfasis en cursiva */
+    .member-content em {
+      font-style: italic;
+      color: #4b5563;
+    }
+    
+    /* Citas/blockquote sutiles y legibles */
+    .member-content blockquote {
+      border-left: 4px solid #e5e7eb;
+      padding-left: 1rem;
+      color: #4b5563 !important;
+      background-color: #f9fafb;
+      font-style: italic;
+    }
+    
     /* Asegurar que el contenido sea visible */
     .member-content * {
-      color: #374151 !important;
+      color: #374151;
     }
     
     .member-content h1,
     .member-content h2,
     .member-content h3,
     .member-content h4 {
-      color: #1f2937 !important;
+      color: var(--accent-color) !important;
       font-weight: 600;
       margin: 1rem 0 0.5rem 0;
+    }
+
+    /* Enlaces con color de acento */
+    .member-content a {
+      color: var(--accent-color);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+    }
+    .member-content a:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    /* Borde degradado de imagen solo visible en hover (desktop) */
+    .image-gradient-border {
+      opacity: 1;
+      transition: opacity 200ms ease;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .card-hover-area:hover .image-gradient-border {
+        opacity: 1;
+      }
+    }
+
+    /* Respeto a reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      .content-preview,
+      .expand-icon,
+      img,
+      .transform {
+        transition: none !important;
+      }
     }
   </style>
 
@@ -153,20 +289,24 @@ function generateMemberId(memberName: string) {
 
       <div class="grid gap-8 max-w-6xl mx-auto">
         {teamMembers.map((member) => (
-          <div id={generateMemberId(member.frontmatter.name)} class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.02] scroll-mt-24">
-            <div class="p-[3px] rounded-2xl" style={`background: ${getSpecialtyGradient(member.frontmatter.name)}`}>
+          <div id={generateMemberId(member.frontmatter.name)} class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.02] scroll-mt-24 card-hover-area" style={`--accent-color: ${getSpecialtyAccentColor(member.frontmatter.name)}`}>
+            <div class="p-[3px] rounded-2xl image-gradient-border" style={`background: ${getSpecialtyGradient(member.frontmatter.name)}`}>
               <div class="bg-white rounded-xl overflow-hidden">
                 <div class="flex flex-col md:flex-row min-h-[400px]">
                   <!-- Imagen más grande y mejor posicionada -->
                   <div class="md:w-2/5 flex-shrink-0">
-                    <div class="h-80 md:h-full bg-gray-100 relative overflow-hidden rounded-t-xl md:rounded-t-none md:rounded-l-xl">
-                      <img 
-                        src={member.frontmatter.image}
-                        alt={member.frontmatter.alt}
-                        class="w-full h-full object-cover object-center transform transition-transform duration-300 hover:scale-105"
-                      />
-                      <!-- Overlay sutil solo en hover -->
-                      <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="p-[3px] rounded-t-xl md:rounded-t-none md:rounded-l-xl image-gradient-border" style={`background: ${getSpecialtyGradient(member.frontmatter.name)}`}>
+                      <div class="h-80 md:h-[480px] relative overflow-hidden rounded-xl bg-gray-100" style={`background: ${getSpecialtyPastelBg(member.frontmatter.name)}`}>
+                        <!-- Fondo blur suave con la misma imagen -->
+                        <div class="absolute inset-0 scale-110" style={`background-image: url(${member.frontmatter.image}); background-size: cover; background-position: center; filter: blur(10px); opacity: 0.35;`}></div>
+                        <img 
+                          src={member.frontmatter.image}
+                          alt={member.frontmatter.alt}
+                          class="relative z-10 w-full h-full object-cover object-center transform transition-transform duration-500 hover:scale-[1.02]"
+                        />
+                        <!-- Overlay sutil solo en hover -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                      </div>
                     </div>
                   </div>
                   
@@ -181,7 +321,17 @@ function generateMemberId(memberName: string) {
                           </svg>
                         </span>
                         <div class="flex-grow">
-                          <h3 class="text-xl md:text-2xl font-bold text-gray-800 leading-tight mb-3">{member.frontmatter.name}</h3>
+                          <h3 class="text-xl md:text-2xl font-bold leading-tight mb-2" style={`color: var(--accent-color)`}>
+                            {member.frontmatter.name}
+                          </h3>
+                          <div class="flex items-center gap-2 mb-3">
+                            <div class="h-0.5 w-12 rounded-full" style={`background: var(--accent-color)`}></div>
+                            {getTrustPill(member.frontmatter.name) && (
+                              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium" style={`background: color-mix(in oklab, var(--accent-color) 15%, white); color: var(--accent-color);`}>
+                                {getTrustPill(member.frontmatter.name)}
+                              </span>
+                            )}
+                          </div>
                           <div class="flex flex-wrap gap-2">
                             {member.frontmatter.tags.map((tag) => (
                               <span class={`${getTagColorClasses(member.frontmatter.tagColor)} px-3 py-1 rounded-full text-xs font-medium`}>
@@ -195,7 +345,7 @@ function generateMemberId(memberName: string) {
                     
                     <!-- Contenido principal -->
                     <div class="flex-grow">
-                      <div class="member-content text-gray-700 leading-relaxed">
+                      <div class="member-content prose prose-slate max-w-none text-gray-700 leading-relaxed">
                         <div class="content-preview" data-member={member.frontmatter.name}>
                           <member.Content />
                         </div>
@@ -203,12 +353,7 @@ function generateMemberId(memberName: string) {
                       
                       <!-- Botón para expandir/contraer -->
                       <div class="mt-6 pt-4 border-t border-gray-100">
-                        <button class="expand-content-btn flex items-center text-sm font-medium transition-all duration-200 hover:translate-x-1" style={`color: ${
-                          member.frontmatter.name.includes('Dr. Sergio Godorecci') ? '#3b82f6' :
-                          member.frontmatter.name.includes('Gianfranco Godorecci') ? '#f59e0b' :
-                          member.frontmatter.name.includes('Giancarlo Godorecci') || member.frontmatter.name.includes('Sergio Matias Godorecci') ? '#22c55e' :
-                          member.frontmatter.name.includes('Dra. Sheril') ? '#9333ea' : '#6b7280'
-                        }`}>
+                        <button class="expand-content-btn flex items-center text-sm font-medium transition-all duration-200 hover:translate-x-1" style={`color: var(--accent-color)`}>
                           <svg class="expand-icon w-4 h-4 mr-2 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                           </svg>

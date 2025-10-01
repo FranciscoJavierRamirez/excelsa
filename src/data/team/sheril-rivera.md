@@ -14,14 +14,25 @@ tagColor: 'purple'
 
 **Médico Cirujano Universidad de Chile**
 
-**Especialista en:** Salud Pública, Promoción de Salud, Psiconeuroinmunología, PNL, Maestra en Esencias Florales, Meditación en movimiento.
+**Especialista en:**
 
-**Formación:** Universidad de Chile, Sede Oriente, Instituto Latinoamericano de PNL, Floralba Esencias Florales Españolas, Chi Kung Escuela Maestro Sin Po Ho.
+- Salud Pública, Promoción de Salud
+- Psiconeuroinmunología, PNL
+- Maestra en Esencias Florales
+- Meditación en movimiento
+
+**Formación:**
+
+- Universidad de Chile, Sede Oriente
+- Instituto Latinoamericano de PNL
+- Floralba Esencias Florales Españolas
+- Chi Kung Escuela Maestro Sin Po Ho
 
 **Fundadora de EXCELSA** Salud y Calidad de Vida, Medicina Alternativa Integrativa.
 
-30 años de experiencia en áreas de Atención de Salud y Capacitación en Calidad de Vida, a nivel curativo y preventivo, personal y grupal.
+**Experiencia:**
 
-Amplia experiencia en atención de personas adultas, con patologías crónicas, autoinmunes y cáncer.
+- 30 años en Atención de Salud y Capacitación en Calidad de Vida, a nivel curativo y preventivo, personal y grupal.
+- Amplia experiencia en atención de personas adultas con patologías crónicas, autoinmunes y cáncer.
 
 **Creadora de Terapia Metodología EXCELSA**, donde integra disciplinas médicas con gran eficacia en la mejoría de las personas, en pocas sesiones de terapia y/o Cursos, de manera online presencial. **Con 95% de eficacia.**

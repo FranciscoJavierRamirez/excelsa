@@ -9,7 +9,15 @@ tags:
 tagColor: 'indigo'
 ---
 
-Formación en "Centro de Terapias Ezenciales"
-Formación Terapeuta PNL en Centro de Salud y Calidad de Vida EXCELSA.
-Especialidad en apoyo de personas de todas las edades con enfermedades crónicas y autoinmunes, Estrés, Enfermedades musculo esqueléticas y articulares, Parkinson, cáncer, enfermedades emocionales refractarias a tratamiento convencional.
-Complemento eficaz para todo tratamiento
+**Formación:**
+
+- "Centro de Terapias Ezenciales"
+- Terapeuta PNL en Centro de Salud y Calidad de Vida EXCELSA.
+
+**Especialidad:**
+
+- Apoyo de personas de todas las edades con enfermedades crónicas y autoinmunes.
+- Estrés, enfermedades músculo esqueléticas y articulares, Parkinson, cáncer.
+- Enfermedades emocionales refractarias a tratamiento convencional.
+
+**Enfoque:** Complemento eficaz para todo tratamiento.

@@ -1,9 +1,9 @@
 ---
-import { Fragment } from 'astro/jsx-runtime';
 import Layout from '../layouts/MainLayout.astro';
 import { SEO } from 'astro-seo';
 import { getSEOConfig, generateSchema } from '../utils/seo';
 import ServiceCategories from '../components/services/ServiceCategories.astro';
+import HeroSection from '../components/home/HeroSection.astro';
 import TeamSection from '../components/about/TeamSection.astro';
 import ContactInfo from '../components/common/ContactInfo.astro';
 
@@ -232,12 +232,10 @@ function generateMemberId(memberName: string) {
 <Layout 
   title="EXCELSA Calidad de Vida, Medicina Alternativa" 
   contactInfo={contactInfo}>
-  <Fragment slot="head">
-    <title>{seoConfig.title}</title>
-    <SEO {...seoConfig} />
-    <script type="application/ld+json">{JSON.stringify(schemaOrgConfig)}</script>
-    <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
-  </Fragment>
+  <title slot="head">{seoConfig.title}</title>
+  <SEO slot="head" {...seoConfig} />
+  <script slot="head" type="application/ld+json">{JSON.stringify(schemaOrgConfig)}</script>
+  <script slot="head" type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
   <!-- Control completo del fondo base mediante un div absolutamente posicionado con un degradado más atractivo -->
   <div class="fixed inset-0 z-[-8]">
     <div class="absolute inset-0 bg-gradient-to-b from-sky-100 via-white to-sky-50"></div>
@@ -283,61 +281,8 @@ function generateMemberId(memberName: string) {
     }
   </style>
 
-  <!-- Hero Section con Imagen Principal -->
-  <section class="relative w-full h-screen max-h-[600px] overflow-hidden rounded-3xl mb-20 shadow-xl">
-    <!-- Imagen hero de fondo -->
-    <div class="absolute inset-0 z-0">
-      <img 
-        src={heroImage} 
-        alt="Centro de medicina integral Excelsa - Calidad de vida y medicina alternativa"
-        class="w-full h-full object-cover"
-      />
-    </div>
-    
-    
-    <!-- Contenido hero - Posicionado en el lado derecho para complementar la composición -->
-    <div class="relative h-full container mx-auto px-4 flex flex-col justify-center items-end z-20">
-      <div class="max-w-lg bg-gradient-to-br from-amber-50/95 via-orange-50/90 to-rose-50/85 backdrop-blur-sm p-8 rounded-2xl border border-amber-200/50 shadow-lg">
-        <!-- Elemento decorativo sutil que evoca el sol -->
-        <div class="flex items-center mb-6">
-          <div class="w-3 h-3 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full mr-3 animate-pulse"></div>
-          <span class="text-amber-700 text-sm font-medium tracking-wide uppercase">Encuentra tu equilibrio interior</span>
-        </div>
-        
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-light mb-4 text-amber-900 leading-tight">
-          EXCELSA
-          <span class="block text-2xl md:text-3xl lg:text-4xl font-normal text-amber-800 mt-1">
-            Calidad de Vida
-          </span>
-          <span class="block text-xl md:text-2xl lg:text-3xl font-light text-amber-700 mt-1">
-            Medicina Alternativa
-          </span>
-        </h1>
-        
-        <p class="text-lg md:text-xl mb-8 text-amber-800/90 leading-relaxed font-light italic">
-          "Descubre el camino hacia tu bienestar integral y abraza una vida plena en armonía"
-        </p>
-        
-        <div class="flex flex-col space-y-3">
-          <a href="/contacto" class="bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600 py-4 px-8 rounded-full font-medium transition-all duration-300 shadow-md hover:shadow-xl transform hover:scale-105 text-center text-lg">
-            ✨ Inicia tu Transformación
-          </a>
-          <a href="/servicios" class="border-2 border-amber-500/70 text-amber-700 hover:bg-amber-500/10 py-3 px-8 rounded-full font-medium transition-all duration-300 text-center backdrop-blur-sm">
-            Conoce nuestras Terapias
-          </a>
-        </div>
-        
-        <!-- Elemento decorativo inferior que evoca serenidad -->
-        <div class="flex items-center justify-center mt-6 pt-4 border-t border-amber-200/50">
-          <div class="flex space-x-1">
-            <div class="w-2 h-2 bg-amber-300 rounded-full opacity-60"></div>
-            <div class="w-2 h-2 bg-orange-300 rounded-full opacity-70"></div>
-            <div class="w-2 h-2 bg-rose-300 rounded-full opacity-60"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Hero Section con animación cálida -->
+  <HeroSection backgroundImage={heroImage} />
 
   <!-- Mission & Vision Section -->
   <section class="content-section p-10">

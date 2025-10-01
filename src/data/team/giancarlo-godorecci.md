@@ -9,7 +9,11 @@ tags:
 tagColor: 'green'
 ---
 
-Giancarlo Godorecci Rivera Terapeuta en Medicina Complementaria
+**Experiencia:** 6 años de Experiencia.
+
+**Experiencia clínica:** Especializado en enfermedades físicas y emocionales que cursan con dolores crónicos y transtornos de ansiedad y enfermedades como Parkinson y Alteraciones musculoesqueleticas post traumáticas o reumatologicas (Artritis, Artrosis), Lumbago, Estrés, Trauma entre otras, con enfoque holístico, personalizado.
+
+**Formación Académica:** Centro EXCELSA y Centro Renacer.
 
 **Especialidades:**
 
@@ -18,12 +22,8 @@ Giancarlo Godorecci Rivera Terapeuta en Medicina Complementaria
 - ETT Tapping
 - Programación Neurolingüística
 
-**Experiencia:** 6 años de Experiencia.
-
-**Formación Académica:** Centro EXCELSA y Centro Renacer.
+Giancarlo Godorecci Rivera Terapeuta en Medicina Complementaria
 
 Forma parte del equipo terapéutico de Excelsa Medicina Alternativa
-
-**Experiencia clínica:** Especializado en enfermedades físicas y emocionales que cursan con dolores crónicos y transtornos de ansiedad y enfermedades como Parkinson y Alteraciones musculoesqueleticas post traumáticas o reumatologicas (Artritis, Artrosis), Lumbago, Estrés, Trauma entre otras, con enfoque holístico, personalizado.
 
 Su expertismo integrando Técnicas de Programación Neurolinguistica, Reiki y EFT Tapping, lo hace Único en terapias acortadas para patologías en que los programas clásicos para manejo de dolor y estrés ofrecen pocas alternativas. Su enfoque holístico incluye apoyo para el desarrollo de la propia capacidad de manejo de dolor con disminución de farmacos que pueden generar efectos colaterales negativos.

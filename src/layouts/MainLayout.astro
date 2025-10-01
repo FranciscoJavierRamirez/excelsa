@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/common/Header.astro";
 import Footer from "../components/common/Footer.astro";
+import WhatsAppFloat from "../components/common/WhatsAppFloat.astro";
 
 interface Props {
   title: string;
@@ -52,5 +53,6 @@ const hasHeadSlot = Astro.slots.has('head');
     <div class="w-full relative z-20">
       <Footer phone={contactInfo.phone} email={contactInfo.email} address={contactInfo.address} />
     </div>
+    <WhatsAppFloat phone={"+56 9 8228 9832"} />
   </body>
 </html>
