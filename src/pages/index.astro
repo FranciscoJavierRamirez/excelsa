@@ -1,4 +1,5 @@
 ---
+import { Fragment } from 'astro/jsx-runtime';
 import Layout from '../layouts/MainLayout.astro';
 import { SEO } from 'astro-seo';
 import { getSEOConfig, generateSchema } from '../utils/seo';
@@ -12,15 +13,17 @@ const seoConfig = getSEOConfig({
   description: "Encontrar el camino interior a la propia salud y calidad de vida en todas las edades. Centro integral para tu bienestar con servicios médicos, psicológicos y terapias alternativas.",
   path: "/",
   additionalMeta: [
-    { name: "keywords", content: "medicina alternativa, psiconeuroinmunología, reiki, flores de bach, terapias holísticas, centro médico, salud integral" }
-  ]
+    { name: "keywords", content: "medicina alternativa, psiconeuroinmunología, reiki, flores de bach, terapias holísticas, centro médico, salud integral" },
+    { name: "author", content: "EXCELSA Calidad de Vida" }
+  ],
+  openGraph: "/assets/images/hero/hero_excelsa.jpg"
 });
 
 // Schema.org para negocio local (mejora el SEO)
 const schemaOrgConfig = generateSchema("MedicalOrganization", {
   name: "EXCELSA Calidad de Vida, Medicina Alternativa",
-  url: "https://vidaplena.com",
-  logo: "/assets/logo.png",
+  url: "https://excelsa.cl",
+  logo: "https://excelsa.cl/assets/images/logo/excelsa-logo.avif",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Simón Bolívar 5958",
@@ -37,6 +40,17 @@ const schemaOrgConfig = generateSchema("MedicalOrganization", {
   telephone: "+56982289832",
   email: "excelsa1@gmail.com",
   medicalSpecialty: ["Medicina Alternativa", "Psicología", "Medicina Convencional"]
+});
+
+const breadcrumbSchema = generateSchema("BreadcrumbList", {
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Inicio",
+      item: "https://excelsa.cl/"
+    }
+  ]
 });
 
 const serviceCategories = [
@@ -218,6 +232,12 @@ function generateMemberId(memberName: string) {
 <Layout 
   title="EXCELSA Calidad de Vida, Medicina Alternativa" 
   contactInfo={contactInfo}>
+  <Fragment slot="head">
+    <title>{seoConfig.title}</title>
+    <SEO {...seoConfig} />
+    <script type="application/ld+json">{JSON.stringify(schemaOrgConfig)}</script>
+    <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+  </Fragment>
   <!-- Control completo del fondo base mediante un div absolutamente posicionado con un degradado más atractivo -->
   <div class="fixed inset-0 z-[-8]">
     <div class="absolute inset-0 bg-gradient-to-b from-sky-100 via-white to-sky-50"></div>

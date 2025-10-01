@@ -22,6 +22,8 @@ const {
     address: "Av. Salud 123, Col. Bienestar, Ciudad de México"
   }
 } = Astro.props;
+
+const hasHeadSlot = Astro.slots.has('head');
 ---
 
 <!DOCTYPE html>
@@ -31,8 +33,14 @@ const {
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    <title>{title} | Excelsa</title>
+    {hasHeadSlot ? (
+      <slot name="head" />
+    ) : (
+      <>
+        <meta name="description" content={description} />
+        <title>{title} | Excelsa</title>
+      </>
+    )}
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body class="min-h-screen flex flex-col">

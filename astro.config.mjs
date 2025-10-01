@@ -6,8 +6,7 @@ import mdx from '@astrojs/mdx';
 // import robots from "astro-robots";
 
 export default defineConfig({
-  // Para desarrollo local, comentamos el sitio URL
-  // site: "https://www.vidaplena.com",
+  site: 'https://excelsa.cl',
 
   server: {
     // Configuración del servidor de desarrollo
